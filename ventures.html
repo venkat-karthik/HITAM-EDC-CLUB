@@ -4,6 +4,17 @@
 <meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary": "#c6c6cf", "outline-variant": "#444748", "on-tertiary-container": "#656467", "error-container": "#93000a", "on-primary-container": "#636565", "on-secondary-fixed-variant": "#45464e", "tertiary-fixed-dim": "#c8c6c9", "surface-container-lowest": "#0e0e0e", "on-secondary": "#2f3037", "inverse-on-surface": "#313030", "on-background": "#e5e2e1", "tertiary-fixed": "#e4e1e5", "surface-container-highest": "#353534", "surface": "#131313", "surface-container": "#201f1f", "tertiary-container": "#e4e1e5", "surface-variant": "#353534", "outline": "#8e9192", "on-surface-variant": "#c4c7c8", "surface-container-high": "#2a2a2a", "surface-tint": "#c6c6c7", "on-surface": "#e5e2e1", "surface-dim": "#131313", "inverse-surface": "#e5e2e1", "primary-fixed-dim": "#c6c6c7", "tertiary": "#ffffff", "on-tertiary-fixed": "#1b1b1e", "surface-bright": "#3a3939", "on-tertiary": "#303033", "primary": "#ffffff", "on-primary": "#2f3131", "on-tertiary-fixed-variant": "#47464a", "on-error": "#690005", "on-error-container": "#ffdad6", "surface-container-low": "#1c1b1b", "error": "#ffb4ab", "inverse-primary": "#5d5f5f", "primary-container": "#e2e2e2", "on-secondary-fixed": "#1a1b22", "secondary-container": "#45464e", "primary-fixed": "#e2e2e2", "on-primary-fixed-variant": "#454747", "background": "#131313", "on-secondary-container": "#b4b4bd", "secondary-fixed": "#e2e1eb", "secondary-fixed-dim": "#c6c6cf", "on-primary-fixed": "#1a1c1c" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.25rem", "space-xl": "2.5rem", "space-md": "1rem", "margin-mobile": "1.25rem", "space-lg": "1.5rem", "gutter": "1.5rem", "margin": "3rem", "space-sm": "0.5rem", "gutter-mobile": "1rem" }, "fontFamily": { "headline-sm": [ "Space Grotesk" ], "headline-lg-mobile": [ "Space Grotesk" ], "headline-lg": [ "Space Grotesk" ], "body-lg": [ "Geist" ], "display-mobile": [ "Space Grotesk" ], "display": [ "Space Grotesk" ], "label-md": [ "JetBrains Mono" ], "headline-md": [ "Space Grotesk" ], "label-sm": [ "JetBrains Mono" ], "body-md": [ "Geist" ], "body-sm": [ "Geist" ] }, "fontSize": { "headline-sm": [ "1.25rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "headline-lg-mobile": [ "1.75rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "headline-lg": [ "2.5rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.03em", "fontWeight": "600" } ], "body-lg": [ "1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "display-mobile": [ "2.5rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "display": [ "4rem", { "lineHeight": "4.25rem", "letterSpacing": "-0.04em", "fontWeight": "700" } ], "label-md": [ "0.8125rem", { "lineHeight": "1rem", "letterSpacing": "0.06em", "fontWeight": "500" } ], "headline-md": [ "1.75rem", { "lineHeight": "2.125rem", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "label-sm": [ "0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.08em", "fontWeight": "500" } ], "body-md": [ "0.9375rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" } ], "body-sm": [ "0.8125rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" } ] } } } };</script>
+<!-- Firebase SDKs (Compat v10 for client-side direct execution) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<!-- Cloudinary Upload Widget -->
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+<!-- Custom Integrations -->
+<script src="firebase-integration.js"></script>
+<script src="cloudinary-integration.js"></script>
 
 <style>
 /* Smooth view switching animation */
@@ -68,19 +79,22 @@
   pointer-events: none;
 }
 
-/* Radar pulse animation for live badges */
-@keyframes radarPing {
-  0% { transform: scale(0.95); opacity: 0.8; }
-  50% { transform: scale(1.6); opacity: 0; }
-  100% { transform: scale(0.95); opacity: 0; }
-}
-.animate-radar {
-  animation: radarPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+/* Glowing text aura & shimmer */
+.glow-text {
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
 }
 
-/* Glowing text aura */
-.glow-text {
-  text-shadow: 0 0 25px rgba(255, 255, 255, 0.35);
+@keyframes textShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.glow-shimmer {
+  background: linear-gradient(90deg, #FFFFFF 0%, #A1A1AA 40%, #FFFFFF 60%, #FFFFFF 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: textShimmer 6s linear infinite;
 }
 
 /* Sliding pill dock item */
@@ -91,7 +105,7 @@
 }
 .nav-pill.active {
   color: #131313 !important;
-  font-weight: 600;
+  font-weight: 700;
 }
 .nav-slider {
   position: absolute;
@@ -107,7 +121,7 @@
 }
 </style>
 
-<title>Showcase &amp; Ventures // Active Syndicate Registry - EDC</title>
+<title>Showcase &amp; Ventures // Active Syndicate Registry - HITAM EDC</title>
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary selection:text-on-primary">
 <header class="fixed top-3 sm:top-5 inset-x-0 z-50 px-3 sm:px-6 pointer-events-none">
@@ -120,7 +134,7 @@
           <span class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-primary/70 animate-ping"></span>
         </div>
         <div class="flex flex-col">
-          <span class="font-headline-sm text-sm sm:text-base uppercase tracking-tight text-primary font-bold group-hover:text-white transition-colors">EDC</span>
+          <span class="font-headline-sm text-sm sm:text-base uppercase tracking-tight text-primary font-bold group-hover:text-white transition-colors">HITAM EDC</span>
           <span class="font-label-sm text-[10px] text-outline tracking-widest uppercase -mt-0.5">Syndicate</span>
         </div>
       </a>
@@ -147,7 +161,7 @@
     </nav>
     
     <!-- Right Actions -->
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2.5 sm:gap-3">
       <!-- Search / Command Palette (⌘K) Trigger -->
       <button id="cmdKTrigger" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-outline hover:text-white hover:border-white/20 text-xs font-mono transition-all group hover:bg-white/10" title="Open Command Palette (⌘K)">
         <span class="material-symbols-outlined text-[15px] group-hover:scale-110 transition-transform">search</span>
@@ -155,20 +169,47 @@
         <kbd class="px-1.5 py-0.5 rounded bg-white/10 text-[10px] text-primary border border-white/10 font-mono">⌘K</kbd>
       </button>
 
+      <!-- Cloudinary / Firebase Settings Button -->
+      <button onclick="toggleSettingsModal();" class="p-2 rounded-full border border-white/10 bg-white/5 hover:border-primary hover:text-primary transition-all text-outline" title="Firebase &amp; Cloudinary Config">
+        <span class="material-symbols-outlined text-[17px] block">cloud_sync</span>
+      </button>
+
+      <!-- Auth State Button / User Profile -->
+      <div id="navbarAuthContainer" class="relative">
+        <button id="navbarAuthBtn" onclick="toggleAuthModal();" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-white/20 text-primary text-xs font-mono transition-all">
+          <span class="material-symbols-outlined text-[16px]">account_circle</span>
+          <span id="navAuthLabel">Sign In</span>
+        </button>
+        <!-- Logged In User Dropdown -->
+        <div id="userProfileDropdown" class="hidden absolute right-0 mt-2 w-56 rounded-2xl bg-surface-container-lowest border border-white/15 shadow-2xl p-2 flex flex-col gap-1 text-xs font-mono z-50">
+          <div class="px-3 py-2 border-b border-white/10 flex flex-col gap-0.5">
+            <span id="dropdownUserName" class="text-primary font-bold truncate">Founder</span>
+            <span id="dropdownUserEmail" class="text-outline text-[10px] truncate">founder@hitam.edu</span>
+          </div>
+          <button onclick="navigateTo('apply');" class="px-3 py-2 rounded-xl text-left hover:bg-white/10 text-on-surface flex items-center justify-between">
+            <span>My Application</span>
+            <span class="material-symbols-outlined text-sm text-outline">description</span>
+          </button>
+          <button onclick="navigateTo('terminal');" class="px-3 py-2 rounded-xl text-left hover:bg-white/10 text-on-surface flex items-center justify-between">
+            <span>Admin Terminal</span>
+            <span class="material-symbols-outlined text-sm text-outline">terminal</span>
+          </button>
+          <button onclick="toggleSettingsModal();" class="px-3 py-2 rounded-xl text-left hover:bg-white/10 text-on-surface flex items-center justify-between">
+            <span>Cloud Config</span>
+            <span class="material-symbols-outlined text-sm text-outline">settings</span>
+          </button>
+          <button onclick="handleSignOut();" class="px-3 py-2 rounded-xl text-left hover:bg-red-500/10 text-red-400 flex items-center justify-between border-t border-white/5 mt-1">
+            <span>Sign Out</span>
+            <span class="material-symbols-outlined text-sm">logout</span>
+          </button>
+        </div>
+      </div>
+
       <!-- Apply Now CTA -->
       <a class="hidden sm:inline-flex items-center gap-2 font-label-md text-xs uppercase px-5 py-2.5 rounded-full bg-primary text-on-primary font-bold hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] hover:scale-105 active:scale-95 transition-all" data-path="competitions-&-apply" href="apply.html">
         <span>Apply Now</span>
         <span class="material-symbols-outlined text-[15px] transition-transform group-hover:translate-x-0.5">arrow_forward</span>
       </a>
-
-      <!-- Terminal Quick Icon -->
-      <div class="flex items-center gap-2.5 pl-2 border-l border-white/10">
-        <a class="p-2 rounded-full border border-white/10 bg-surface-container-low hover:border-primary hover:text-primary hover:bg-white/5 transition-all text-outline relative group" data-path="command-terminal" href="terminal.html" title="Admin Terminal (Ctrl+`)">
-          <span class="material-symbols-outlined text-[17px] block transition-transform group-hover:scale-110">terminal</span>
-          <span class="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-primary"></span>
-        </a>
-        <img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-white/20 shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVI7vU2eDYjf0Y53pIzfJh3ZBi6CFHk6w4hMNjwAY91_g15QgYUtYCG2HlqRuP_PNYNtXFNzyFmKe4X_mjJ6q5lC3N-v7oCHt5ynBPBflZEUDRy5pMWJaKZ8gIqzSsEknvYGTQ1-VjgUkznbbimseE95j3sFbJ9SLejutHcRCiwFPYfOcg2Q6n8ol_z7gR-uSb0GwSl4OYL--TuO4NxFq6rYjwPYkvQVYs0e2ljxST">
-      </div>
 
       <!-- Mobile Hamburger Toggle -->
       <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-full border border-white/10 bg-white/5 text-outline hover:text-primary hover:border-white/20 transition-all focus:outline-none" aria-label="Toggle navigation">
@@ -211,9 +252,10 @@
         <span class="material-symbols-outlined text-sm text-outline">terminal</span>
       </a>
     </div>
-    <div class="pt-2 border-t border-white/10">
-      <a class="w-full inline-flex items-center justify-center font-label-md text-xs uppercase px-5 py-3 rounded-xl bg-primary text-on-primary font-bold hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all" data-path="competitions-&-apply" href="apply.html">
-        Apply For Cohort '25
+    <div class="pt-2 border-t border-white/10 flex items-center gap-2">
+      <button onclick="toggleAuthModal();" class="flex-1 py-2.5 rounded-xl border border-white/15 bg-white/5 text-primary text-xs font-mono">Sign In / Account</button>
+      <a class="flex-1 inline-flex items-center justify-center font-label-md text-xs uppercase px-4 py-2.5 rounded-xl bg-primary text-on-primary font-bold hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all text-center" data-path="competitions-&-apply" href="apply.html">
+        Apply Now
       </a>
     </div>
   </div>
@@ -266,14 +308,17 @@
       <div class="md:col-span-4 flex flex-col gap-4">
         <div class="flex items-center gap-3">
           <img alt="EDC Monogram Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrC4vhSzD4_rP3C6NxgjwyIPMESe4c_mwxJRhJicMgF_A1rCXLozZKcVuhWOZFRLL1Ai_zvs57tg5m4SUtbiemXjqadJtMOCp2uPjQnQViCipUznU_EchB1igJLO7x4xXagQlCZJX7QDrQaqFPVKxXLvRrkN_k0z1mPKiRXwNZKVprYY61QeDgA9FYX5pW3Iv9MZQH9ByGCQCavdK3LBfJGH8HbM9rNgOI1RhISXzLEj">
-          <span class="font-headline-sm text-headline-sm uppercase text-primary">EDC</span>
+          <span class="font-headline-sm text-headline-sm uppercase text-primary">HITAM EDC</span>
         </div>
         <p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">
-          Forging collegiate venture founders, high-conviction syndicates, and disruptive institutional capital ecosystems.
+          Hyderabad Institute of Technology &amp; Management — Entrepreneurship Development Cell &amp; Venture Syndicate.
         </p>
-        <div class="pt-2">
+        <div class="pt-2 flex flex-wrap gap-2">
           <span class="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface-container-high border border-surface-container-highest font-label-sm text-label-sm uppercase tracking-wider text-outline">
             <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Affiliated Innovation Lab &amp; Registry
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-surface-container-high border border-surface-container-highest font-label-sm text-label-sm uppercase tracking-wider text-primary font-mono">
+            Firebase &amp; Cloudinary Connected
           </span>
         </div>
       </div>
@@ -289,7 +334,7 @@
         <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="command-terminal" href="terminal.html">Admin Console</a>
         <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="showcase-&-ventures" href="ventures.html">Pitch Ledger</a>
         <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="leadership-&-team" href="leadership.html">LP Syndicate</a>
-        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="leadership-&-team" href="leadership.html">Advisory Desk</a>
+        <button onclick="toggleSettingsModal();" class="text-left font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors">Cloud Settings</button>
         <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="competitions-&-apply" href="apply.html">Incubator Terms</a>
       </div>
       <div class="md:col-span-4 flex flex-col gap-4">
@@ -297,30 +342,151 @@
         <p class="font-body-sm text-body-sm text-on-surface-variant">Receive closed cohort briefs, allocation releases, and institutional venture updates.</p>
         <form id="newsletterForm" class="flex items-center gap-2 pt-1" onsubmit="event.preventDefault(); const btn = this.querySelector('button'); btn.textContent='Subscribed!'; btn.classList.add('bg-white/20'); setTimeout(()=>{btn.textContent='Join'; btn.classList.remove('bg-white/20')}, 2000);">
           <div class="relative flex-1">
-            <input class="w-full bg-surface-container-low border border-surface-container-highest px-4 py-2 rounded-full text-on-surface placeholder:text-outline focus:outline-none focus:border-primary font-body-sm text-body-sm transition-colors" placeholder="founder@university.edu" type="email" required>
+            <input class="w-full bg-surface-container-low border border-surface-container-highest px-4 py-2 rounded-full text-on-surface placeholder:text-outline focus:outline-none focus:border-primary font-body-sm text-body-sm transition-colors" placeholder="founder@hitam.edu.in" type="email" required>
           </div>
           <button class="font-label-sm text-label-sm uppercase px-5 py-2 bg-primary text-on-primary rounded-full hover:shadow-[0_0_16px_rgba(255,255,255,0.3)] transition-all font-semibold" type="submit">Join</button>
         </form>
       </div>
     </div>
     <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <span class="font-label-sm text-label-sm text-outline">© 2025 EDC Venture Network. Engineered with precision.</span>
+      <span class="font-label-sm text-label-sm text-outline">© 2025 HITAM EDC Syndicate. Engineered with precision.</span>
       <div class="flex items-center gap-6">
         <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-1" data-path="command-terminal" href="terminal.html">
           <span class="material-symbols-outlined text-[16px]">terminal</span>Terminal
         </a>
-        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-1" href="https://github.com" target="_blank" rel="noopener">
-          <span class="material-symbols-outlined text-[16px]">code</span>Repository
+        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-1" href="https://github.com/venkat-karthik/HITAM-EDC-CLUB" target="_blank" rel="noopener">
+          <span class="material-symbols-outlined text-[16px]">code</span>GitHub Repo
         </a>
-        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-1" href="terminal.html" data-path="command-terminal">
-          <span class="material-symbols-outlined text-[16px]">send</span>Channel
-        </a>
+        <button onclick="toggleAuthModal();" class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">vpn_key</span>Auth Portal
+        </button>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- Universal Syndicate Command Palette (⌘K) -->
+<!-- 1. Firebase Authentication Modal -->
+<div id="authModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-xl flex items-center justify-center p-4 transition-all" onclick="if(event.target===this) toggleAuthModal();">
+  <div class="w-full max-w-md bg-surface-container-low border border-white/20 rounded-2xl shadow-[0_25px_70px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col specular-border">
+    <!-- Header with Tabs -->
+    <div class="p-6 pb-4 border-b border-white/10 bg-surface-container-lowest">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2.5">
+          <img alt="EDC Monogram Logo" class="h-6 w-auto" src="https://lh3.googleusercontent.com/aida/ALJJyrC4vhSzD4_rP3C6NxgjwyIPMESe4c_mwxJRhJicMgF_A1rCXLozZKcVuhWOZFRLL1Ai_zvs57tg5m4SUtbiemXjqadJtMOCp2uPjQnQViCipUznU_EchB1igJLO7x4xXagQlCZJX7QDrQaqFPVKxXLvRrkN_k0z1mPKiRXwNZKVprYY61QeDgA9FYX5pW3Iv9MZQH9ByGCQCavdK3LBfJGH8HbM9rNgOI1RhISXzLEj">
+          <span class="font-headline-sm text-sm uppercase tracking-wider text-primary font-bold">Syndicate Auth</span>
+        </div>
+        <button class="p-1 rounded-full text-outline hover:text-white transition-colors" onclick="toggleAuthModal();">
+          <span class="material-symbols-outlined text-lg">close</span>
+        </button>
+      </div>
+      <div class="flex items-center p-1 rounded-xl bg-surface-container border border-white/10 gap-1 text-xs font-mono">
+        <button id="authTabSignIn" class="flex-1 py-1.5 rounded-lg bg-white text-surface font-bold transition-all" onclick="switchAuthTab('signin')">Sign In</button>
+        <button id="authTabSignUp" class="flex-1 py-1.5 rounded-lg text-outline hover:text-white transition-all" onclick="switchAuthTab('signup')">Create Account</button>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="p-6 flex flex-col gap-4">
+      <!-- One-click Google Login -->
+      <button onclick="handleGoogleSignIn()" class="w-full py-2.5 px-4 rounded-xl bg-surface-container hover:bg-surface-container-high border border-white/15 text-primary text-xs font-mono flex items-center justify-center gap-2.5 transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+        <svg class="w-4 h-4" viewBox="0 0 24 24">
+          <path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.6l3.1-3.1C17.3 1.7 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.1 9 5 12 5z"/>
+          <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.7-.2-2.3H12v4.6h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.9z"/>
+          <path fill="#FBBC05" d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.8s.2-2.1.4-2.8L1.9 6.3C.7 8.7 0 10.3 0 12s.7 3.3 1.9 5.7l3.7-2.9z"/>
+          <path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2.1-6.4-5.2L1.9 16C3.7 20.4 7.5 23 12 23z"/>
+        </svg>
+        <span class="font-medium">Continue with Google (Firebase Auth)</span>
+      </button>
+
+      <div class="flex items-center gap-3 my-1">
+        <div class="flex-1 h-px bg-white/10"></div>
+        <span class="text-[10px] uppercase font-mono text-outline">or email credentials</span>
+        <div class="flex-1 h-px bg-white/10"></div>
+      </div>
+
+      <form id="authForm" onsubmit="event.preventDefault(); handleEmailAuth();" class="flex flex-col gap-3">
+        <div id="signUpNameField" class="hidden flex flex-col gap-1">
+          <label class="text-[11px] font-mono uppercase text-outline">Full Name &amp; Title</label>
+          <input id="authNameInput" type="text" class="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-lowest border border-white/10 text-primary text-xs font-mono focus:outline-none focus:border-primary" placeholder="Venkat Karthik (Founder)">
+        </div>
+        <div class="flex flex-col gap-1">
+          <label class="text-[11px] font-mono uppercase text-outline">Institutional Email</label>
+          <input id="authEmailInput" type="email" required class="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-lowest border border-white/10 text-primary text-xs font-mono focus:outline-none focus:border-primary" placeholder="founder@university.edu">
+        </div>
+        <div class="flex flex-col gap-1">
+          <label class="text-[11px] font-mono uppercase text-outline">Syndicate Key / Password</label>
+          <input id="authPassInput" type="password" required class="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-lowest border border-white/10 text-primary text-xs font-mono focus:outline-none focus:border-primary" placeholder="••••••••••••">
+        </div>
+        <button id="authSubmitBtn" type="submit" class="w-full py-3 rounded-xl bg-primary text-on-primary font-label-md text-xs uppercase tracking-wider font-bold hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all mt-1">
+          Authorize Founder Session
+        </button>
+      </form>
+
+      <!-- Instant One-Click Demo Logins -->
+      <div class="p-3 rounded-xl bg-surface-container/60 border border-white/10 flex flex-col gap-2 mt-1">
+        <span class="text-[10px] uppercase font-mono text-outline text-center">Instant Test Access (1-Click)</span>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="handleDemoLogin('founder')" class="py-1.5 px-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-primary transition-all flex items-center justify-center gap-1.5">
+            <span class="material-symbols-outlined text-[14px]">person</span>
+            <span>Demo Founder</span>
+          </button>
+          <button onclick="handleDemoLogin('admin')" class="py-1.5 px-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-primary transition-all flex items-center justify-center gap-1.5">
+            <span class="material-symbols-outlined text-[14px]">shield_person</span>
+            <span>Syndicate Chair</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. Firebase & Cloudinary Settings Configuration Modal -->
+<div id="settingsModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-xl flex items-center justify-center p-4 transition-all" onclick="if(event.target===this) toggleSettingsModal();">
+  <div class="w-full max-w-xl bg-surface-container-low border border-white/20 rounded-2xl shadow-[0_25px_70px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col specular-border">
+    <div class="p-6 pb-4 border-b border-white/10 bg-surface-container-lowest flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <span class="material-symbols-outlined text-primary text-xl">settings</span>
+        <h3 class="font-headline-sm text-sm uppercase tracking-wider text-primary font-bold">Cloud &amp; Firebase Credentials</h3>
+      </div>
+      <button class="p-1 rounded-full text-outline hover:text-white" onclick="toggleSettingsModal();">
+        <span class="material-symbols-outlined text-lg">close</span>
+      </button>
+    </div>
+    <div class="p-6 flex flex-col gap-4 text-xs font-mono">
+      <p class="text-on-surface-variant font-body-sm text-xs leading-relaxed">
+        The platform operates out of the box with sandbox mock engines. You can paste your production Firebase project keys and Cloudinary credentials below to connect live cloud databases.
+      </p>
+
+      <div class="flex flex-col gap-1.5">
+        <label class="text-outline uppercase text-[11px] font-bold">Firebase Project ID</label>
+        <input id="cfgFirebaseProjectId" type="text" class="w-full px-3 py-2 rounded-xl bg-surface-container-lowest border border-white/10 text-primary text-xs focus:outline-none focus:border-primary" placeholder="hitam-edc-syndicate">
+      </div>
+
+      <div class="flex flex-col gap-1.5">
+        <label class="text-outline uppercase text-[11px] font-bold">Firebase Web API Key</label>
+        <input id="cfgFirebaseApiKey" type="text" class="w-full px-3 py-2 rounded-xl bg-surface-container-lowest border border-white/10 text-primary text-xs focus:outline-none focus:border-primary" placeholder="AIzaSy...">
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div class="flex flex-col gap-1.5">
+          <label class="text-outline uppercase text-[11px] font-bold">Cloudinary Cloud Name</label>
+          <input id="cfgCloudinaryName" type="text" class="w-full px-3 py-2 rounded-xl bg-surface-container-lowest border border-white/10 text-primary text-xs focus:outline-none focus:border-primary" placeholder="edc-syndicate-hitam">
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label class="text-outline uppercase text-[11px] font-bold">Upload Preset (Unsigned)</label>
+          <input id="cfgCloudinaryPreset" type="text" class="w-full px-3 py-2 rounded-xl bg-surface-container-lowest border border-white/10 text-primary text-xs focus:outline-none focus:border-primary" placeholder="hitam_edc_preset">
+        </div>
+      </div>
+
+      <div class="pt-2 flex items-center justify-end gap-3">
+        <button onclick="toggleSettingsModal();" class="px-4 py-2 rounded-xl bg-surface-container text-outline hover:text-white uppercase">Cancel</button>
+        <button onclick="saveCloudSettings();" class="px-5 py-2 rounded-xl bg-primary text-on-primary font-bold uppercase hover:shadow-[0_0_15px_rgba(255,255,255,0.4)]">Save &amp; Connect</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. Universal Syndicate Command Palette (⌘K) -->
 <div id="cmdKModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-xl flex items-start justify-center pt-20 sm:pt-28 px-4 transition-all" onclick="if(event.target===this) toggleCmdK();">
   <div class="w-full max-w-2xl bg-surface-container-low border border-white/20 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col specular-border animate-radar">
     <div class="flex items-center gap-3 px-5 py-4 border-b border-white/10 bg-surface-container-lowest">
@@ -376,7 +542,11 @@
 </div>
 
 <script>
-// 1. Spotlight Mouse Tracker on .spotlight-card
+// ============================================
+// 1. UNIVERSAL EFFECTS & ANIMATIONS
+// ============================================
+
+// Spotlight card mouse tracker
 document.addEventListener('mousemove', (e) => {
   const cards = document.querySelectorAll('.spotlight-card');
   cards.forEach(card => {
@@ -393,7 +563,7 @@ document.addEventListener('mousemove', (e) => {
   });
 });
 
-// 2. 3D Tilt Effect on .tilt-card
+// 3D Tilt Effect on .tilt-card
 function initTiltEffect() {
   document.querySelectorAll('.tilt-card').forEach(card => {
     if (card._tiltInitialized) return;
@@ -411,7 +581,7 @@ function initTiltEffect() {
 }
 initTiltEffect();
 
-// 3. Dynamic Number Counter Animation
+// Dynamic Number Counter Animation
 function animateCounters(container = document) {
   const counters = container.querySelectorAll('[data-counter]');
   counters.forEach(counter => {
@@ -438,7 +608,7 @@ function animateCounters(container = document) {
   });
 }
 
-// 4. Hero Title Scramble / Decrypt Effect
+// Hero Title Scramble / Decrypt Effect
 const scrambleElem = document.getElementById('heroTitleScramble');
 if (scrambleElem) {
   function runScramble() {
@@ -468,7 +638,11 @@ if (scrambleElem) {
   setTimeout(runScramble, 800);
 }
 
-// 5. Universal Command Palette (⌘K) Controller
+// ============================================
+// 2. MODAL CONTROLLERS
+// ============================================
+
+// Command Palette (⌘K)
 function toggleCmdK() {
   const modal = document.getElementById('cmdKModal');
   const input = document.getElementById('cmdKInput');
@@ -496,53 +670,409 @@ window.addEventListener('keydown', (e) => {
     e.preventDefault();
     toggleCmdK();
   } else if (e.key === 'Escape') {
-    const modal = document.getElementById('cmdKModal');
-    if (modal && !modal.classList.contains('hidden')) {
-      toggleCmdK();
-    }
+    ['cmdKModal', 'authModal', 'settingsModal', 'deckModal', 'announcementModal'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el && !el.classList.contains('hidden')) el.classList.add('hidden');
+    });
   }
 });
 
-// Command palette search filtering
-const cmdInput = document.getElementById('cmdKInput');
-if (cmdInput) {
-  cmdInput.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase().trim();
-    const items = document.querySelectorAll('#cmdKResults .cmd-item');
-    items.forEach(item => {
-      const text = item.textContent.toLowerCase();
-      if (!query || text.includes(query)) {
-        item.style.display = 'flex';
-      } else {
-        item.style.display = 'none';
-      }
+// Auth Modal
+let currentAuthMode = 'signin';
+function toggleAuthModal() {
+  const modal = document.getElementById('authModal');
+  if (!modal) return;
+  modal.classList.toggle('hidden');
+}
+
+function switchAuthTab(mode) {
+  currentAuthMode = mode;
+  const tabIn = document.getElementById('authTabSignIn');
+  const tabUp = document.getElementById('authTabSignUp');
+  const nameField = document.getElementById('signUpNameField');
+  const submitBtn = document.getElementById('authSubmitBtn');
+
+  if (mode === 'signup') {
+    tabUp.className = 'flex-1 py-1.5 rounded-lg bg-white text-surface font-bold transition-all';
+    tabIn.className = 'flex-1 py-1.5 rounded-lg text-outline hover:text-white transition-all';
+    if (nameField) nameField.classList.remove('hidden');
+    if (submitBtn) submitBtn.textContent = 'Create Founder Account';
+  } else {
+    tabIn.className = 'flex-1 py-1.5 rounded-lg bg-white text-surface font-bold transition-all';
+    tabUp.className = 'flex-1 py-1.5 rounded-lg text-outline hover:text-white transition-all';
+    if (nameField) nameField.classList.add('hidden');
+    if (submitBtn) submitBtn.textContent = 'Authorize Founder Session';
+  }
+}
+
+async function handleGoogleSignIn() {
+  if (window.EDCFirebase) {
+    const user = await window.EDCFirebase.signInWithGoogle();
+    toggleAuthModal();
+  }
+}
+
+async function handleEmailAuth() {
+  const email = document.getElementById('authEmailInput').value;
+  const pass = document.getElementById('authPassInput').value;
+  const name = document.getElementById('authNameInput') ? document.getElementById('authNameInput').value : '';
+
+  if (window.EDCFirebase) {
+    if (currentAuthMode === 'signup') {
+      await window.EDCFirebase.signUpWithEmail(email, pass, name);
+    } else {
+      await window.EDCFirebase.signInWithEmail(email, pass);
+    }
+    toggleAuthModal();
+  }
+}
+
+function handleDemoLogin(role) {
+  if (window.EDCFirebase) {
+    window.EDCFirebase.signInDemo(role);
+    toggleAuthModal();
+  }
+}
+
+function handleSignOut() {
+  if (window.EDCFirebase) {
+    window.EDCFirebase.signOutUser();
+    const dropdown = document.getElementById('userProfileDropdown');
+    if (dropdown) dropdown.classList.add('hidden');
+  }
+}
+
+// Settings Modal
+function toggleSettingsModal() {
+  const modal = document.getElementById('settingsModal');
+  if (!modal) return;
+  modal.classList.toggle('hidden');
+  if (!modal.classList.contains('hidden')) {
+    if (window.EDCFirebase) {
+      const cfg = window.EDCFirebase.getConfig();
+      if (document.getElementById('cfgFirebaseProjectId')) document.getElementById('cfgFirebaseProjectId').value = cfg.projectId || '';
+      if (document.getElementById('cfgFirebaseApiKey')) document.getElementById('cfgFirebaseApiKey').value = cfg.apiKey || '';
+    }
+    if (window.EDCCloudinary) {
+      const ccfg = window.EDCCloudinary.getConfig();
+      if (document.getElementById('cfgCloudinaryName')) document.getElementById('cfgCloudinaryName').value = ccfg.cloudName || '';
+      if (document.getElementById('cfgCloudinaryPreset')) document.getElementById('cfgCloudinaryPreset').value = ccfg.uploadPreset || '';
+    }
+  }
+}
+
+function saveCloudSettings() {
+  const pid = document.getElementById('cfgFirebaseProjectId').value.trim();
+  const apiKey = document.getElementById('cfgFirebaseApiKey').value.trim();
+  const cName = document.getElementById('cfgCloudinaryName').value.trim();
+  const cPreset = document.getElementById('cfgCloudinaryPreset').value.trim();
+
+  if (pid && apiKey && window.EDCFirebase) {
+    window.EDCFirebase.saveCustomConfig({
+      projectId: pid,
+      apiKey: apiKey,
+      authDomain: `${pid}.firebaseapp.com`,
+      storageBucket: `${pid}.appspot.com`,
+      messagingSenderId: "102938475610",
+      appId: "1:102938475610:web:livekey"
     });
+  }
+  if (cName && cPreset && window.EDCCloudinary) {
+    window.EDCCloudinary.saveCustomConfig({
+      cloudName: cName,
+      uploadPreset: cPreset
+    });
+  }
+  toggleSettingsModal();
+}
+
+// User Profile dropdown toggle
+const authContainer = document.getElementById('navbarAuthContainer');
+if (authContainer) {
+  authContainer.addEventListener('click', (e) => {
+    const user = window.EDCFirebase ? window.EDCFirebase.getCurrentUser() : null;
+    if (user) {
+      e.stopPropagation();
+      const dd = document.getElementById('userProfileDropdown');
+      if (dd) dd.classList.toggle('hidden');
+    }
+  });
+}
+document.addEventListener('click', (e) => {
+  const dd = document.getElementById('userProfileDropdown');
+  if (dd && !dd.classList.contains('hidden') && !e.target.closest('#navbarAuthContainer')) {
+    dd.classList.add('hidden');
+  }
+});
+
+// Listen to Firebase Auth state
+if (window.EDCFirebase) {
+  window.EDCFirebase.onAuthChange(user => {
+    const label = document.getElementById('navAuthLabel');
+    const authBtn = document.getElementById('navbarAuthBtn');
+    const nameElem = document.getElementById('dropdownUserName');
+    const emailElem = document.getElementById('dropdownUserEmail');
+    const appEmailInput = document.getElementById('applicant-email');
+    const appNameInput = document.getElementById('applicant-name');
+
+    if (user) {
+      if (label) label.textContent = user.displayName ? user.displayName.split(' ')[0] : 'Account';
+      if (authBtn) {
+        authBtn.innerHTML = `
+          <img src="${user.photoURL}" class="w-5 h-5 rounded-full object-cover ring-1 ring-white/30">
+          <span class="truncate max-w-[90px]">${user.displayName.split(' ')[0]}</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+        `;
+      }
+      if (nameElem) nameElem.textContent = user.displayName;
+      if (emailElem) emailElem.textContent = user.email;
+
+      // Pre-fill application form inputs
+      if (appEmailInput && !appEmailInput.value) appEmailInput.value = user.email;
+      if (appNameInput && !appNameInput.value) appNameInput.value = user.displayName;
+    } else {
+      if (authBtn) {
+        authBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[16px]">account_circle</span>
+          <span>Sign In</span>
+        `;
+      }
+    }
   });
 }
 
-// Command palette item click handling
-document.addEventListener('click', (e) => {
-  const item = e.target.closest('.cmd-item');
-  if (item) {
-    const target = item.getAttribute('data-target');
-    if (target) {
-      toggleCmdK();
-      if (typeof window.navigateTo === 'function') {
-        window.navigateTo(target);
-      } else {
-        const urlMap = {
-          home: 'index.html',
-          ventures: 'ventures.html',
-          leadership: 'leadership.html',
-          apply: 'apply.html',
-          terminal: 'terminal.html'
-        };
-        if (urlMap[target]) window.location.href = urlMap[target];
-      }
+// ============================================
+// 3. CLOUDINARY PITCH DECK UPLOAD WIDGET
+// ============================================
+
+const dropzone = document.getElementById('cloudinaryDropzone');
+const fileInput = document.getElementById('deckFileInput');
+
+if (dropzone && fileInput) {
+  dropzone.addEventListener('click', () => {
+    fileInput.click();
+  });
+
+  fileInput.addEventListener('change', (e) => {
+    if (e.target.files.length) {
+      uploadDeckFile(e.target.files[0]);
     }
+  });
+
+  dropzone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropzone.classList.add('border-primary', 'bg-surface-container');
+  });
+
+  dropzone.addEventListener('dragleave', () => {
+    dropzone.classList.remove('border-primary', 'bg-surface-container');
+  });
+
+  dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropzone.classList.remove('border-primary', 'bg-surface-container');
+    if (e.dataTransfer.files.length) {
+      uploadDeckFile(e.dataTransfer.files[0]);
+    }
+  });
+}
+
+function uploadDeckFile(file) {
+  const defaultState = document.getElementById('dropzoneDefaultState');
+  const uploadingState = document.getElementById('dropzoneUploadingState');
+  const successState = document.getElementById('dropzoneSuccessState');
+  const progressBar = document.getElementById('uploadProgressBar');
+  const progressPct = document.getElementById('uploadProgressPct');
+  const deckName = document.getElementById('uploadedDeckName');
+  const deckSize = document.getElementById('uploadedDeckSize');
+  const finalUrl = document.getElementById('finalPitchDeckUrl');
+
+  if (defaultState) defaultState.classList.add('hidden');
+  if (successState) successState.classList.add('hidden');
+  if (uploadingState) uploadingState.classList.remove('hidden');
+
+  if (window.EDCCloudinary) {
+    window.EDCCloudinary.uploadFile(file, (pct) => {
+      if (progressBar) progressBar.style.width = pct + '%';
+      if (progressPct) progressPct.textContent = pct + '%';
+    }).then(res => {
+      if (uploadingState) uploadingState.classList.add('hidden');
+      if (successState) successState.classList.remove('hidden');
+      if (deckName) deckName.textContent = res.name;
+      if (deckSize) deckSize.textContent = `${(res.bytes / (1024*1024)).toFixed(2)} MB // Verified Cloudinary Asset`;
+      if (finalUrl) finalUrl.value = res.url;
+    }).catch(err => {
+      alert("Upload failed: " + err.message);
+      if (uploadingState) uploadingState.classList.add('hidden');
+      if (defaultState) defaultState.classList.remove('hidden');
+    });
   }
-});
+}
+
+// Override application submission to persist in Firestore
+window.simulateSubmission = async function() {
+  const btn = document.getElementById('submit-btn');
+  if (btn) {
+    btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span> <span>Validating &amp; Transmitting to Firestore...</span>';
+    btn.disabled = true;
+  }
+
+  const trackRadio = document.querySelector('input[name="application_track"]:checked');
+  const track = trackRadio ? trackRadio.value : 'genesis-pitch';
+  const startupName = document.querySelector('input[placeholder*="Working title"]') ? document.querySelector('input[placeholder*="Working title"]').value : 'Synapse X';
+  const vertical = document.querySelector('select') ? document.querySelector('select').value : 'AI & DeepTech';
+  const elevatorPitch = document.querySelector('textarea') ? document.querySelector('textarea').value : '';
+  const deckUrl = document.getElementById('finalPitchDeckUrl') ? document.getElementById('finalPitchDeckUrl').value : '';
+
+  let newDoc = null;
+  if (window.EDCFirebase) {
+    newDoc = await window.EDCFirebase.addApplication({
+      track: track,
+      startupName: startupName || 'New Collegiate Venture',
+      vertical: vertical,
+      elevatorPitch: elevatorPitch,
+      pitchDeckUrl: deckUrl || 'https://res.cloudinary.com/edc-syndicate-hitam/image/upload/v1/decks/pitch-deck.pdf'
+    });
+  }
+
+  setTimeout(() => {
+    const s3 = document.getElementById('step-3-content');
+    const succ = document.getElementById('step-success');
+    if (s3) s3.classList.add('hidden');
+    if (succ) succ.classList.remove('hidden');
+    
+    const ind = document.getElementById('step-indicator');
+    if (ind) ind.textContent = 'STATUS: COMMITTED (FIRESTORE)';
+
+    // Update receipt commit ID with Firestore ID
+    const refCodes = succ ? succ.querySelectorAll('.font-mono') : [];
+    refCodes.forEach(rc => {
+      if (rc.textContent.includes('EDC-') || rc.textContent.includes('SYN-')) {
+        rc.textContent = newDoc ? newDoc.id : 'SYN-2025-W-9912';
+      }
+    });
+
+    if (btn) {
+      btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">verified</span> <span>Transmit Application</span>';
+      btn.disabled = false;
+    }
+  }, 900);
+};
+
+// ============================================
+// 4. SYNDICATE CLI COMMAND RUNNER
+// ============================================
+
+function executeCliCommand() {
+  const input = document.getElementById('cliInput');
+  const output = document.getElementById('cliOutput');
+  if (!input || !output) return;
+  const cmd = input.value.trim();
+  if (!cmd) return;
+  input.value = '';
+
+  const userLine = document.createElement('div');
+  userLine.className = 'text-primary flex items-center gap-2 mt-1';
+  userLine.innerHTML = `<span class="text-outline font-bold">operator@edc-syndicate:~$</span> <span>${escapeHtml(cmd)}</span>`;
+  output.appendChild(userLine);
+
+  const lower = cmd.toLowerCase().trim();
+  const resp = document.createElement('div');
+  resp.className = 'text-on-surface-variant font-mono pl-4 border-l border-white/10 my-1 whitespace-pre-wrap';
+
+  if (lower === 'help') {
+    resp.innerHTML = `
+<span class="text-primary font-bold">EDC SYNDICATE OS v4.2 - COMMAND MATRIX</span>
+  <span class="text-primary font-semibold">help</span>             Show this command reference
+  <span class="text-primary font-semibold">stats</span>            Display live fund metrics, AUM, and cohort velocity
+  <span class="text-primary font-semibold">status</span>           Check system status, compute cluster & escrow
+  <span class="text-primary font-semibold">teams</span>            List candidate ventures currently in diligence
+  <span class="text-primary font-semibold">review &lt;name&gt;</span>     Inspect company dossier (e.g., 'review synapse')
+  <span class="text-primary font-semibold">approve &lt;name&gt;</span>    Advance candidate team to Pitch Day slot
+  <span class="text-primary font-semibold">disburse &lt;amt&gt;</span>    Simulate tranche clearance from escrow vault
+  <span class="text-primary font-semibold">auth</span>             Check current Firebase authentication state
+  <span class="text-primary font-semibold">lock / unlock</span>    Toggle candidate submission intake gate
+  <span class="text-primary font-semibold">clear</span>            Clear terminal output buffer
+`;
+  } else if (lower === 'stats') {
+    resp.innerHTML = `
+<span class="text-primary font-semibold">[SYNDICATE FUND TELEMETRY]</span>
+  Total Capital Syndicated:  <span class="text-primary font-bold">$44.8M USD</span> (38 Active Portfolio Cos)
+  Current Applications:      <span class="text-primary font-bold">284 Teams</span> (+38% vs prev cycle)
+  Shortlist Conversion:      <span class="text-primary font-bold">18 Shortlisted / 12 Pitch Slotted</span> (6.3% Rate)
+  Seed Conversion Yield:     <span class="text-primary font-bold">78.4%</span> Tier-1 Seed close in 6mo
+  GPU Compute Node:          <span class="text-primary font-bold">64x NVIDIA H100 80GB</span> (88% Active Allocation)
+`;
+  } else if (lower === 'status') {
+    resp.innerHTML = `
+<span class="text-primary font-semibold">[SYSTEM HEALTH & INTEGRITY]</span>
+  Core Node:         Global Node 01 [ONLINE // PING: 4ms]
+  Genesis Pitch:     ACTIVE [Priority Close in 14d 08h]
+  FastTrack Intake:  ROLLING [184/200 Submissions Logged]
+  Escrow Vault:      $35.0K Deployed / $15.0K Pool Reserve
+  Firebase Mode:     ${window.EDCFirebase && window.EDCFirebase.isLive ? 'LIVE CLOUD (FIRESTORE)' : 'STANDALONE SANDBOX CACHE'}
+  Cloudinary CDN:    ONLINE [Unsigned Upload Pipeline Ready]
+`;
+  } else if (lower === 'auth') {
+    const user = window.EDCFirebase ? window.EDCFirebase.getCurrentUser() : null;
+    if (user) {
+      resp.innerHTML = `
+<span class="text-primary font-semibold">[CURRENT USER SESSION]</span>
+  User ID:       ${user.uid}
+  Display Name:  ${user.displayName}
+  Email:         ${user.email}
+  Access Level:  ${user.role.toUpperCase()}
+`;
+    } else {
+      resp.innerHTML = `[AUTH: GUEST] No active session. Type <span class="text-primary underline cursor-pointer" onclick="toggleAuthModal();">Sign In</span> to authorize founder keys.`;
+    }
+  } else if (lower === 'teams' || lower === 'candidates') {
+    const apps = window.EDCFirebase ? window.EDCFirebase.getApplications() : [];
+    let out = `<span class="text-primary font-semibold">[FIRESTORE ACTIVE DILIGENCE QUEUE]</span>\n`;
+    apps.forEach((a, idx) => {
+      out += `  ${idx+1}. ${a.startupName.padEnd(25)} [${a.vertical.padEnd(16)}] Score: ${a.rubricScore}/100   Status: ${a.status}\n`;
+    });
+    resp.innerHTML = out;
+  } else if (lower.includes('synapse')) {
+    resp.innerHTML = `
+<span class="text-primary font-semibold">[DOSSIER: SYNAPSE NEURAL ENGINE]</span>
+  Founders:       Arjun V. (MIT '25) & Elena R. (Stanford CS)
+  Vertical:       Distributed Reasoning Cluster / Sub-Graph Edge LLM
+  Traction:       100K MAU (+34% MoM Organic), -84.2% Latency
+  Lead Syndicate: Neo (Follow: Lux Capital)
+  Round:          $3.2M Seed @ $16M Post-Valuation Cap
+  Verdict:        <span class="text-primary font-bold bg-white/10 px-1 rounded">APPROVED FOR GENESIS PITCH DAY</span>
+`;
+  } else if (lower.startsWith('approve')) {
+    const target = cmd.slice(7).trim() || 'candidate';
+    resp.innerHTML = `<span class="text-primary font-bold">✓ SUCCESS:</span> Venture '${escapeHtml(target)}' advanced to Pitch Day roster. Notification dispatched to founder email.`;
+  } else if (lower.startsWith('disburse')) {
+    const amt = cmd.slice(8).trim() || '$15,000';
+    resp.innerHTML = `<span class="text-primary font-bold">✓ ESCROW CLEARED:</span> Milestone disbursement of ${escapeHtml(amt)} authorized by syndicate multisig keys.`;
+  } else if (lower === 'lock') {
+    const lockBtn = document.getElementById('lockToggleBtn');
+    if (lockBtn && !lockBtn.classList.contains('bg-error-container')) lockBtn.click();
+    resp.innerHTML = `<span class="text-error font-bold">! LOCKED:</span> Application intake gate closed. New submissions paused.`;
+  } else if (lower === 'unlock') {
+    const lockBtn = document.getElementById('lockToggleBtn');
+    if (lockBtn && lockBtn.classList.contains('bg-error-container')) lockBtn.click();
+    resp.innerHTML = `<span class="text-primary font-bold">✓ UNLOCKED:</span> Application intake gate open. Accepting cohort submissions.`;
+  } else if (lower === 'clear') {
+    output.innerHTML = '';
+    return;
+  } else {
+    resp.innerHTML = `<span class="text-error">command not recognized: '${escapeHtml(cmd)}'.</span> Type <span class="text-primary underline cursor-pointer" onclick="document.getElementById('cliInput').value='help'; executeCliCommand();">help</span> for available commands.`;
+  }
+
+  output.appendChild(resp);
+  output.scrollTop = output.scrollHeight;
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
 </script>
+
 <script>
 (function() {
   const btn = document.getElementById('mobileMenuBtn');
