@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary": "#c6c6cf", "outline-variant": "#444748", "on-tertiary-container": "#656467", "error-container": "#93000a", "on-primary-container": "#636565", "on-secondary-fixed-variant": "#45464e", "tertiary-fixed-dim": "#c8c6c9", "surface-container-lowest": "#0e0e0e", "on-secondary": "#2f3037", "inverse-on-surface": "#313030", "on-background": "#e5e2e1", "tertiary-fixed": "#e4e1e5", "surface-container-highest": "#353534", "surface": "#131313", "surface-container": "#201f1f", "tertiary-container": "#e4e1e5", "surface-variant": "#353534", "outline": "#8e9192", "on-surface-variant": "#c4c7c8", "surface-container-high": "#2a2a2a", "surface-tint": "#c6c6c7", "on-surface": "#e5e2e1", "surface-dim": "#131313", "inverse-surface": "#e5e2e1", "primary-fixed-dim": "#c6c6c7", "tertiary": "#ffffff", "on-tertiary-fixed": "#1b1b1e", "surface-bright": "#3a3939", "on-tertiary": "#303033", "primary": "#ffffff", "on-primary": "#2f3131", "on-tertiary-fixed-variant": "#47464a", "on-error": "#690005", "on-error-container": "#ffdad6", "surface-container-low": "#1c1b1b", "error": "#ffb4ab", "inverse-primary": "#5d5f5f", "primary-container": "#e2e2e2", "on-secondary-fixed": "#1a1b22", "secondary-container": "#45464e", "primary-fixed": "#e2e2e2", "on-primary-fixed-variant": "#454747", "background": "#131313", "on-secondary-container": "#b4b4bd", "secondary-fixed": "#e2e1eb", "secondary-fixed-dim": "#c6c6cf", "on-primary-fixed": "#1a1c1c" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.25rem", "space-xl": "2.5rem", "space-md": "1rem", "margin-mobile": "1.25rem", "space-lg": "1.5rem", "gutter": "1.5rem", "margin": "3rem", "space-sm": "0.5rem", "gutter-mobile": "1rem" }, "fontFamily": { "headline-sm": [ "Space Grotesk" ], "headline-lg-mobile": [ "Space Grotesk" ], "headline-lg": [ "Space Grotesk" ], "body-lg": [ "Geist" ], "display-mobile": [ "Space Grotesk" ], "display": [ "Space Grotesk" ], "label-md": [ "JetBrains Mono" ], "headline-md": [ "Space Grotesk" ], "label-sm": [ "JetBrains Mono" ], "body-md": [ "Geist" ], "body-sm": [ "Geist" ] }, "fontSize": { "headline-sm": [ "1.25rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "headline-lg-mobile": [ "1.75rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "headline-lg": [ "2.5rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.03em", "fontWeight": "600" } ], "body-lg": [ "1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "display-mobile": [ "2.5rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "display": [ "4rem", { "lineHeight": "4.25rem", "letterSpacing": "-0.04em", "fontWeight": "700" } ], "label-md": [ "0.8125rem", { "lineHeight": "1rem", "letterSpacing": "0.06em", "fontWeight": "500" } ], "headline-md": [ "1.75rem", { "lineHeight": "2.125rem", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "label-sm": [ "0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.08em", "fontWeight": "500" } ], "body-md": [ "0.9375rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" } ], "body-sm": [ "0.8125rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" } ] } } } };</script>
+
+<style>
+/* Smooth view switching animation */
+@keyframes viewFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.995);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.view-animate-in {
+  animation: viewFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Ambient Spotlight Effect on Cards */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(450px circle at var(--spotlight-x, -500px) var(--spotlight-y, -500px), rgba(255, 255, 255, 0.08), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* 3D Interactive Card Tilt */
+.tilt-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Specular Shimmer Edge on Floating Dock */
+.specular-border {
+  position: relative;
+}
+.specular-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.2) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Radar pulse animation for live badges */
+@keyframes radarPing {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+.animate-radar {
+  animation: radarPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Glowing text aura */
+.glow-text {
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.35);
+}
+
+/* Sliding pill dock item */
+.nav-pill {
+  position: relative;
+  z-index: 2;
+  transition: color 0.25s ease, background-color 0.25s ease;
+}
+.nav-pill.active {
+  color: #131313 !important;
+  font-weight: 600;
+}
+.nav-slider {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.45);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+}
+</style>
+
+<title>Competitions &amp; Grants // High-Conviction Intake - EDC</title>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary selection:text-on-primary">
+<header class="fixed top-3 sm:top-5 inset-x-0 z-50 px-3 sm:px-6 pointer-events-none">
+  <div class="max-w-7xl mx-auto pointer-events-auto bg-surface/85 backdrop-blur-2xl border border-white/10 rounded-2xl sm:rounded-full px-4 sm:px-6 py-2.5 sm:py-3 shadow-[0_20px_50px_rgba(0,0,0,0.9)] flex items-center justify-between gap-4 relative specular-border transition-all duration-300">
+    <!-- Left: Monogram and Live Status -->
+    <div class="flex items-center gap-4 sm:gap-6">
+      <a class="flex items-center gap-3 group transition-transform hover:scale-105 active:scale-95" data-path="home" href="index.html">
+        <div class="relative">
+          <img alt="EDC Monogram Logo" class="h-8 w-auto object-contain transition-all group-hover:brightness-125" src="https://lh3.googleusercontent.com/aida/ALJJyrC4vhSzD4_rP3C6NxgjwyIPMESe4c_mwxJRhJicMgF_A1rCXLozZKcVuhWOZFRLL1Ai_zvs57tg5m4SUtbiemXjqadJtMOCp2uPjQnQViCipUznU_EchB1igJLO7x4xXagQlCZJX7QDrQaqFPVKxXLvRrkN_k0z1mPKiRXwNZKVprYY61QeDgA9FYX5pW3Iv9MZQH9ByGCQCavdK3LBfJGH8HbM9rNgOI1RhISXzLEj">
+          <span class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-primary/70 animate-ping"></span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-headline-sm text-sm sm:text-base uppercase tracking-tight text-primary font-bold group-hover:text-white transition-colors">EDC</span>
+          <span class="font-label-sm text-[10px] text-outline tracking-widest uppercase -mt-0.5">Syndicate</span>
+        </div>
+      </a>
+      <div class="hidden xl:flex items-center gap-2 pl-4 border-l border-white/10">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+        </span>
+        <span class="font-label-sm text-[11px] uppercase tracking-widest text-on-surface-variant font-medium">Cohort '25 Cycle Open</span>
+      </div>
+    </div>
+    
+    <!-- Center: Floating Segmented Dock (Desktop) -->
+    <nav class="hidden lg:flex items-center bg-surface-container-lowest/80 border border-white/10 p-1 rounded-full shadow-inner relative" id="desktopNavDock">
+      <div id="navSlider" class="nav-slider"></div>
+      <a class="nav-pill px-4 py-1.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all font-medium select-none" data-path="home" href="index.html">Home</a>
+      <a class="nav-pill px-4 py-1.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all font-medium select-none" data-path="showcase-&-ventures" href="ventures.html">Ventures</a>
+      <a class="nav-pill px-4 py-1.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all font-medium select-none" data-path="leadership-&-team" href="leadership.html">Leadership</a>
+      <a class="nav-pill active px-4 py-1.5 rounded-full font-label-md text-xs uppercase tracking-wider text-surface bg-white font-bold shadow-[0_0_20px_rgba(255,255,255,0.45)] transition-all select-none" data-path="competitions-&-apply" href="apply.html">Grants &amp; Apply</a>
+      <a class="nav-pill px-4 py-1.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all font-medium select-none flex items-center gap-1.5" data-path="command-terminal" href="terminal.html">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary/70"></span>
+        <span>Terminal</span>
+      </a>
+    </nav>
+    
+    <!-- Right Actions -->
+    <div class="flex items-center gap-3">
+      <!-- Search / Command Palette (⌘K) Trigger -->
+      <button id="cmdKTrigger" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-outline hover:text-white hover:border-white/20 text-xs font-mono transition-all group hover:bg-white/10" title="Open Command Palette (⌘K)">
+        <span class="material-symbols-outlined text-[15px] group-hover:scale-110 transition-transform">search</span>
+        <span class="hidden xl:inline text-[11px] uppercase tracking-wider">Search</span>
+        <kbd class="px-1.5 py-0.5 rounded bg-white/10 text-[10px] text-primary border border-white/10 font-mono">⌘K</kbd>
+      </button>
+
+      <!-- Apply Now CTA -->
+      <a class="hidden sm:inline-flex items-center gap-2 font-label-md text-xs uppercase px-5 py-2.5 rounded-full bg-primary text-on-primary font-bold hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] hover:scale-105 active:scale-95 transition-all" data-path="competitions-&-apply" href="apply.html">
+        <span>Apply Now</span>
+        <span class="material-symbols-outlined text-[15px] transition-transform group-hover:translate-x-0.5">arrow_forward</span>
+      </a>
+
+      <!-- Terminal Quick Icon -->
+      <div class="flex items-center gap-2.5 pl-2 border-l border-white/10">
+        <a class="p-2 rounded-full border border-white/10 bg-surface-container-low hover:border-primary hover:text-primary hover:bg-white/5 transition-all text-outline relative group" data-path="command-terminal" href="terminal.html" title="Admin Terminal (Ctrl+`)">
+          <span class="material-symbols-outlined text-[17px] block transition-transform group-hover:scale-110">terminal</span>
+          <span class="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-primary"></span>
+        </a>
+        <img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-white/20 shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVI7vU2eDYjf0Y53pIzfJh3ZBi6CFHk6w4hMNjwAY91_g15QgYUtYCG2HlqRuP_PNYNtXFNzyFmKe4X_mjJ6q5lC3N-v7oCHt5ynBPBflZEUDRy5pMWJaKZ8gIqzSsEknvYGTQ1-VjgUkznbbimseE95j3sFbJ9SLejutHcRCiwFPYfOcg2Q6n8ol_z7gR-uSb0GwSl4OYL--TuO4NxFq6rYjwPYkvQVYs0e2ljxST">
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-full border border-white/10 bg-white/5 text-outline hover:text-primary hover:border-white/20 transition-all focus:outline-none" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined text-2xl block" id="menuIcon">menu</span>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile Slide-Down Sheet -->
+  <div id="mobileMenu" class="hidden lg:hidden max-w-7xl mx-auto mt-2 pointer-events-auto bg-surface-container-lowest/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-5 shadow-2xl flex flex-col gap-3 specular-border">
+    <div class="flex items-center justify-between pb-3 border-b border-white/10">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+        <span class="font-label-sm text-xs uppercase tracking-widest text-primary font-mono">Cohort '25 Cycle Open</span>
+      </div>
+      <button id="mobileSearchBtn" class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-outline text-xs">
+        <span class="material-symbols-outlined text-[14px]">search</span>
+        <span>⌘K</span>
+      </button>
+    </div>
+    <div class="flex flex-col gap-1 py-1">
+      <a class="mobile-nav-link font-body-md py-2.5 px-4 rounded-xl text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all flex items-center justify-between" data-path="home" href="index.html">
+        <span>Home</span>
+        <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
+      </a>
+      <a class="mobile-nav-link font-body-md py-2.5 px-4 rounded-xl text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all flex items-center justify-between" data-path="showcase-&-ventures" href="ventures.html">
+        <span>Showcase &amp; Ventures</span>
+        <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
+      </a>
+      <a class="mobile-nav-link font-body-md py-2.5 px-4 rounded-xl text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all flex items-center justify-between" data-path="leadership-&-team" href="leadership.html">
+        <span>Leadership &amp; Team</span>
+        <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
+      </a>
+      <a class="mobile-nav-link font-body-md py-2.5 px-4 rounded-xl text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all flex items-center justify-between" data-path="competitions-&-apply" href="apply.html">
+        <span>Competitions &amp; Grants</span>
+        <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
+      </a>
+      <a class="mobile-nav-link font-body-md py-2.5 px-4 rounded-xl text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all flex items-center justify-between" data-path="command-terminal" href="terminal.html">
+        <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Command Terminal</span>
+        <span class="material-symbols-outlined text-sm text-outline">terminal</span>
+      </a>
+    </div>
+    <div class="pt-2 border-t border-white/10">
+      <a class="w-full inline-flex items-center justify-center font-label-md text-xs uppercase px-5 py-3 rounded-xl bg-primary text-on-primary font-bold hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all" data-path="competitions-&-apply" href="apply.html">
+        Apply For Cohort '25
+      </a>
+    </div>
+  </div>
+</header>
+<main class="w-full pt-28 bg-surface min-h-[calc(100vh-20rem)]">
+<div class="flex flex-col w-full">
+<!-- Top Marquee Ticker -->
+<div class="w-full bg-surface-container-lowest border-b border-surface-container-highest px-6 py-2 overflow-hidden">
+<div class="max-w-7xl mx-auto flex items-center justify-between font-label-sm text-label-sm uppercase tracking-widest text-outline">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#ffffff]"></span>
+<span class="text-on-surface">Application Cycle 2025 // Cohort W25 Open</span>
+</div>
+<div class="hidden sm:flex items-center gap-6">
+<span>Submissions Evaluated Rolling Basis</span>
+<span class="text-on-surface-variant font-medium">Genesis Grant: $25,000 Equity-Free</span>
+<span class="text-primary font-semibold">Priority Close: 14d 08h 42m</span>
+</div>
+</div>
+</div>
+<section class="max-w-7xl mx-auto px-6 lg:px-12 py-12 w-full flex flex-col gap-16">
+<!-- Header Block with Neo-Brutalist Layout -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b border-surface-container-highest">
+<div class="flex flex-col gap-3 max-w-3xl">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded bg-surface-container-high border border-surface-container-highest text-primary">PORTAL / V2.8</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">// High-Conviction Venture Intake</span>
+</div>
+<h1 class="font-display text-display uppercase tracking-tight text-primary">
+          Forge Your Venture. Claim The Grant.
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Direct institutional pipeline connecting student builders with non-dilutive capital, tier-1 venture partner networks, and bespoke syndicate mentorship. Zero fluff. Pure execution.
+        </p>
+</div>
+<!-- Live Intake Metric Capsule -->
+<div class="grid grid-cols-2 gap-px bg-surface-container-highest border border-surface-container-highest overflow-hidden rounded-full">
+<div class="bg-surface-container-low p-4 flex flex-col gap-1 min-w-[140px]">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Cohort Pool</span>
+<span class="font-headline-md text-headline-md text-primary font-mono">$40,000</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Across 2 Tracks</span>
+</div>
+<div class="bg-surface-container-low p-4 flex flex-col gap-1 min-w-[140px]">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Submissions</span>
+<span class="font-headline-md text-headline-md text-primary font-mono">184/200</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">92% Cap Met</span>
+</div>
+</div>
+</div>
+<!-- Active Competitions Dual Deck -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">military_tech</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-primary">Active Contests &amp; Cohorts</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">SELECT TRACK IN FORM BELOW</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6"><!-- Card 1: Genesis Pitch Bowl -->
+<div class="group relative bg-surface-container-low border border-surface-container-highest p-8 flex flex-col justify-between hover:border-primary/60 transition-all rounded-full">
+  <div class="flex flex-col gap-6">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2 text-outline">
+        <span class="material-symbols-outlined text-[18px] text-primary">bolt</span>
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Spring Flagship Stage</span>
+      </div>
+      <span class="font-label-sm text-label-sm uppercase px-3 py-1 rounded-full bg-primary text-on-primary font-bold tracking-wider">Featured Track</span>
+    </div>
+    <div>
+      <h2 class="font-headline-lg text-headline-lg text-primary uppercase">Genesis Pitch Bowl 2025</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
+        Premier collegiate enterprise pitch competition. Teams pitch live in front of Sequoia, Benchmark, and Techstars scouts for equity-free grants and syndication allocations.
+      </p>
+    </div>
+    <!-- Key Criteria Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+      <div class="bg-surface-container p-3.5 rounded-xl border border-surface-container-highest flex flex-col gap-1">
+        <span class="font-label-sm text-label-sm text-outline block">Grant Prize</span>
+        <span class="font-headline-sm text-headline-sm text-primary font-mono">$25,000</span>
+      </div>
+      <div class="bg-surface-container p-3.5 rounded-xl border border-surface-container-highest flex flex-col gap-1">
+        <span class="font-label-sm text-label-sm text-outline block">Format</span>
+        <span class="font-body-sm text-body-sm text-on-surface font-mono">Stage Demo</span>
+      </div>
+      <div class="bg-surface-container p-3.5 rounded-xl border border-surface-container-highest flex flex-col gap-1">
+        <span class="font-label-sm text-label-sm text-outline block">Eligibility</span>
+        <span class="font-body-sm text-body-sm text-on-surface font-mono">1-4 Founders</span>
+      </div>
+      <div class="bg-surface-container p-3.5 rounded-xl border border-surface-container-highest flex flex-col gap-1">
+        <span class="font-label-sm text-label-sm text-outline block">Criteria</span>
+        <span class="font-body-sm text-body-sm text-on-surface font-mono">MVP / Traction</span>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Bar / Countdown -->
+  <div class="mt-8 pt-6 border-t border-surface-container-highest flex flex-wrap items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Window Ends:</span>
+      <div class="flex items-center gap-1.5 font-mono text-primary font-bold">
+        <span class="px-2 py-1 bg-surface-container rounded-full text-sm" id="c1-days">14</span>d
+        <span class="px-2 py-1 bg-surface-container rounded-full text-sm" id="c1-hours">08</span>h
+        <span class="px-2 py-1 bg-surface-container rounded-full text-sm" id="c1-min">42</span>m
+        <span class="px-2 py-1 bg-surface-container rounded-full text-sm" id="c1-sec">10</span>s
+      </div>
+    </div>
+    <button class="font-label-sm text-label-sm uppercase px-5 py-2.5 bg-primary text-on-primary rounded-full hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all flex items-center gap-2" onclick="selectTrack('founder')">
+      <span>Apply For Pitch</span>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+    </button>
+  </div>
+</div>
+
+<!-- Card 2: FastTrack Incubator -->
+<div class="group relative bg-surface-container-low border border-surface-container-highest p-8 flex flex-col justify-between hover:border-primary/60 transition-all rounded-full">
+  <div class="flex flex-col gap-6">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2 text-outline">
+        <span class="material-symbols-outlined text-[18px] text-outline">rocket_launch</span>
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Intensive Lab</span>
+      </div>
+      <span class="font-label-sm text-label-sm uppercase px-3 py-1 rounded-full bg-surface-container-high text-on-surface border border-surface-container-highest font-mono">10-Week Cohort</span>
+    </div>
+    <div>
+      <h2 class="font-headline-lg text-headline-lg text-primary uppercase">FastTrack Incubator W25</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
+        10-week hyper-acceleration module for validated campus software, deeptech, and AI hardware projects. Full AWS credits, legal sandbox, and weekly office hours with exits founders.
+      </p>
+    </div>
+    <!-- Key Criteria Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+      <div class="bg-surface-container p-3.5 rounded-xl border border-surface-container-highest flex flex-col gap-1">
+        <span class="font-label-sm text-label-sm text-outline block">Grant Prize</span>
+        <span class="font-headline-sm text-headline-sm text-primary font-mono">$15,000</span>
+      </div>
+      <div class="bg-surface-container p-3.5 rounded-xl border border-surface-container-highest flex flex-col gap-1">
+        <span class="font-label-sm text-label-sm text-outline block">Cohort Size</span>
+        <span class="font-body-sm text-body-sm text-on-surface font-mono">8 Teams Only</span>
+      </div>
+      <div class="bg-surface-container p-3.5 rounded-xl border border-surface-container-highest flex flex-col gap-1">
+        <span class="font-label-sm text-label-sm text-outline block">Cloud Perks</span>
+        <span class="font-body-sm text-body-sm text-on-surface font-mono">$100k AWS/GCP</span>
+      </div>
+      <div class="bg-surface-container p-3.5 rounded-xl border border-surface-container-highest flex flex-col gap-1">
+        <span class="font-label-sm text-label-sm text-outline block">Demo Day</span>
+        <span class="font-body-sm text-body-sm text-on-surface font-mono">SF &amp; NYC Hub</span>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Bar / Countdown -->
+  <div class="mt-8 pt-6 border-t border-surface-container-highest flex flex-wrap items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Window Ends:</span>
+      <div class="flex items-center gap-1.5 font-mono text-primary font-bold">
+        <span class="px-2 py-1 bg-surface-container rounded-full text-sm">21</span>d
+        <span class="px-2 py-1 bg-surface-container rounded-full text-sm">14</span>h
+        <span class="px-2 py-1 bg-surface-container rounded-full text-sm">18</span>m
+        <span class="px-2 py-1 bg-surface-container rounded-full text-sm">05</span>s
+      </div>
+    </div>
+    <button class="font-label-sm text-label-sm uppercase px-5 py-2.5 border border-surface-container-highest text-on-surface rounded-full hover:border-primary hover:text-primary transition-all flex items-center gap-2" onclick="selectTrack('incubator')">
+      <span>Apply For Cohort</span>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+    </button>
+  </div>
+</div></div>
+</div>
+<!-- Main Intake Section (Multi-Step Form + Sidebar Guide) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start" id="application-flow">
+<!-- Form Panel (8 cols) -->
+<div class="lg:col-span-8 bg-surface-container-low border border-surface-container-highest rounded-full p-6 sm:p-10 flex flex-col gap-8 shadow-xl">
+<!-- Progress Stepper Header -->
+<div class="flex flex-col gap-4 pb-6 border-b border-surface-container-highest">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Application Dispatch</span>
+<span class="font-label-sm text-label-sm font-mono text-primary" id="step-indicator">STEP 01 / 03</span>
+</div>
+<!-- Hairline Step Bar with rounded-full pill styling -->
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full transition-all duration-300 w-1/3 rounded-full" id="form-progress-bar"></div>
+</div>
+<div class="grid grid-cols-3 text-center font-label-sm text-label-sm uppercase tracking-wider pt-1">
+<button class="text-left font-semibold text-primary" id="tab-step-1" onclick="goToStep(1)" type="button">1. Track &amp; Identity</button>
+<button class="text-center text-outline" id="tab-step-2" onclick="goToStep(2)" type="button">2. Startup Thesis</button>
+<button class="text-right text-outline" id="tab-step-3" onclick="goToStep(3)" type="button">3. Deck &amp; Review</button>
+</div>
+</div>
+<form class="flex flex-col gap-8" id="edc-application-form" onsubmit="event.preventDefault();">
+<!-- STEP 1: Track Selection & Personal Identity -->
+<div class="flex flex-col gap-6" id="step-1-content">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-sm text-headline-sm text-primary uppercase">Select Candidacy Track</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Identify your principal objective within the EDC collegiate network ecosystem.</p>
+</div>
+<!-- Sleek Track Selector Pills -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<label class="track-card relative cursor-pointer border border-primary bg-surface-container p-5 rounded-xl flex flex-col gap-2 transition-all hover:border-primary">
+<input checked="" class="sr-only" name="application_track" onchange="updateTrackSelection(this)" type="radio" value="founder">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-[20px] text-primary">campaign</span>
+<span class="w-2 h-2 rounded-full bg-primary" id="indicator-founder"></span>
+</div>
+<span class="font-headline-sm text-[1rem] leading-tight text-primary uppercase">Founder Pitch</span>
+<span class="font-label-sm text-label-sm text-outline">Genesis &amp; Incubator Grants</span>
+</label>
+<label class="track-card relative cursor-pointer border border-surface-container-highest bg-surface-container-low p-5 rounded-xl flex flex-col gap-2 hover:border-outline transition-all">
+<input class="sr-only" name="application_track" onchange="updateTrackSelection(this)" type="radio" value="coordinator">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-[20px] text-outline">engineering</span>
+<span class="w-2 h-2 rounded-full bg-transparent" id="indicator-coordinator"></span>
+</div>
+<span class="font-headline-sm text-[1rem] leading-tight text-on-surface uppercase">Executive Core</span>
+<span class="font-label-sm text-label-sm text-outline">Lead ops, syndication &amp; deal flow</span>
+</label>
+<label class="track-card relative cursor-pointer border border-surface-container-highest bg-surface-container-low p-5 rounded-xl flex flex-col gap-2 hover:border-outline transition-all">
+<input class="sr-only" name="application_track" onchange="updateTrackSelection(this)" type="radio" value="fellowship">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-[20px] text-outline">groups</span>
+<span class="w-2 h-2 rounded-full bg-transparent" id="indicator-fellowship"></span>
+</div>
+<span class="font-headline-sm text-[1rem] leading-tight text-on-surface uppercase">Fellowship</span>
+<span class="font-label-sm text-label-sm text-outline">General cohort membership</span>
+</label>
+</div>
+<!-- Profile Info Grid with rounded-xl inputs -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Full Legal Name *</label>
+<input class="bg-surface border border-surface-container-highest rounded-xl px-4 py-3 text-on-surface placeholder:text-outline font-body-md text-body-md focus:border-primary focus:outline-none transition-colors" id="applicant-name" placeholder="Elena Rostova" required="" type="text">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Institutional (.edu) Email *</label>
+<input class="bg-surface border border-surface-container-highest rounded-xl px-4 py-3 text-on-surface placeholder:text-outline font-body-md text-body-md focus:border-primary focus:outline-none transition-colors" id="applicant-email" placeholder="erostova@stanford.edu" required="" type="email">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Academic Major &amp; Department</label>
+<input class="bg-surface border border-surface-container-highest rounded-xl px-4 py-3 text-on-surface placeholder:text-outline font-body-md text-body-md focus:border-primary focus:outline-none transition-colors" placeholder="B.S. Symbolic Systems / CS" type="text">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Anticipated Graduation</label>
+<select class="bg-surface border border-surface-container-highest rounded-xl px-4 py-3 text-on-surface font-body-md text-body-md focus:border-primary focus:outline-none transition-colors">
+<option>Class of 2025</option>
+<option>Class of 2026</option>
+<option>Class of 2027</option>
+<option>Class of 2028</option>
+<option>Postgraduate / PhD Candidate</option>
+<option>Recent Alumni (&lt; 1 yr)</option>
+</select>
+</div>
+<div class="sm:col-span-2 flex flex-col gap-2">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">LinkedIn / GitHub / Portfolio Dossier URL *</label>
+<div class="relative">
+<span class="absolute left-4 top-3.5 text-outline material-symbols-outlined text-[18px]">link</span>
+<input class="w-full bg-surface border border-surface-container-highest rounded-xl pl-11 pr-4 py-3 text-on-surface placeholder:text-outline font-body-md text-body-md focus:border-primary focus:outline-none transition-colors" placeholder="https://linkedin.com/in/username or https://github.com/profile" type="url">
+</div>
+</div>
+</div>
+<div class="flex justify-end pt-4">
+<button class="font-label-sm text-label-sm uppercase px-6 py-3 bg-primary text-on-primary rounded-full hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all flex items-center gap-2" onclick="goToStep(2)" type="button">
+<span>Continue To Thesis</span>
+<span class="material-symbols-outlined text-[16px]">east</span>
+</button>
+</div>
+</div>
+<!-- STEP 2: Startup Thesis & Team Construct (Hidden initially) -->
+<div class="hidden flex flex-col gap-6" id="step-2-content">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-sm text-headline-sm text-primary uppercase">Venture Thesis &amp; Mechanics</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Concisely explain what unfair technical advantage or commercial leverage you are creating.</p>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Startup Name / Working Codename *</label>
+<span class="font-label-sm text-label-sm text-outline">E.g., Nexus Vector</span>
+</div>
+<input class="bg-surface border border-surface-container-highest rounded-xl px-4 py-3 text-on-surface placeholder:text-outline font-body-md text-body-md focus:border-primary focus:outline-none transition-colors" placeholder="OmniMesh Compute" type="text">
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Primary Sector Vertical</label>
+<select class="bg-surface border border-surface-container-highest rounded-xl px-4 py-3 text-on-surface font-body-md text-body-md focus:border-primary focus:outline-none transition-colors">
+<option>AI / Machine Intelligence &amp; Infra</option>
+<option>Developer Tooling &amp; Systems</option>
+<option>Fintech &amp; High-Frequency Rails</option>
+<option>Deeptech / Photonics &amp; Hardware</option>
+<option>Bio-Computation &amp; Health</option>
+<option>Clean Energy &amp; Smart Grid</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Founding Team Composition</label>
+<select class="bg-surface border border-surface-container-highest rounded-xl px-4 py-3 text-on-surface font-body-md text-body-md focus:border-primary focus:outline-none transition-colors">
+<option>Solo Founder (seeking co-founder)</option>
+<option>2 Technical Co-Founders</option>
+<option>3-4 Cross-Functional Team</option>
+<option>Lab Spinout / Research Group</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Problem Statement &amp; Customer Pain *</label>
+<span class="font-label-sm text-label-sm text-outline">Max 300 words</span>
+</div>
+<textarea class="bg-surface border border-surface-container-highest rounded-xl px-4 py-3 text-on-surface placeholder:text-outline font-body-md text-body-md focus:border-primary focus:outline-none transition-colors resize-none" placeholder="Describe the structural inefficiency you are solving, who suffers from it, and what happens if left unaddressed..." rows="3"></textarea>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">The Unfair Advantage / Moat *</label>
+<span class="font-label-sm text-label-sm text-outline">Architecture / IP / Distribution</span>
+</div>
+<textarea class="bg-surface border border-surface-container-highest rounded-xl px-4 py-3 text-on-surface placeholder:text-outline font-body-md text-body-md focus:border-primary focus:outline-none transition-colors resize-none" placeholder="Why now? What proprietary insight, dataset, benchmark, or structural dynamic makes your solution 10x superior?" rows="3"></textarea>
+</div>
+</div>
+<div class="flex justify-between items-center pt-4">
+<button class="font-label-sm text-label-sm uppercase px-4 py-3 text-outline hover:text-on-surface transition-colors flex items-center gap-1.5" onclick="goToStep(1)" type="button">
+<span class="material-symbols-outlined text-[16px]">west</span>
+<span>Back</span>
+</button>
+<button class="font-label-sm text-label-sm uppercase px-6 py-3 bg-primary text-on-primary rounded-full hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all flex items-center gap-2" onclick="goToStep(3)" type="button">
+<span>Continue To Deck Upload</span>
+<span class="material-symbols-outlined text-[16px]">east</span>
+</button>
+</div>
+</div>
+<!-- STEP 3: Deck Upload & Final Confirmation -->
+<div class="hidden flex flex-col gap-6" id="step-3-content">
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-sm text-headline-sm text-primary uppercase">Pitch Deck &amp; Materials</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Upload your standard 8-12 slide deck (PDF format, max 25MB) or live Loom recording.</p>
+</div>
+<!-- Drag and Drop Dropzone with rounded-xl border -->
+<div class="border-2 border-dashed border-surface-container-highest hover:border-primary transition-all rounded-xl p-8 flex flex-col items-center justify-center text-center gap-3 bg-surface cursor-pointer group" id="dropzone">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-outline group-hover:text-primary group-hover:scale-110 transition-all">
+<span class="material-symbols-outlined text-[24px]">cloud_upload</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-headline-sm text-[1rem] text-primary uppercase">Drag pitch deck here or click to browse</span>
+<span class="font-label-sm text-label-sm text-outline">Supported: PDF, KEYNOTE, PPTX (Under 25 MB)</span>
+</div>
+<span class="font-label-sm text-label-sm px-3 py-1 bg-surface-container-high rounded-full border border-surface-container-highest text-on-surface-variant font-mono">ENCRYPTED PROTOCOL INTAKE</span>
+</div>
+<!-- Alternative Video/Demo Link -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Loom / Demo Video / TestFlight Link (Optional)</label>
+<input class="bg-surface border border-surface-container-highest rounded-xl px-4 py-3 text-on-surface placeholder:text-outline font-body-md text-body-md focus:border-primary focus:outline-none transition-colors" placeholder="https://loom.com/share/... or https://youtube.com/watch?v=..." type="url">
+</div>
+<!-- Verification Checkboxes -->
+<div class="flex flex-col gap-3 pt-2">
+<label class="flex items-start gap-3 cursor-pointer">
+<input checked="" class="mt-1 accent-primary" required="" type="checkbox">
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+                  I confirm that this project was founded by currently enrolled students or recent alumni within 12 months of graduation.
+                </span>
+</label>
+<label class="flex items-start gap-3 cursor-pointer">
+<input checked="" class="mt-1 accent-primary" required="" type="checkbox">
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+                  I consent to EDC syndicating our executive summary to verified LP angel partners for closed demo day evaluations.
+                </span>
+</label>
+</div>
+<div class="flex justify-between items-center pt-4">
+<button class="font-label-sm text-label-sm uppercase px-4 py-3 text-outline hover:text-on-surface transition-colors flex items-center gap-1.5" onclick="goToStep(2)" type="button">
+<span class="material-symbols-outlined text-[16px]">west</span>
+<span>Back</span>
+</button>
+<button class="font-label-sm text-label-sm uppercase px-8 py-3.5 bg-primary text-on-primary font-bold rounded-full hover:shadow-[0_0_24px_rgba(255,255,255,0.5)] transition-all flex items-center gap-2" id="submit-btn" onclick="simulateSubmission()" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Transmit Application</span>
+</button>
+</div>
+</div>
+<!-- Submission Confirmation Screen -->
+<div class="hidden flex flex-col items-center justify-center text-center py-12 gap-6" id="step-success">
+<div class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-[0_0_25px_rgba(255,255,255,0.4)]">
+<span class="material-symbols-outlined text-[32px]">check</span>
+</div>
+<div class="flex flex-col gap-2 max-w-md">
+<span class="font-label-sm text-label-sm text-outline font-mono uppercase tracking-widest">TRANSMISSION CONFIRMED // ID: #EDC-88219</span>
+<h3 class="font-headline-lg text-headline-lg text-primary uppercase">Dossier Logged</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Your materials have been committed to the EDC review ledger. The selection committee convenes on Thursdays. An evaluation receipt has been sent to your university inbox.
+              </p>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-label-sm text-label-sm uppercase px-5 py-2.5 bg-surface-container border border-surface-container-highest text-on-surface rounded-full hover:border-primary transition-all" onclick="resetForm()" type="button">Submit Another Project</button>
+</div>
+</div>
+</form>
+</div>
+<!-- Application Sidebar & Live Status (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-6"><!-- Live Evaluation Pulse -->
+<div class="bg-surface-container-low border border-surface-container-highest p-6 rounded-full flex flex-col gap-4">
+<div class="flex items-center justify-between pb-3 border-b border-surface-container-highest">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Intake Ledger Status</span>
+<span class="flex items-center gap-1.5 font-label-sm text-label-sm text-primary font-mono">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+              ACTIVE
+            </span>
+</div>
+<div class="flex flex-col gap-3 font-mono text-xs">
+<div class="flex justify-between text-on-surface-variant">
+<span>Avg. Review Turnaround:</span>
+<span class="text-primary font-semibold">72 Hours</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Next Demo Screening:</span>
+<span class="text-primary font-semibold">Feb 28, 2025</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Remaining Grants:</span>
+<span class="text-primary font-semibold">6 of 10</span>
+</div>
+</div>
+<!-- Mini Sparkline inline SVG visualization -->
+<div class="pt-2 border-t border-surface-container-highest">
+<span class="font-label-sm text-label-sm text-outline block mb-2">Weekly Applications Volume</span>
+<svg class="w-full h-10 text-primary" fill="none" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 35 L20 30 L40 32 L60 22 L80 25 L100 15 L120 18 L140 10 L160 14 L180 5 L200 8" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<path d="M0 35 L20 30 L40 32 L60 22 L80 25 L100 15 L120 18 L140 10 L160 14 L180 5 L200 8 V40 H0 Z" fill="currentColor" fill-opacity="0.08"></path>
+</svg>
+</div>
+</div>
+<!-- Committee Judging Criteria Spec -->
+<div class="bg-surface-container-low border border-surface-container-highest p-6 rounded-full flex flex-col gap-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">balance</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary">Core Evaluation Weights</span>
+</div>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Founder Velocity &amp; Technical Depth</span>
+<span class="font-mono text-primary font-bold">35%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[35%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Novelty / Market Inefficiency</span>
+<span class="font-mono text-primary font-bold">30%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[30%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">MVP Progress &amp; Customer Signal</span>
+<span class="font-mono text-primary font-bold">25%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[25%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-on-surface">Syndicate Alignment &amp; Scalability</span>
+<span class="font-mono text-primary font-bold">10%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[10%]"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-4 rounded-xl text-on-surface-variant font-body-sm text-body-sm">
+<strong class="text-primary block font-mono text-xs uppercase mb-1">Confidentiality Guarantee:</strong>
+            Decks are protected under university bilateral disclosure terms. No proprietary IP is redistributed outside accredited jury syndicates.
+          </div>
+</div>
+<!-- Help Channel Mini Card -->
+<div class="border border-surface-container-highest p-5 rounded-full flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[22px] text-outline">help</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase text-primary">Need Clarification?</span>
+<span class="font-body-sm text-body-sm text-outline">Drop by Founder AMA Desk</span>
+</div>
+</div>
+<a class="font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full border border-surface-container-highest text-on-surface hover:border-primary hover:text-primary transition-colors" href="#">Discord</a>
+</div></div>
+</div>
+<!-- Timeline & Perks Bento Box Grid -->
+<div class="flex flex-col gap-6 pt-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">account_tree</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-primary">Venture Architecture &amp; Timeline</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono">PROTOCOL SEQUENCE</span>
+</div>
+<!-- 4-Stage Selection Timeline Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"><!-- Stage 01 -->
+<div class="bg-surface-container-low border border-surface-container-highest p-6 rounded-full flex flex-col justify-between gap-4 relative hover:border-primary/50 transition-all">
+  <div class="flex items-center justify-between">
+    <span class="font-mono text-2xl font-bold text-outline-variant">01</span>
+    <span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-full bg-surface-container text-outline font-mono">T+0 - T+3D</span>
+  </div>
+  <div class="flex flex-col gap-1.5">
+    <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Stage One</span>
+    <h4 class="font-headline-sm text-headline-sm text-primary uppercase">Direct Transmit</h4>
+    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+      Submit digital thesis and 10-slide deck. Automatic validation scans for institutional eligibility.
+    </p>
+  </div>
+  <div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden mt-2">
+    <div class="bg-primary/40 h-full w-full rounded-full"></div>
+  </div>
+</div>
+<!-- Stage 02 -->
+<div class="bg-surface-container-low border border-surface-container-highest p-6 rounded-full flex flex-col justify-between gap-4 relative hover:border-primary/50 transition-all">
+  <div class="flex items-center justify-between">
+    <span class="font-mono text-2xl font-bold text-outline-variant">02</span>
+    <span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-full bg-surface-container text-outline font-mono">T+7 - T+10D</span>
+  </div>
+  <div class="flex flex-col gap-1.5">
+    <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Stage Two</span>
+    <h4 class="font-headline-sm text-headline-sm text-primary uppercase">Deep Screening</h4>
+    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+      Top 20% projects receive invite to a 20-minute technical scrutiny session with EDC partners and tech alumni.
+    </p>
+  </div>
+  <div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden mt-2">
+    <div class="bg-primary/60 h-full w-full rounded-full"></div>
+  </div>
+</div>
+<!-- Stage 03 -->
+<div class="bg-surface-container-low border border-surface-container-highest p-6 rounded-full flex flex-col justify-between gap-4 relative hover:border-primary/50 transition-all">
+  <div class="flex items-center justify-between">
+    <span class="font-mono text-2xl font-bold text-outline-variant">03</span>
+    <span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-full bg-surface-container text-outline font-mono">MARCH 15</span>
+  </div>
+  <div class="flex flex-col gap-1.5">
+    <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Stage Three</span>
+    <h4 class="font-headline-sm text-headline-sm text-primary uppercase">Demo Day Pitch</h4>
+    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+      12 shortlisted teams take the main stage at campus amphitheater before 250+ accredited venture partners.
+    </p>
+  </div>
+  <div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden mt-2">
+    <div class="bg-primary/80 h-full w-full rounded-full"></div>
+  </div>
+</div>
+<!-- Stage 04 -->
+<div class="bg-surface-container-low border border-primary/50 p-6 rounded-full flex flex-col justify-between gap-4 relative shadow-[0_0_16px_rgba(255,255,255,0.15)]">
+  <div class="flex items-center justify-between">
+    <span class="font-mono text-2xl font-bold text-primary">04</span>
+    <span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-full bg-primary text-on-primary font-mono font-bold">IMMEDIATE</span>
+  </div>
+  <div class="flex flex-col gap-1.5">
+    <span class="font-label-sm text-label-sm uppercase tracking-wider text-primary">Final Allocation</span>
+    <h4 class="font-headline-sm text-headline-sm text-primary uppercase">Grant &amp; Syndication</h4>
+    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+      $40k pool disbursed equity-free. Automatic admission to EDC fast-lane syndicate desk and investor introductions.
+    </p>
+  </div>
+  <div class="w-full h-1 bg-primary rounded-full overflow-hidden mt-2"></div>
+</div></div>
+<!-- Perks Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4"><!-- Perk 1 -->
+<div class="bg-surface-container-low border border-surface-container-highest p-8 rounded-full flex flex-col justify-between gap-6 hover:border-primary/40 transition-all">
+  <div class="flex flex-col gap-4">
+    <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary">
+      <span class="material-symbols-outlined text-[22px]">currency_exchange</span>
+    </div>
+    <div>
+      <h4 class="font-headline-sm text-headline-sm text-primary uppercase">Non-Dilutive Capital</h4>
+      <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-relaxed">
+        We take zero equity and zero warrant coverage. Our mission is pure ecosystem amplification and collegiate venture formation.
+      </p>
+    </div>
+  </div>
+  <span class="font-label-sm text-label-sm text-outline font-mono uppercase tracking-wider">0% EQUITY TAKEN</span>
+</div>
+<!-- Perk 2: Image Embedded Perk -->
+<div class="relative overflow-hidden rounded-full border border-surface-container-highest bg-surface-container-low group min-h-[220px] flex flex-col justify-end p-8">
+  <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity" data-alt="Monochrome close up of young diverse collegiate founders gathered around modern workspace looking at sleek software diagrams and architectural wireframes in moody studio lighting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEeZaW_JVyq7Lc9wtqOe-WXIEI_bX-YsAWxbtgk4KbyUaIKcucTuuzMC9b9os3DMdxa1O_PmxFrnDWxYKG9PaUcDrlOSXfU2a27pugJ4VjBJ2Zb_Zn6jzxOaO_yTnBOCF-flExngq5fVk1q1lSor_WrlZaDmXYLnlpYMwp7WGph7IjXB_zN26C8rmSCEcHVl3BpDQZ8OOh3pUxRVWvZlHGhcNyy2OIlTBPDOLxRB-s')"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-transparent"></div>
+  <div class="relative z-10 flex flex-col gap-2">
+    <span class="font-label-sm text-label-sm uppercase text-primary font-mono">FOUNDER RESIDENCY</span>
+    <h4 class="font-headline-sm text-headline-sm text-primary uppercase">Dedicated Lab Space</h4>
+    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">24/7 keycard access to EDC hardware &amp; compute benches at Campus Quad Tech Core.</p>
+  </div>
+</div>
+<!-- Perk 3 -->
+<div class="bg-surface-container-low border border-surface-container-highest p-8 rounded-full flex flex-col justify-between gap-6 hover:border-primary/40 transition-all">
+  <div class="flex flex-col gap-4">
+    <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary">
+      <span class="material-symbols-outlined text-[22px]">hub</span>
+    </div>
+    <div>
+      <h4 class="font-headline-sm text-headline-sm text-primary uppercase">Tier-1 Syndicate Access</h4>
+      <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-relaxed">
+        Direct access to our 60+ partner syndicate including former founders from Stripe, Datadog, Figma, and benchmark seed angels.
+      </p>
+    </div>
+  </div>
+  <span class="font-label-sm text-label-sm text-outline font-mono uppercase tracking-wider">60+ ADVISORY DIRECTORS</span>
+</div></div>
+</div>
+<!-- Student Applicant FAQ Accordion -->
+<div class="flex flex-col gap-6 pt-4 pb-12">
+<div class="flex items-center justify-between pb-4 border-b border-surface-container-highest">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">quiz</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-primary">Frequently Asked Questions</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">APPLICANT PROTOCOL FAQ</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- FAQ 1 -->
+<details class="group bg-surface-container-low border border-surface-container-highest rounded-full p-6 cursor-pointer open:bg-surface-container transition-all">
+<summary class="flex items-center justify-between list-none font-headline-sm text-[1.125rem] text-primary uppercase">
+<span>Can I apply if I only have an idea without a working MVP?</span>
+<span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="pt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Yes for the FastTrack Incubator and Fellowship tracks. We evaluate technical feasibility, founder clarity, and the structural depth of the problem space. For the flagship $25k Genesis Pitch Bowl, having a live proof-of-concept, clickable prototype, or initial user signals significantly strengthens your jury score.
+          </div>
+</details>
+<!-- FAQ 2 -->
+<details class="group bg-surface-container-low border border-surface-container-highest rounded-full p-6 cursor-pointer open:bg-surface-container transition-all">
+<summary class="flex items-center justify-between list-none font-headline-sm text-[1.125rem] text-primary uppercase">
+<span>What does "equity-free" really mean? Are there hidden SAFEs or warrants?</span>
+<span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="pt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            100% non-dilutive. The grant funds are disbursed via the university venture endowment. EDC takes zero equity, zero governance rights, and zero advisory shares. If you decide to raise subsequent priced rounds, you retain your entire cap table intact.
+          </div>
+</details>
+<!-- FAQ 3 -->
+<details class="group bg-surface-container-low border border-surface-container-highest rounded-full p-6 cursor-pointer open:bg-surface-container transition-all">
+<summary class="flex items-center justify-between list-none font-headline-sm text-[1.125rem] text-primary uppercase">
+<span>Can cross-institutional teams apply together?</span>
+<span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="pt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Yes. As long as at least one co-founder is currently matriculated or a recent graduate of an accredited university program, your entire team is eligible for competition stages and incubator residency.
+          </div>
+</details>
+<!-- FAQ 4 -->
+<details class="group bg-surface-container-low border border-surface-container-highest rounded-full p-6 cursor-pointer open:bg-surface-container transition-all">
+<summary class="flex items-center justify-between list-none font-headline-sm text-[1.125rem] text-primary uppercase">
+<span>What happens after submitting this form?</span>
+<span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="pt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Every submission triggers a hash receipt sent to your verified .edu email. Within 72 hours, our screening committee reviews the materials and updates your dossier status. Candidates moving to Phase 2 receive an invite to book a partner screening sprint.
+          </div>
+</details>
+</div>
+</div>
+</section>
+<!-- Inline Micro-Interaction Script for Step Traversal & Countdown Timers -->
+<script>
+    function updateTrackSelection(radioElem) {
+      document.querySelectorAll('.track-card').forEach(card => {
+        card.classList.remove('border-primary', 'bg-surface-container');
+        card.classList.add('border-surface-container-highest', 'bg-surface-container-low');
+      });
+      const chosenCard = radioElem.closest('.track-card');
+      chosenCard.classList.remove('border-surface-container-highest', 'bg-surface-container-low');
+      chosenCard.classList.add('border-primary', 'bg-surface-container');
+
+      // Update dots
+      ['founder', 'coordinator', 'fellowship'].forEach(track => {
+        const dot = document.getElementById('indicator-' + track);
+        if (dot) {
+          if (track === radioElem.value) {
+            dot.classList.remove('bg-transparent');
+            dot.classList.add('bg-primary');
+          } else {
+            dot.classList.remove('bg-primary');
+            dot.classList.add('bg-transparent');
+          }
+        }
+      });
+    }
+
+    function selectTrack(trackValue) {
+      const radio = document.querySelector('input[name="application_track"][value="' + trackValue + '"]');
+      if (radio) {
+        radio.checked = true;
+        updateTrackSelection(radio);
+      }
+      document.getElementById('application-flow').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function goToStep(stepNumber) {
+      const step1 = document.getElementById('step-1-content');
+      const step2 = document.getElementById('step-2-content');
+      const step3 = document.getElementById('step-3-content');
+      const success = document.getElementById('step-success');
+      const bar = document.getElementById('form-progress-bar');
+      const indicator = document.getElementById('step-indicator');
+
+      const tab1 = document.getElementById('tab-step-1');
+      const tab2 = document.getElementById('tab-step-2');
+      const tab3 = document.getElementById('tab-step-3');
+
+      step1.classList.add('hidden');
+      step2.classList.add('hidden');
+      step3.classList.add('hidden');
+      success.classList.add('hidden');
+
+      tab1.classList.remove('text-primary', 'font-semibold');
+      tab2.classList.remove('text-primary', 'font-semibold');
+      tab3.classList.remove('text-primary', 'font-semibold');
+      tab1.classList.add('text-outline');
+      tab2.classList.add('text-outline');
+      tab3.classList.add('text-outline');
+
+      if (stepNumber === 1) {
+        step1.classList.remove('hidden');
+        bar.style.width = '33.33%';
+        indicator.textContent = 'STEP 01 / 03';
+        tab1.classList.add('text-primary', 'font-semibold');
+        tab1.classList.remove('text-outline');
+      } else if (stepNumber === 2) {
+        step2.classList.remove('hidden');
+        bar.style.width = '66.66%';
+        indicator.textContent = 'STEP 02 / 03';
+        tab2.classList.add('text-primary', 'font-semibold');
+        tab2.classList.remove('text-outline');
+      } else if (stepNumber === 3) {
+        step3.classList.remove('hidden');
+        bar.style.width = '100%';
+        indicator.textContent = 'STEP 03 / 03';
+        tab3.classList.add('text-primary', 'font-semibold');
+        tab3.classList.remove('text-outline');
+      }
+    }
+
+    function simulateSubmission() {
+      const btn = document.getElementById('submit-btn');
+      btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span> <span>Validating Dossier...</span>';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        document.getElementById('step-3-content').classList.add('hidden');
+        document.getElementById('step-success').classList.remove('hidden');
+        document.getElementById('step-indicator').textContent = 'STATUS: COMMITTED';
+        btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">verified</span> <span>Transmit Application</span>';
+        btn.disabled = false;
+      }, 1200);
+    }
+
+    function resetForm() {
+      document.getElementById('edc-application-form').reset();
+      goToStep(1);
+    }
+
+    // Secondary Dropzone simulated interaction
+    const dropzone = document.getElementById('dropzone');
+    if (dropzone) {
+      dropzone.addEventListener('click', () => {
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = '.pdf,.pptx,.key';
+        fileInput.onchange = (e) => {
+          if (e.target.files.length > 0) {
+            dropzone.innerHTML = `
+              <span class="material-symbols-outlined text-[32px] text-primary">description</span>
+              <span class="font-headline-sm text-sm text-primary uppercase font-mono">\${e.target.files[0].name}</span>
+              <span class="font-label-sm text-label-sm text-outline">Deck Loaded Successfully (Simulated)</span>
+            `;
+          }
+        };
+        fileInput.click();
+      });
+    }
+
+    // Live countdown decrementer
+    let secCounter = 10;
+    setInterval(() => {
+      secCounter--;
+      if (secCounter < 0) secCounter = 59;
+      const secElem = document.getElementById('c1-sec');
+      if (secElem) {
+        secElem.textContent = secCounter < 10 ? '0' + secCounter : secCounter;
+      }
+    }, 1000);
+  </script>
+</div>
+</main>
+<footer class="w-full bg-surface-container-lowest border-t border-surface-container-highest py-16">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-14 border-b border-surface-container-highest">
+      <div class="md:col-span-4 flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <img alt="EDC Monogram Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrC4vhSzD4_rP3C6NxgjwyIPMESe4c_mwxJRhJicMgF_A1rCXLozZKcVuhWOZFRLL1Ai_zvs57tg5m4SUtbiemXjqadJtMOCp2uPjQnQViCipUznU_EchB1igJLO7x4xXagQlCZJX7QDrQaqFPVKxXLvRrkN_k0z1mPKiRXwNZKVprYY61QeDgA9FYX5pW3Iv9MZQH9ByGCQCavdK3LBfJGH8HbM9rNgOI1RhISXzLEj">
+          <span class="font-headline-sm text-headline-sm uppercase text-primary">EDC</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">
+          Forging collegiate venture founders, high-conviction syndicates, and disruptive institutional capital ecosystems.
+        </p>
+        <div class="pt-2">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface-container-high border border-surface-container-highest font-label-sm text-label-sm uppercase tracking-wider text-outline">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Affiliated Innovation Lab &amp; Registry
+          </span>
+        </div>
+      </div>
+      <div class="md:col-span-2 flex flex-col gap-3">
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Protocol</span>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="index.html">Overview</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="showcase-&-ventures" href="ventures.html">Venture Roster</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="leadership-&-team" href="leadership.html">Core Council</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="competitions-&-apply" href="apply.html">Venture Grants</a>
+      </div>
+      <div class="md:col-span-2 flex flex-col gap-3">
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Syndicate</span>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="command-terminal" href="terminal.html">Admin Console</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="showcase-&-ventures" href="ventures.html">Pitch Ledger</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="leadership-&-team" href="leadership.html">LP Syndicate</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="leadership-&-team" href="leadership.html">Advisory Desk</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="competitions-&-apply" href="apply.html">Incubator Terms</a>
+      </div>
+      <div class="md:col-span-4 flex flex-col gap-4">
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Dispatch Terminal</span>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Receive closed cohort briefs, allocation releases, and institutional venture updates.</p>
+        <form id="newsletterForm" class="flex items-center gap-2 pt-1" onsubmit="event.preventDefault(); const btn = this.querySelector('button'); btn.textContent='Subscribed!'; btn.classList.add('bg-white/20'); setTimeout(()=>{btn.textContent='Join'; btn.classList.remove('bg-white/20')}, 2000);">
+          <div class="relative flex-1">
+            <input class="w-full bg-surface-container-low border border-surface-container-highest px-4 py-2 rounded-full text-on-surface placeholder:text-outline focus:outline-none focus:border-primary font-body-sm text-body-sm transition-colors" placeholder="founder@university.edu" type="email" required>
+          </div>
+          <button class="font-label-sm text-label-sm uppercase px-5 py-2 bg-primary text-on-primary rounded-full hover:shadow-[0_0_16px_rgba(255,255,255,0.3)] transition-all font-semibold" type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span class="font-label-sm text-label-sm text-outline">© 2025 EDC Venture Network. Engineered with precision.</span>
+      <div class="flex items-center gap-6">
+        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-1" data-path="command-terminal" href="terminal.html">
+          <span class="material-symbols-outlined text-[16px]">terminal</span>Terminal
+        </a>
+        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-1" href="https://github.com" target="_blank" rel="noopener">
+          <span class="material-symbols-outlined text-[16px]">code</span>Repository
+        </a>
+        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-1" href="terminal.html" data-path="command-terminal">
+          <span class="material-symbols-outlined text-[16px]">send</span>Channel
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Universal Syndicate Command Palette (⌘K) -->
+<div id="cmdKModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-xl flex items-start justify-center pt-20 sm:pt-28 px-4 transition-all" onclick="if(event.target===this) toggleCmdK();">
+  <div class="w-full max-w-2xl bg-surface-container-low border border-white/20 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col specular-border animate-radar">
+    <div class="flex items-center gap-3 px-5 py-4 border-b border-white/10 bg-surface-container-lowest">
+      <span class="material-symbols-outlined text-outline text-xl">search</span>
+      <input id="cmdKInput" type="text" autocomplete="off" spellcheck="false" class="flex-1 bg-transparent text-primary text-sm font-body-md focus:outline-none placeholder:text-outline/50" placeholder="Search ventures, teams, commands (e.g., 'synapse', 'apply', 'stats', 'terminal')...">
+      <kbd class="px-2 py-0.5 rounded bg-white/10 text-outline text-[11px] font-mono border border-white/10 cursor-pointer hover:text-white" onclick="toggleCmdK();">ESC</kbd>
+    </div>
+    <div id="cmdKResults" class="p-3 max-h-96 overflow-y-auto flex flex-col gap-1.5 text-xs font-mono">
+      <div class="px-2 py-1 text-[11px] uppercase tracking-wider text-outline font-semibold">⚡ Quick Navigation</div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="home">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">home</span><span>Home // Aura Stage</span></div>
+        <span class="text-outline font-label-sm text-[10px]">Jump to #home</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="ventures">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">rocket_launch</span><span>Showcase &amp; Active Ventures [38]</span></div>
+        <span class="text-outline font-label-sm text-[10px]">Jump to #ventures</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="leadership">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">groups</span><span>Leadership Council &amp; Advisory Board</span></div>
+        <span class="text-outline font-label-sm text-[10px]">Jump to #leadership</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="apply">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">military_tech</span><span>Genesis Pitch Bowl &amp; FastTrack Grant</span></div>
+        <span class="text-outline font-label-sm text-[10px]">Jump to #apply</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="terminal">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">terminal</span><span>Executive Admin Command Terminal</span></div>
+        <span class="text-outline font-label-sm text-[10px]">Jump to #terminal</span>
+      </div>
+
+      <div class="px-2 pt-3 pb-1 text-[11px] uppercase tracking-wider text-outline font-semibold border-t border-white/5 mt-1">🚀 Portfolio Ventures</div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="ventures" data-query="synapse">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">neurology</span><span>Synapse Neural Engine (AI &amp; DeepTech)</span></div>
+        <span class="text-primary font-semibold">$3.2M Seed</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="ventures" data-query="ledgerzero">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">account_balance</span><span>LedgerZero Institutional Settlement</span></div>
+        <span class="text-primary font-semibold">$850K Seed</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="ventures" data-query="kurobio">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">biotech</span><span>KuroBio Synthetic Biofuels</span></div>
+        <span class="text-primary font-semibold">US Pat #11,902</span>
+      </div>
+    </div>
+    <div class="px-5 py-3 bg-surface-container-lowest border-t border-white/10 flex items-center justify-between text-[11px] text-outline font-mono">
+      <div class="flex items-center gap-4">
+        <span><kbd class="px-1.5 py-0.5 rounded bg-white/5 border border-white/10">↑↓</kbd> navigate</span>
+        <span><kbd class="px-1.5 py-0.5 rounded bg-white/5 border border-white/10">↵</kbd> execute</span>
+      </div>
+      <span class="text-on-surface-variant">EDC Syndicate OS // v4.2</span>
+    </div>
+  </div>
+</div>
+
+<script>
+// 1. Spotlight Mouse Tracker on .spotlight-card
+document.addEventListener('mousemove', (e) => {
+  const cards = document.querySelectorAll('.spotlight-card');
+  cards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    if (
+      e.clientX >= rect.left - 40 &&
+      e.clientX <= rect.right + 40 &&
+      e.clientY >= rect.top - 40 &&
+      e.clientY <= rect.bottom + 40
+    ) {
+      card.style.setProperty('--spotlight-x', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--spotlight-y', `${e.clientY - rect.top}px`);
+    }
+  });
+});
+
+// 2. 3D Tilt Effect on .tilt-card
+function initTiltEffect() {
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    if (card._tiltInitialized) return;
+    card._tiltInitialized = true;
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(1000px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-2px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px)';
+    });
+  });
+}
+initTiltEffect();
+
+// 3. Dynamic Number Counter Animation
+function animateCounters(container = document) {
+  const counters = container.querySelectorAll('[data-counter]');
+  counters.forEach(counter => {
+    const target = parseFloat(counter.getAttribute('data-counter'));
+    const prefix = counter.getAttribute('data-counter-prefix') || '';
+    const suffix = counter.getAttribute('data-counter-suffix') || '';
+    const decimals = parseInt(counter.getAttribute('data-counter-decimals') || '0', 10);
+    const duration = 1200;
+    const startTime = performance.now();
+
+    function update(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = (target * ease).toFixed(decimals);
+      counter.textContent = prefix + current + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        counter.textContent = prefix + target.toFixed(decimals) + suffix;
+      }
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+// 4. Hero Title Scramble / Decrypt Effect
+const scrambleElem = document.getElementById('heroTitleScramble');
+if (scrambleElem) {
+  function runScramble() {
+    const original = "BUILD THE\nEXTRAORDINARY";
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_#@%&';
+    let iter = 0;
+    clearInterval(scrambleElem._interval);
+    scrambleElem._interval = setInterval(() => {
+      scrambleElem.innerHTML = original
+        .split('')
+        .map((ch, idx) => {
+          if (ch === '\n') return '<br>';
+          if (ch === ' ') return ' ';
+          if (idx < iter) return original[idx];
+          return chars[Math.floor(Math.random() * chars.length)];
+        })
+        .join('');
+      if (iter >= original.length) {
+        clearInterval(scrambleElem._interval);
+        scrambleElem.innerHTML = "BUILD THE<br>EXTRAORDINARY";
+      }
+      iter += 1;
+    }, 30);
+  }
+  scrambleElem.addEventListener('mouseenter', runScramble);
+  scrambleElem.addEventListener('click', runScramble);
+  setTimeout(runScramble, 800);
+}
+
+// 5. Universal Command Palette (⌘K) Controller
+function toggleCmdK() {
+  const modal = document.getElementById('cmdKModal');
+  const input = document.getElementById('cmdKInput');
+  if (!modal) return;
+  const isHidden = modal.classList.contains('hidden');
+  if (isHidden) {
+    modal.classList.remove('hidden');
+    if (input) {
+      input.value = '';
+      setTimeout(() => input.focus(), 50);
+    }
+  } else {
+    modal.classList.add('hidden');
+  }
+}
+
+const cmdKBtn = document.getElementById('cmdKTrigger');
+if (cmdKBtn) cmdKBtn.addEventListener('click', toggleCmdK);
+
+const mobSearchBtn = document.getElementById('mobileSearchBtn');
+if (mobSearchBtn) mobSearchBtn.addEventListener('click', toggleCmdK);
+
+window.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    toggleCmdK();
+  } else if (e.key === 'Escape') {
+    const modal = document.getElementById('cmdKModal');
+    if (modal && !modal.classList.contains('hidden')) {
+      toggleCmdK();
+    }
+  }
+});
+
+// Command palette search filtering
+const cmdInput = document.getElementById('cmdKInput');
+if (cmdInput) {
+  cmdInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    const items = document.querySelectorAll('#cmdKResults .cmd-item');
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      if (!query || text.includes(query)) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+}
+
+// Command palette item click handling
+document.addEventListener('click', (e) => {
+  const item = e.target.closest('.cmd-item');
+  if (item) {
+    const target = item.getAttribute('data-target');
+    if (target) {
+      toggleCmdK();
+      if (typeof window.navigateTo === 'function') {
+        window.navigateTo(target);
+      } else {
+        const urlMap = {
+          home: 'index.html',
+          ventures: 'ventures.html',
+          leadership: 'leadership.html',
+          apply: 'apply.html',
+          terminal: 'terminal.html'
+        };
+        if (urlMap[target]) window.location.href = urlMap[target];
+      }
+    }
+  }
+});
+</script>
+<script>
+(function() {
+  const btn = document.getElementById('mobileMenuBtn');
+  const menu = document.getElementById('mobileMenu');
+  const icon = document.getElementById('menuIcon');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const isHidden = menu.classList.contains('hidden');
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        if (icon) icon.textContent = 'close';
+      } else {
+        menu.classList.add('hidden');
+        if (icon) icon.textContent = 'menu';
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

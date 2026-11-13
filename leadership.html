@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary": "#c6c6cf", "outline-variant": "#444748", "on-tertiary-container": "#656467", "error-container": "#93000a", "on-primary-container": "#636565", "on-secondary-fixed-variant": "#45464e", "tertiary-fixed-dim": "#c8c6c9", "surface-container-lowest": "#0e0e0e", "on-secondary": "#2f3037", "inverse-on-surface": "#313030", "on-background": "#e5e2e1", "tertiary-fixed": "#e4e1e5", "surface-container-highest": "#353534", "surface": "#131313", "surface-container": "#201f1f", "tertiary-container": "#e4e1e5", "surface-variant": "#353534", "outline": "#8e9192", "on-surface-variant": "#c4c7c8", "surface-container-high": "#2a2a2a", "surface-tint": "#c6c6c7", "on-surface": "#e5e2e1", "surface-dim": "#131313", "inverse-surface": "#e5e2e1", "primary-fixed-dim": "#c6c6c7", "tertiary": "#ffffff", "on-tertiary-fixed": "#1b1b1e", "surface-bright": "#3a3939", "on-tertiary": "#303033", "primary": "#ffffff", "on-primary": "#2f3131", "on-tertiary-fixed-variant": "#47464a", "on-error": "#690005", "on-error-container": "#ffdad6", "surface-container-low": "#1c1b1b", "error": "#ffb4ab", "inverse-primary": "#5d5f5f", "primary-container": "#e2e2e2", "on-secondary-fixed": "#1a1b22", "secondary-container": "#45464e", "primary-fixed": "#e2e2e2", "on-primary-fixed-variant": "#454747", "background": "#131313", "on-secondary-container": "#b4b4bd", "secondary-fixed": "#e2e1eb", "secondary-fixed-dim": "#c6c6cf", "on-primary-fixed": "#1a1c1c" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.25rem", "space-xl": "2.5rem", "space-md": "1rem", "margin-mobile": "1.25rem", "space-lg": "1.5rem", "gutter": "1.5rem", "margin": "3rem", "space-sm": "0.5rem", "gutter-mobile": "1rem" }, "fontFamily": { "headline-sm": [ "Space Grotesk" ], "headline-lg-mobile": [ "Space Grotesk" ], "headline-lg": [ "Space Grotesk" ], "body-lg": [ "Geist" ], "display-mobile": [ "Space Grotesk" ], "display": [ "Space Grotesk" ], "label-md": [ "JetBrains Mono" ], "headline-md": [ "Space Grotesk" ], "label-sm": [ "JetBrains Mono" ], "body-md": [ "Geist" ], "body-sm": [ "Geist" ] }, "fontSize": { "headline-sm": [ "1.25rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "headline-lg-mobile": [ "1.75rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "headline-lg": [ "2.5rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.03em", "fontWeight": "600" } ], "body-lg": [ "1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "display-mobile": [ "2.5rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "display": [ "4rem", { "lineHeight": "4.25rem", "letterSpacing": "-0.04em", "fontWeight": "700" } ], "label-md": [ "0.8125rem", { "lineHeight": "1rem", "letterSpacing": "0.06em", "fontWeight": "500" } ], "headline-md": [ "1.75rem", { "lineHeight": "2.125rem", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "label-sm": [ "0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.08em", "fontWeight": "500" } ], "body-md": [ "0.9375rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" } ], "body-sm": [ "0.8125rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" } ] } } } };</script>
+
+<style>
+/* Smooth view switching animation */
+@keyframes viewFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.995);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.view-animate-in {
+  animation: viewFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Ambient Spotlight Effect on Cards */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(450px circle at var(--spotlight-x, -500px) var(--spotlight-y, -500px), rgba(255, 255, 255, 0.08), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* 3D Interactive Card Tilt */
+.tilt-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Specular Shimmer Edge on Floating Dock */
+.specular-border {
+  position: relative;
+}
+.specular-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.2) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Radar pulse animation for live badges */
+@keyframes radarPing {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+.animate-radar {
+  animation: radarPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Glowing text aura */
+.glow-text {
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.35);
+}
+
+/* Sliding pill dock item */
+.nav-pill {
+  position: relative;
+  z-index: 2;
+  transition: color 0.25s ease, background-color 0.25s ease;
+}
+.nav-pill.active {
+  color: #131313 !important;
+  font-weight: 600;
+}
+.nav-slider {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.45);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+}
+</style>
+
+<title>Leadership &amp; Syndicate // Council Architecture - EDC</title>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary selection:text-on-primary">
+<header class="fixed top-3 sm:top-5 inset-x-0 z-50 px-3 sm:px-6 pointer-events-none">
+  <div class="max-w-7xl mx-auto pointer-events-auto bg-surface/85 backdrop-blur-2xl border border-white/10 rounded-2xl sm:rounded-full px-4 sm:px-6 py-2.5 sm:py-3 shadow-[0_20px_50px_rgba(0,0,0,0.9)] flex items-center justify-between gap-4 relative specular-border transition-all duration-300">
+    <!-- Left: Monogram and Live Status -->
+    <div class="flex items-center gap-4 sm:gap-6">
+      <a class="flex items-center gap-3 group transition-transform hover:scale-105 active:scale-95" data-path="home" href="index.html">
+        <div class="relative">
+          <img alt="EDC Monogram Logo" class="h-8 w-auto object-contain transition-all group-hover:brightness-125" src="https://lh3.googleusercontent.com/aida/ALJJyrC4vhSzD4_rP3C6NxgjwyIPMESe4c_mwxJRhJicMgF_A1rCXLozZKcVuhWOZFRLL1Ai_zvs57tg5m4SUtbiemXjqadJtMOCp2uPjQnQViCipUznU_EchB1igJLO7x4xXagQlCZJX7QDrQaqFPVKxXLvRrkN_k0z1mPKiRXwNZKVprYY61QeDgA9FYX5pW3Iv9MZQH9ByGCQCavdK3LBfJGH8HbM9rNgOI1RhISXzLEj">
+          <span class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-primary/70 animate-ping"></span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-headline-sm text-sm sm:text-base uppercase tracking-tight text-primary font-bold group-hover:text-white transition-colors">EDC</span>
+          <span class="font-label-sm text-[10px] text-outline tracking-widest uppercase -mt-0.5">Syndicate</span>
+        </div>
+      </a>
+      <div class="hidden xl:flex items-center gap-2 pl-4 border-l border-white/10">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+        </span>
+        <span class="font-label-sm text-[11px] uppercase tracking-widest text-on-surface-variant font-medium">Cohort '25 Cycle Open</span>
+      </div>
+    </div>
+    
+    <!-- Center: Floating Segmented Dock (Desktop) -->
+    <nav class="hidden lg:flex items-center bg-surface-container-lowest/80 border border-white/10 p-1 rounded-full shadow-inner relative" id="desktopNavDock">
+      <div id="navSlider" class="nav-slider"></div>
+      <a class="nav-pill px-4 py-1.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all font-medium select-none" data-path="home" href="index.html">Home</a>
+      <a class="nav-pill px-4 py-1.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all font-medium select-none" data-path="showcase-&-ventures" href="ventures.html">Ventures</a>
+      <a class="nav-pill active px-4 py-1.5 rounded-full font-label-md text-xs uppercase tracking-wider text-surface bg-white font-bold shadow-[0_0_20px_rgba(255,255,255,0.45)] transition-all select-none" data-path="leadership-&-team" href="leadership.html">Leadership</a>
+      <a class="nav-pill px-4 py-1.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all font-medium select-none" data-path="competitions-&-apply" href="apply.html">Grants &amp; Apply</a>
+      <a class="nav-pill px-4 py-1.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all font-medium select-none flex items-center gap-1.5" data-path="command-terminal" href="terminal.html">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary/70"></span>
+        <span>Terminal</span>
+      </a>
+    </nav>
+    
+    <!-- Right Actions -->
+    <div class="flex items-center gap-3">
+      <!-- Search / Command Palette (⌘K) Trigger -->
+      <button id="cmdKTrigger" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-outline hover:text-white hover:border-white/20 text-xs font-mono transition-all group hover:bg-white/10" title="Open Command Palette (⌘K)">
+        <span class="material-symbols-outlined text-[15px] group-hover:scale-110 transition-transform">search</span>
+        <span class="hidden xl:inline text-[11px] uppercase tracking-wider">Search</span>
+        <kbd class="px-1.5 py-0.5 rounded bg-white/10 text-[10px] text-primary border border-white/10 font-mono">⌘K</kbd>
+      </button>
+
+      <!-- Apply Now CTA -->
+      <a class="hidden sm:inline-flex items-center gap-2 font-label-md text-xs uppercase px-5 py-2.5 rounded-full bg-primary text-on-primary font-bold hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] hover:scale-105 active:scale-95 transition-all" data-path="competitions-&-apply" href="apply.html">
+        <span>Apply Now</span>
+        <span class="material-symbols-outlined text-[15px] transition-transform group-hover:translate-x-0.5">arrow_forward</span>
+      </a>
+
+      <!-- Terminal Quick Icon -->
+      <div class="flex items-center gap-2.5 pl-2 border-l border-white/10">
+        <a class="p-2 rounded-full border border-white/10 bg-surface-container-low hover:border-primary hover:text-primary hover:bg-white/5 transition-all text-outline relative group" data-path="command-terminal" href="terminal.html" title="Admin Terminal (Ctrl+`)">
+          <span class="material-symbols-outlined text-[17px] block transition-transform group-hover:scale-110">terminal</span>
+          <span class="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-primary"></span>
+        </a>
+        <img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-white/20 shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVI7vU2eDYjf0Y53pIzfJh3ZBi6CFHk6w4hMNjwAY91_g15QgYUtYCG2HlqRuP_PNYNtXFNzyFmKe4X_mjJ6q5lC3N-v7oCHt5ynBPBflZEUDRy5pMWJaKZ8gIqzSsEknvYGTQ1-VjgUkznbbimseE95j3sFbJ9SLejutHcRCiwFPYfOcg2Q6n8ol_z7gR-uSb0GwSl4OYL--TuO4NxFq6rYjwPYkvQVYs0e2ljxST">
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-full border border-white/10 bg-white/5 text-outline hover:text-primary hover:border-white/20 transition-all focus:outline-none" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined text-2xl block" id="menuIcon">menu</span>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile Slide-Down Sheet -->
+  <div id="mobileMenu" class="hidden lg:hidden max-w-7xl mx-auto mt-2 pointer-events-auto bg-surface-container-lowest/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-5 shadow-2xl flex flex-col gap-3 specular-border">
+    <div class="flex items-center justify-between pb-3 border-b border-white/10">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+        <span class="font-label-sm text-xs uppercase tracking-widest text-primary font-mono">Cohort '25 Cycle Open</span>
+      </div>
+      <button id="mobileSearchBtn" class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-outline text-xs">
+        <span class="material-symbols-outlined text-[14px]">search</span>
+        <span>⌘K</span>
+      </button>
+    </div>
+    <div class="flex flex-col gap-1 py-1">
+      <a class="mobile-nav-link font-body-md py-2.5 px-4 rounded-xl text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all flex items-center justify-between" data-path="home" href="index.html">
+        <span>Home</span>
+        <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
+      </a>
+      <a class="mobile-nav-link font-body-md py-2.5 px-4 rounded-xl text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all flex items-center justify-between" data-path="showcase-&-ventures" href="ventures.html">
+        <span>Showcase &amp; Ventures</span>
+        <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
+      </a>
+      <a class="mobile-nav-link font-body-md py-2.5 px-4 rounded-xl text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all flex items-center justify-between" data-path="leadership-&-team" href="leadership.html">
+        <span>Leadership &amp; Team</span>
+        <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
+      </a>
+      <a class="mobile-nav-link font-body-md py-2.5 px-4 rounded-xl text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all flex items-center justify-between" data-path="competitions-&-apply" href="apply.html">
+        <span>Competitions &amp; Grants</span>
+        <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
+      </a>
+      <a class="mobile-nav-link font-body-md py-2.5 px-4 rounded-xl text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all flex items-center justify-between" data-path="command-terminal" href="terminal.html">
+        <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Command Terminal</span>
+        <span class="material-symbols-outlined text-sm text-outline">terminal</span>
+      </a>
+    </div>
+    <div class="pt-2 border-t border-white/10">
+      <a class="w-full inline-flex items-center justify-center font-label-md text-xs uppercase px-5 py-3 rounded-xl bg-primary text-on-primary font-bold hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all" data-path="competitions-&-apply" href="apply.html">
+        Apply For Cohort '25
+      </a>
+    </div>
+  </div>
+</header>
+<main class="w-full pt-28 bg-surface min-h-[calc(100vh-20rem)]">
+<div class="flex flex-col w-full">
+<!-- Top Command & Editorial Title Strip -->
+<section class="relative w-full overflow-hidden bg-surface py-12 md:py-20">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<!-- Metatag corridor & live stats row -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_#ffffff]"></span>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">COUNCIL ARCHITECTURE // AY 2024-2025</span>
+</div>
+<h1 class="font-display text-display uppercase tracking-tight text-primary leading-none">
+            LEADERSHIP <span class="text-outline">&amp;</span> SYNDICATE
+          </h1>
+</div>
+<div class="flex items-center gap-6 bg-surface-container-low p-4 rounded-xl">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase text-outline">Active Cadre</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">28 Leads</span>
+</div>
+<div class="w-px h-8 bg-surface-container-highest"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase text-outline">Founder Backing</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">$42M+ Raised</span>
+</div>
+<div class="w-px h-8 bg-surface-container-highest"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase text-outline">Acceptance</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">3.8%</span>
+</div>
+</div>
+</div>
+<!-- Editorial Intro Block with Asymmetric Offset -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6">
+<div class="lg:col-span-8">
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+            The collegiate syndicate is directed by veteran student operators, algorithmic researchers, and institutional venture partners committed to accelerating early-stage technical founders into global hyper-scale institutions.
+          </p>
+</div>
+<div class="lg:col-span-4 flex items-center justify-start lg:justify-end gap-3">
+<a class="font-label-md text-label-md uppercase px-5 py-3 rounded bg-primary text-on-primary hover:shadow-[0_0_24px_rgba(255,255,255,0.45)] transition-all flex items-center gap-2" href="#recruitment">
+<span>Apply to Syndicate</span>
+<span class="material-symbols-outlined text-[18px]">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Executive Board Grid: 4 Lead Coordinators -->
+<section class="w-full bg-surface-container-lowest py-16 md:py-24">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<!-- Section Header -->
+<div class="flex flex-col sm:flex-row sm:items-end justify-between pb-12 gap-4">
+<div>
+<span class="font-label-sm text-label-sm uppercase text-outline tracking-widest">TIER 01 // GOVERNANCE</span>
+<h2 class="font-headline-lg text-headline-lg text-primary uppercase tracking-tight mt-1">Executive Board</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Four Autonomous Chairs</span>
+</div>
+<!-- 4-Card Master Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Member 1: President -->
+<div class="group bg-surface-container-low rounded-xl overflow-hidden flex flex-col transition-all duration-300 hover:bg-surface-container">
+<div class="relative w-full aspect-[4/5] overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" data-alt="Monochrome studio portrait of a sharp confident male collegiate venture founder wearing a minimalist dark turtleneck, stark architectural side lighting, crisp cinematic focus, high contrast black and white portrait, 8k resolution" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEkFKFld9nASFAbp6TIKTIZWpl6SKA7AzsSfGbam01eJ7f2h2NSzErng6nDby31FVvT5CufdVEhkkalLWyx7LJ7Rx4fmMp_tuJLARUe37DVbfNi7Zx0L4T-cf_e1Qppawtb39qdfuJ48m-FZgy3WFXBpL8spXwgtPMTVq4FldhG6pvQZ6JokgeH5rhKi4SMx1zSb6-2zuA1srEToo6TDT4cB1zFE5Y_rcUtiIHPCCH"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface/90 backdrop-blur-md text-primary font-label-sm text-label-sm uppercase tracking-wider">
+                President
+              </span>
+</div>
+<div class="absolute bottom-3 right-3">
+<span class="w-2.5 h-2.5 rounded-full bg-primary block shadow-[0_0_8px_#ffffff]"></span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-1 justify-between gap-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-primary tracking-tight">Kaelen Vance</h3>
+<span class="font-label-sm text-label-sm text-outline">’25</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">B.S. EECS &amp; Computational Economics</p>
+<div class="pt-2 flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Prior Deployments</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface font-label-sm text-label-sm text-primary">YC W24 Founder</span>
+<span class="px-2 py-0.5 rounded bg-surface font-label-sm text-label-sm text-secondary">Sequoia Scout</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4">
+<span class="font-label-sm text-label-sm text-outline">NYC / SF Orbit</span>
+<div class="flex items-center gap-3">
+<a aria-label="LinkedIn Profile" class="text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</a>
+<a aria-label="Personal Portfolio" class="text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">link</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Member 2: Head of Ventures -->
+<div class="group bg-surface-container-low rounded-xl overflow-hidden flex flex-col transition-all duration-300 hover:bg-surface-container">
+<div class="relative w-full aspect-[4/5] overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" data-alt="Editorial black and white studio headshot of a collegiate female investor with sleek hair, wearing a structured dark blazer, sharp specular studio keylight, minimalist obsidian aesthetic, 8k crisp monochrome" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDShJLtqH2QcMjnoV6C6V8eVpNl3QN5REiMY4HEVTTL3a9zK-myAKyG8ancG-Gl-ZVW6p3AG643_aTFuvK6rHTG1kt04eN1TrqoLoi6YNMK_gzeK3GtTyTQAPlm35M3m3ca_JiCbmN-LYmXsOt5zjBl7gYwr8xRGjg66fBZmEo4Ig8_uMbC3RzqS8eWmrWViNKzc6B6bS4cs5CwTifMTG8asj-Gt2lp6hyBozTPy84I"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface/90 backdrop-blur-md text-primary font-label-sm text-label-sm uppercase tracking-wider">
+                Head of Ventures
+              </span>
+</div>
+<div class="absolute bottom-3 right-3">
+<span class="w-2.5 h-2.5 rounded-full bg-primary block shadow-[0_0_8px_#ffffff]"></span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-1 justify-between gap-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-primary tracking-tight">Sloan Thorne</h3>
+<span class="font-label-sm text-label-sm text-outline">’25</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">B.A. Applied Mathematics &amp; Finance</p>
+<div class="pt-2 flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Prior Deployments</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface font-label-sm text-label-sm text-primary">Bessemer Fellow</span>
+<span class="px-2 py-0.5 rounded bg-surface font-label-sm text-label-sm text-secondary">General Catalyst</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4">
+<span class="font-label-sm text-label-sm text-outline">Boston / BOS</span>
+<div class="flex items-center gap-3">
+<a aria-label="Terminal" class="text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</a>
+<a aria-label="Portfolio" class="text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">link</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Member 3: Head of Technology -->
+<div class="group bg-surface-container-low rounded-xl overflow-hidden flex flex-col transition-all duration-300 hover:bg-surface-container">
+<div class="relative w-full aspect-[4/5] overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" data-alt="Monochrome studio portrait of an ambitious young technologist male with rimless spectacles, dark minimal knitwear, dramatic contrast chiaroscuro lighting, crisp detail and smooth grayscale tonal gradation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIL2YOYpOJaMPLsZDnvYC-wlt0R70lEQUu7asc9V-ncne37LCuFVV5hl1ygH4g9EfuD7JbVDkn9UJCJeoZx0QkH8F7wQFpW83dg_IbabdB1EpqATePv7Q1R0zTRFDFFr-Qyh54dNR7oFw2361IZKnHjg7Zo4LGJN5aHou35MOaNOQEXEVr2oBFoz8Pbssnkllq2zZzEi1VK-M5iaLBec1PhA5aHj1PcsLykFNSDtMr"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface/90 backdrop-blur-md text-primary font-label-sm text-label-sm uppercase tracking-wider">
+                Head of Tech
+              </span>
+</div>
+<div class="absolute bottom-3 right-3">
+<span class="w-2.5 h-2.5 rounded-full bg-primary block shadow-[0_0_8px_#ffffff]"></span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-1 justify-between gap-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-primary tracking-tight">Arjun Mehta</h3>
+<span class="font-label-sm text-label-sm text-outline">’26</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">B.S. Artificial Intelligence &amp; Robotics</p>
+<div class="pt-2 flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Prior Deployments</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface font-label-sm text-label-sm text-primary">MIT Media Lab</span>
+<span class="px-2 py-0.5 rounded bg-surface font-label-sm text-label-sm text-secondary">Founding Engineer</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4">
+<span class="font-label-sm text-label-sm text-outline">Cambridge / NY</span>
+<div class="flex items-center gap-3">
+<a aria-label="Terminal" class="text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</a>
+<a aria-label="Portfolio" class="text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">link</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Member 4: Head of Partnerships -->
+<div class="group bg-surface-container-low rounded-xl overflow-hidden flex flex-col transition-all duration-300 hover:bg-surface-container">
+<div class="relative w-full aspect-[4/5] overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" data-alt="Editorial black and white studio portrait of a poised female leader with short hair, high neck black cashmere, sharp directional lighting casting soft clean shadow, intense focused gaze, monochrome high-end magazine quality" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx5D56Lq_N4nV00jwaCYRQUAuAPE93ky_1Pma3W3UriNrsa9Q6Uook9kDBAjUnUXqDviX7zXxBbtP_V_r7QQpYIQake0u-w9VS0yR-4chATCKPYkV6g_vbQVnLGK0S6tlEvCX8skdW71W3iiUe3T_edxoomtFLuHPxVSQ1PA6F3G2ZATIBS5VIKvrnNovRpk5kuJmfM-sER8n6OVVIe-L4bs2mzZFdLtEdE34txu2I"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface/90 backdrop-blur-md text-primary font-label-sm text-label-sm uppercase tracking-wider">
+                Partnerships
+              </span>
+</div>
+<div class="absolute bottom-3 right-3">
+<span class="w-2.5 h-2.5 rounded-full bg-primary block shadow-[0_0_8px_#ffffff]"></span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-1 justify-between gap-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-primary tracking-tight">Elena Rostova</h3>
+<span class="font-label-sm text-label-sm text-outline">’25</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">B.S. Industrial Operations &amp; Strategy</p>
+<div class="pt-2 flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Prior Deployments</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface font-label-sm text-label-sm text-primary">Andreessen Horowitz Fellow</span>
+<span class="px-2 py-0.5 rounded bg-surface font-label-sm text-label-sm text-secondary">Palantir Fellow</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4">
+<span class="font-label-sm text-label-sm text-outline">Austin / Bay Area</span>
+<div class="flex items-center gap-3">
+<a aria-label="Terminal" class="text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</a>
+<a aria-label="Portfolio" class="text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">link</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Departmental Leads Carousel / Horizontal Deck -->
+<section class="w-full bg-surface py-16 md:py-24 overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between pb-10 gap-4">
+<div>
+<span class="font-label-sm text-label-sm uppercase text-outline tracking-widest">TIER 02 // OPERATIONS</span>
+<h2 class="font-headline-lg text-headline-lg text-primary uppercase tracking-tight mt-1">Departmental Leads</h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded bg-surface-container-high hover:bg-surface-container-highest text-primary flex items-center justify-center transition-colors" id="dept-prev">
+<span class="material-symbols-outlined text-[20px]">west</span>
+</button>
+<button class="w-10 h-10 rounded bg-surface-container-high hover:bg-surface-container-highest text-primary flex items-center justify-center transition-colors" id="dept-next">
+<span class="material-symbols-outlined text-[20px]">east</span>
+</button>
+</div>
+</div>
+<!-- Horizontal Cards Container -->
+<div class="flex gap-6 overflow-x-auto pb-6 scrollbar-none snap-x snap-mandatory" id="dept-deck">
+<!-- Department 1: Venture Research -->
+<div class="snap-start flex-none w-[320px] sm:w-[360px] bg-surface-container-low p-6 rounded-xl flex flex-col justify-between group hover:bg-surface-container transition-all">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase px-2.5 py-1 rounded bg-surface-container text-primary">DEPT 01</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">analytics</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary uppercase">Venture Research</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Weekly investment memos, algorithmic deal sourcing, and macro sector roadmaps.</p>
+</div>
+<div class="flex items-center gap-3 pt-2">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest flex-shrink-0">
+<img class="w-full h-full object-cover grayscale" data-alt="Close up monochrome portrait of male lead researcher smiling subtly, soft lighting, clean high contrast dark studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvpcMhvUMPWQWMzj6W7g7yrBCN1SFnZbqFA1eInvTdJ-Vk4KQv1WbH0VLjFkLm6W9CYUyUUJrAjEmsRX00BZXXOAftVYtCDfYTM1YJsFCU34YpxffWOh3RMyQn2vFqum6Juy1mqwDRAGLf6rmMywTHYgW-l2lGhQNSPRKu8mLW9-4AVClpZFFUInSglkoJz6J_BtUQ0zfqZsOZXg9LWmt0TMCnjTIQzp7qmcrXzjn5"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">Marcus Thorne</span>
+<span class="font-label-sm text-label-sm text-outline">Lead Associate // Junior</span>
+</div>
+</div>
+</div>
+<div class="pt-6 mt-6 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">6 Associates Managed</span>
+<span class="font-label-sm text-label-sm text-primary font-mono">14 Memos/Term</span>
+</div>
+</div>
+<!-- Department 2: Events & Hackathons -->
+<div class="snap-start flex-none w-[320px] sm:w-[360px] bg-surface-container-low p-6 rounded-xl flex flex-col justify-between group hover:bg-surface-container transition-all">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase px-2.5 py-1 rounded bg-surface-container text-primary">DEPT 02</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">bolt</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary uppercase">Events &amp; Summits</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Collegiate hackathons, demo days in SF &amp; NYC, and intimate founder roundtable dinners.</p>
+</div>
+<div class="flex items-center gap-3 pt-2">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest flex-shrink-0">
+<img class="w-full h-full object-cover grayscale" data-alt="Monochrome studio portrait of an Asian female events director with sleek high ponytail, stylish blazer, clean sharp dark background lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8coLraEGzQ7nIbvDWTkLN37RcNm3DYjIQrXbdM-9Julay5d8mvzy9sjATD-H0cunStMcJIetGXGW-ZnM9130jVCJ_N3GvEIiPhV__t2nvOqB7p5uf7XrkdX0PUPMLivCMxX2zC96-Z8EO9WKWWcbbTxP2ZSIMkh1x_uhVcRZiGLeQ77OTMXLmf6N-25H04Y7cna50KE5ISVgWsCEWVU_CToG6ErnAOSHx6R6T4X7R"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">Chloe Lin</span>
+<span class="font-label-sm text-label-sm text-outline">Program Director // Senior</span>
+</div>
+</div>
+</div>
+<div class="pt-6 mt-6 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">12 Annual Productions</span>
+<span class="font-label-sm text-label-sm text-primary font-mono">1,800+ Attendees</span>
+</div>
+</div>
+<!-- Department 3: Branding & Creative -->
+<div class="snap-start flex-none w-[320px] sm:w-[360px] bg-surface-container-low p-6 rounded-xl flex flex-col justify-between group hover:bg-surface-container transition-all">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase px-2.5 py-1 rounded bg-surface-container text-primary">DEPT 03</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">palette</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary uppercase">Branding &amp; Media</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Design systems, editorial dispatch terminal, founder podcasts, and visual culture.</p>
+</div>
+<div class="flex items-center gap-3 pt-2">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest flex-shrink-0">
+<img class="w-full h-full object-cover grayscale" data-alt="Artistic monochrome headshot of male creative lead with textured haircut, soft ambient lighting, clean minimal dark wardrobe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoGoJPkXRDoQPVGFQ2mgva0XueflwOHqZWOPeqZdFAGWSuSTRiKm3um6x6pnM_xlXMA23o7ygAuHAd1zmb2hCAgvucaJgeqk-NXlQzmA7tK6RlQurEXxG-_JsZbaGkjFNJ-DaDne6kFFvoQVTSrMMoOSaaFL4_D2_w_bmZqG9mymRPC6Kmgz1x5hzdrM5TkN5WfuhbyglxWDkpTJXe8HhBsOHGOVhwDmYmeshFNy2h"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">Julian Hayes</span>
+<span class="font-label-sm text-label-sm text-outline">Creative Lead // Junior</span>
+</div>
+</div>
+</div>
+<div class="pt-6 mt-6 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">Substack &amp; Print Zine</span>
+<span class="font-label-sm text-label-sm text-primary font-mono">14k Subscribers</span>
+</div>
+</div>
+<!-- Department 4: Alumni & Network -->
+<div class="snap-start flex-none w-[320px] sm:w-[360px] bg-surface-container-low p-6 rounded-xl flex flex-col justify-between group hover:bg-surface-container transition-all">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase px-2.5 py-1 rounded bg-surface-container text-primary">DEPT 04</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">hub</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary uppercase">Alumni Syndicate</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Connecting past cohort founders with incoming batches and managing angel allocations.</p>
+</div>
+<div class="flex items-center gap-3 pt-2">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest flex-shrink-0">
+<img class="w-full h-full object-cover grayscale" data-alt="Refined monochrome headshot of collegiate woman with subtle warm smile, classic studio lighting, sharp dark obsidian backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy-SoPMUTtkcnDTH4-D0SqDF0qqrqm-tPoNZ0wsVQdTKOH2Q1B7HvX4j5_4bGWP0sVb96eCtD_UvLGZjyGrXqlH58Im_D65e9ryln9YouF_7FuR5kfzaFzRztcqJXdd1LNniW9SYYzOOB_ev4ExxJmz6_YgC_BjuzYtxZRah8TGyHhYg8qS1LK5D2mM2LeB1LJrFOy69yKVjYx7EPUzOsCiK02SHbPb9B8NJlI_WjJ"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">Nadia Safir</span>
+<span class="font-label-sm text-label-sm text-outline">Relations Lead // Senior</span>
+</div>
+</div>
+</div>
+<div class="pt-6 mt-6 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">Global Alumni Roll</span>
+<span class="font-label-sm text-label-sm text-primary font-mono">420+ Operators</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Industry Advisory Council: 4 Renowned Alumni & Venture Mentors -->
+<section class="w-full bg-surface-container-lowest py-16 md:py-24">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="flex flex-col pb-12">
+<span class="font-label-sm text-label-sm uppercase text-outline tracking-widest">TIER 00 // SENIOR OVERSIGHT</span>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mt-1">
+<h2 class="font-headline-lg text-headline-lg text-primary uppercase tracking-tight">Industry Advisory Council</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">
+            Directly guiding cohort teams with office hours, cap-table engineering, and sovereign seed backing.
+          </p>
+</div>
+</div>
+<!-- Advisory Bento Strip -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Advisor 1 -->
+<div class="p-6 bg-surface-container-low rounded-xl flex flex-col justify-between hover:bg-surface-container transition-all">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full overflow-hidden bg-surface-container-highest flex-shrink-0">
+<img class="w-full h-full object-cover grayscale" data-alt="Monochrome executive headshot of seasoned technology venture partner in his 30s, sharp architectural background, moody black and white photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHe6OoE0ehjeeHCM09Jt1R5jFPC6yFIrzVoV4rNvmF8ZHYkPn4D4YYplj1WfxF4XL-G3HPijb3Ds4HZNKZBcR9YkomVmgwsRJvBqUWrtJtfk8Dw3Z__P1XgS00fFnX0vL4-hete8XuQ77uesYvXVPy6Aw5wpIWztiE8YnQXH5UA6mdcWz3V2mAUL2zYgneryIpqw3V_ZI6FCJb1JMztLVjbAcPgUy-LgJuEKDjO_Oq"/>
+</div>
+<div class="flex flex-col">
+<h4 class="font-headline-sm text-headline-sm text-primary">Devon Chen</h4>
+<span class="font-label-sm text-label-sm text-outline">General Partner, Apex Capital</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              EDC President ’18. Led early investments in 3 unicorn AI infrastructure protocols. Stanford EECS Alum.
+            </p>
+</div>
+<div class="pt-6 mt-4 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary uppercase">DeepTech Focus</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">12+ Cohort Mentees</span>
+</div>
+</div>
+<!-- Advisor 2 -->
+<div class="p-6 bg-surface-container-low rounded-xl flex flex-col justify-between hover:bg-surface-container transition-all">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full overflow-hidden bg-surface-container-highest flex-shrink-0">
+<img class="w-full h-full object-cover grayscale" data-alt="Striking black and white portrait of female startup founder and angel investor, sharp lighting on features, obsidian minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI8_JFQKWQd592YZf_Zw8GZ8eSgZpzww0Rk7t1ePjLzl7kfvpC-1wHB8x8PXsPXqD7AN4-dKXkyZYdwjGwDmXThQ_HIXoWXDWDszesKOkxkT6j8wFEk1DCKc-jr3PHsBqC2cbLluOwI2VxicugBIbKCCu96cSaNbrVvNBTYlEi0sfncdgwyvJeMxwHOcOxzi99Ny9mt4QXrmB_kkR-vzgiSm7MvXPKmnbeR3koFsH1"/>
+</div>
+<div class="flex flex-col">
+<h4 class="font-headline-sm text-headline-sm text-primary">Soraya Mir</h4>
+<span class="font-label-sm text-label-sm text-outline">Founder, Synapse (Acq. 2023)</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              EDC Founder ’19. Scaled enterprise workflow platform from dorm room to $180M exit. Angel in 24 startups.
+            </p>
+</div>
+<div class="pt-6 mt-4 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary uppercase">B2B SaaS Focus</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">Series A Prep</span>
+</div>
+</div>
+<!-- Advisor 3 -->
+<div class="p-6 bg-surface-container-low rounded-xl flex flex-col justify-between hover:bg-surface-container transition-all">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full overflow-hidden bg-surface-container-highest flex-shrink-0">
+<img class="w-full h-full object-cover grayscale" data-alt="Monochrome portrait of a prominent male fintech investor wearing minimalist glasses, clean black aesthetic, dramatic contrast portrait photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRnECxv2qvErpUPpKeowB7iE-Lh12TXj-vu2WauG35KRzvNrHvOJRrDEKfLAugsPsjXXtgp4NUrwM4bEU8vxKJPmTtBPngBZ-wNyTXSMt9ats1NI2UvIySvWGcngwqq3fTuFHmuSZV8e8l8rISxe2-WKr1uOB-QD9f7_maIRqNWuz8kCc2Ymgv8n7ru9mJzjJWT8gmi06F4BysHblQVB9qFXdaw7c8s-2KfrxL8_Ug"/>
+</div>
+<div class="flex flex-col">
+<h4 class="font-headline-sm text-headline-sm text-primary">Henrik Lindqvist</h4>
+<span class="font-label-sm text-label-sm text-outline">Partner, Northzone Ventures</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Advising club allocations, institutional syndicate syndication, and cross-border expansion to London and Stockholm.
+            </p>
+</div>
+<div class="pt-6 mt-4 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary uppercase">Fintech &amp; Defi</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">Cross-border Lead</span>
+</div>
+</div>
+<!-- Advisor 4 -->
+<div class="p-6 bg-surface-container-low rounded-xl flex flex-col justify-between hover:bg-surface-container transition-all">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full overflow-hidden bg-surface-container-highest flex-shrink-0">
+<img class="w-full h-full object-cover grayscale" data-alt="High contrast black and white studio portrait of a woman tech executive in her early 30s, sharp confident expression, smooth black studio backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLm2rQPsubILPRXo9Jn_Q4_P-HoR4sW8EmfFIQdWdzwSTTKxmU1zXtXe0g_BiFiFVIxrpANlj6cigDRppkiUtc9QYNV94a0RorPjIOhOekP_041Q7Shy_A7baYmQXmLRdnTSdEmXEnntnxy5lLCNuvIxjJOtcx16AcwdT4Gji_1bmqIocpi-2fDb4UdkPdMzwSR5EWqqzy4QBAzmewoAgtaSAl56s3so0fYxiwebVm"/>
+</div>
+<div class="flex flex-col">
+<h4 class="font-headline-sm text-headline-sm text-primary">Dr. Maya Lin</h4>
+<span class="font-label-sm text-label-sm text-outline">VP AI Research, Frontier Labs</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Former PhD Fellow &amp; EDC Tech Lead ’17. Specializes in LLM latency optimization and sovereign hardware clusters.
+            </p>
+</div>
+<div class="pt-6 mt-4 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary uppercase">BioTech &amp; AI</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">Hardware Grants</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Join The Core Team / Recruitment CTA Banner -->
+<section class="w-full bg-surface py-16 md:py-24 relative overflow-hidden" id="recruitment">
+<!-- Subtle gradient glow behind recruitment block -->
+<div class="absolute inset-0 bg-gradient-to-br from-transparent via-primary/[0.03] to-transparent pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-6 lg:px-12 relative">
+<div class="bg-surface-container-low rounded-xl p-8 md:p-14 overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<!-- Text left -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm uppercase tracking-wider">
+                Recruitment Cycle '25
+              </span>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Fast-Track Cohort</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary uppercase tracking-tight">
+              JOIN THE CORE CADRE. SHAPE NEXT-DECADE VENTURES.
+            </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+              We recruit disciplined student engineers, economists, and designers who demand high stakes. Fast track your pathway into tier-one venture capital and technical co-founder networks.
+            </p>
+<!-- Key Requirements Check-List -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">15+ hrs/week operational cadence</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Demonstrated builder track record</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">High technical or financial literacy</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Undergrad or Master's enrolled</span>
+</div>
+</div>
+</div>
+<!-- Application Fast-Action Box Right -->
+<div class="lg:col-span-5 bg-surface-container p-6 sm:p-8 rounded-xl flex flex-col gap-6">
+<div class="flex items-center justify-between pb-3">
+<span class="font-label-sm text-label-sm uppercase text-outline">Application Terminal</span>
+<span class="font-label-sm text-label-sm text-primary uppercase font-mono">DEADLINE: OCT 31</span>
+</div>
+<div class="flex flex-col gap-3">
+<label class="font-label-sm text-label-sm uppercase text-outline">Institutional Email</label>
+<input class="w-full bg-surface-container-lowest px-4 py-3 rounded text-primary placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary" placeholder="colleague@university.edu" type="email"/>
+</div>
+<div class="flex flex-col gap-3">
+<label class="font-label-sm text-label-sm uppercase text-outline">Primary Track Priority</label>
+<select class="w-full bg-surface-container-lowest px-4 py-3 rounded text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary">
+<option>Venture Research Analyst</option>
+<option>Hackathons &amp; Events Director</option>
+<option>Brand, Media &amp; Product Designer</option>
+<option>Engineering &amp; Deal Platform Dev</option>
+</select>
+</div>
+<button class="w-full py-3.5 rounded bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all flex items-center justify-center gap-2 mt-2" type="button">
+<span>Submit Dossier For Review</span>
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+<span class="font-label-sm text-label-sm text-outline text-center">
+              Rolling admissions. 3.8% historical cohort admittance rate.
+            </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Scroll Behavior Script -->
+<script>
+    (function() {
+      const deck = document.getElementById('dept-deck');
+      const prevBtn = document.getElementById('dept-prev');
+      const nextBtn = document.getElementById('dept-next');
+
+      if (deck && prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+          deck.scrollBy({ left: -340, behavior: 'smooth' });
+        });
+        nextBtn.addEventListener('click', () => {
+          deck.scrollBy({ left: 340, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+</div>
+</main>
+<footer class="w-full bg-surface-container-lowest border-t border-surface-container-highest py-16">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-14 border-b border-surface-container-highest">
+      <div class="md:col-span-4 flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <img alt="EDC Monogram Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrC4vhSzD4_rP3C6NxgjwyIPMESe4c_mwxJRhJicMgF_A1rCXLozZKcVuhWOZFRLL1Ai_zvs57tg5m4SUtbiemXjqadJtMOCp2uPjQnQViCipUznU_EchB1igJLO7x4xXagQlCZJX7QDrQaqFPVKxXLvRrkN_k0z1mPKiRXwNZKVprYY61QeDgA9FYX5pW3Iv9MZQH9ByGCQCavdK3LBfJGH8HbM9rNgOI1RhISXzLEj">
+          <span class="font-headline-sm text-headline-sm uppercase text-primary">EDC</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">
+          Forging collegiate venture founders, high-conviction syndicates, and disruptive institutional capital ecosystems.
+        </p>
+        <div class="pt-2">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface-container-high border border-surface-container-highest font-label-sm text-label-sm uppercase tracking-wider text-outline">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Affiliated Innovation Lab &amp; Registry
+          </span>
+        </div>
+      </div>
+      <div class="md:col-span-2 flex flex-col gap-3">
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Protocol</span>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="index.html">Overview</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="showcase-&-ventures" href="ventures.html">Venture Roster</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="leadership-&-team" href="leadership.html">Core Council</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="competitions-&-apply" href="apply.html">Venture Grants</a>
+      </div>
+      <div class="md:col-span-2 flex flex-col gap-3">
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Syndicate</span>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="command-terminal" href="terminal.html">Admin Console</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="showcase-&-ventures" href="ventures.html">Pitch Ledger</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="leadership-&-team" href="leadership.html">LP Syndicate</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="leadership-&-team" href="leadership.html">Advisory Desk</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="competitions-&-apply" href="apply.html">Incubator Terms</a>
+      </div>
+      <div class="md:col-span-4 flex flex-col gap-4">
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Dispatch Terminal</span>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Receive closed cohort briefs, allocation releases, and institutional venture updates.</p>
+        <form id="newsletterForm" class="flex items-center gap-2 pt-1" onsubmit="event.preventDefault(); const btn = this.querySelector('button'); btn.textContent='Subscribed!'; btn.classList.add('bg-white/20'); setTimeout(()=>{btn.textContent='Join'; btn.classList.remove('bg-white/20')}, 2000);">
+          <div class="relative flex-1">
+            <input class="w-full bg-surface-container-low border border-surface-container-highest px-4 py-2 rounded-full text-on-surface placeholder:text-outline focus:outline-none focus:border-primary font-body-sm text-body-sm transition-colors" placeholder="founder@university.edu" type="email" required>
+          </div>
+          <button class="font-label-sm text-label-sm uppercase px-5 py-2 bg-primary text-on-primary rounded-full hover:shadow-[0_0_16px_rgba(255,255,255,0.3)] transition-all font-semibold" type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span class="font-label-sm text-label-sm text-outline">© 2025 EDC Venture Network. Engineered with precision.</span>
+      <div class="flex items-center gap-6">
+        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-1" data-path="command-terminal" href="terminal.html">
+          <span class="material-symbols-outlined text-[16px]">terminal</span>Terminal
+        </a>
+        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-1" href="https://github.com" target="_blank" rel="noopener">
+          <span class="material-symbols-outlined text-[16px]">code</span>Repository
+        </a>
+        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-1" href="terminal.html" data-path="command-terminal">
+          <span class="material-symbols-outlined text-[16px]">send</span>Channel
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Universal Syndicate Command Palette (⌘K) -->
+<div id="cmdKModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-xl flex items-start justify-center pt-20 sm:pt-28 px-4 transition-all" onclick="if(event.target===this) toggleCmdK();">
+  <div class="w-full max-w-2xl bg-surface-container-low border border-white/20 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col specular-border animate-radar">
+    <div class="flex items-center gap-3 px-5 py-4 border-b border-white/10 bg-surface-container-lowest">
+      <span class="material-symbols-outlined text-outline text-xl">search</span>
+      <input id="cmdKInput" type="text" autocomplete="off" spellcheck="false" class="flex-1 bg-transparent text-primary text-sm font-body-md focus:outline-none placeholder:text-outline/50" placeholder="Search ventures, teams, commands (e.g., 'synapse', 'apply', 'stats', 'terminal')...">
+      <kbd class="px-2 py-0.5 rounded bg-white/10 text-outline text-[11px] font-mono border border-white/10 cursor-pointer hover:text-white" onclick="toggleCmdK();">ESC</kbd>
+    </div>
+    <div id="cmdKResults" class="p-3 max-h-96 overflow-y-auto flex flex-col gap-1.5 text-xs font-mono">
+      <div class="px-2 py-1 text-[11px] uppercase tracking-wider text-outline font-semibold">⚡ Quick Navigation</div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="home">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">home</span><span>Home // Aura Stage</span></div>
+        <span class="text-outline font-label-sm text-[10px]">Jump to #home</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="ventures">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">rocket_launch</span><span>Showcase &amp; Active Ventures [38]</span></div>
+        <span class="text-outline font-label-sm text-[10px]">Jump to #ventures</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="leadership">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">groups</span><span>Leadership Council &amp; Advisory Board</span></div>
+        <span class="text-outline font-label-sm text-[10px]">Jump to #leadership</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="apply">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">military_tech</span><span>Genesis Pitch Bowl &amp; FastTrack Grant</span></div>
+        <span class="text-outline font-label-sm text-[10px]">Jump to #apply</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="terminal">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">terminal</span><span>Executive Admin Command Terminal</span></div>
+        <span class="text-outline font-label-sm text-[10px]">Jump to #terminal</span>
+      </div>
+
+      <div class="px-2 pt-3 pb-1 text-[11px] uppercase tracking-wider text-outline font-semibold border-t border-white/5 mt-1">🚀 Portfolio Ventures</div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="ventures" data-query="synapse">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">neurology</span><span>Synapse Neural Engine (AI &amp; DeepTech)</span></div>
+        <span class="text-primary font-semibold">$3.2M Seed</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="ventures" data-query="ledgerzero">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">account_balance</span><span>LedgerZero Institutional Settlement</span></div>
+        <span class="text-primary font-semibold">$850K Seed</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="ventures" data-query="kurobio">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">biotech</span><span>KuroBio Synthetic Biofuels</span></div>
+        <span class="text-primary font-semibold">US Pat #11,902</span>
+      </div>
+    </div>
+    <div class="px-5 py-3 bg-surface-container-lowest border-t border-white/10 flex items-center justify-between text-[11px] text-outline font-mono">
+      <div class="flex items-center gap-4">
+        <span><kbd class="px-1.5 py-0.5 rounded bg-white/5 border border-white/10">↑↓</kbd> navigate</span>
+        <span><kbd class="px-1.5 py-0.5 rounded bg-white/5 border border-white/10">↵</kbd> execute</span>
+      </div>
+      <span class="text-on-surface-variant">EDC Syndicate OS // v4.2</span>
+    </div>
+  </div>
+</div>
+
+<script>
+// 1. Spotlight Mouse Tracker on .spotlight-card
+document.addEventListener('mousemove', (e) => {
+  const cards = document.querySelectorAll('.spotlight-card');
+  cards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    if (
+      e.clientX >= rect.left - 40 &&
+      e.clientX <= rect.right + 40 &&
+      e.clientY >= rect.top - 40 &&
+      e.clientY <= rect.bottom + 40
+    ) {
+      card.style.setProperty('--spotlight-x', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--spotlight-y', `${e.clientY - rect.top}px`);
+    }
+  });
+});
+
+// 2. 3D Tilt Effect on .tilt-card
+function initTiltEffect() {
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    if (card._tiltInitialized) return;
+    card._tiltInitialized = true;
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(1000px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-2px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px)';
+    });
+  });
+}
+initTiltEffect();
+
+// 3. Dynamic Number Counter Animation
+function animateCounters(container = document) {
+  const counters = container.querySelectorAll('[data-counter]');
+  counters.forEach(counter => {
+    const target = parseFloat(counter.getAttribute('data-counter'));
+    const prefix = counter.getAttribute('data-counter-prefix') || '';
+    const suffix = counter.getAttribute('data-counter-suffix') || '';
+    const decimals = parseInt(counter.getAttribute('data-counter-decimals') || '0', 10);
+    const duration = 1200;
+    const startTime = performance.now();
+
+    function update(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = (target * ease).toFixed(decimals);
+      counter.textContent = prefix + current + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        counter.textContent = prefix + target.toFixed(decimals) + suffix;
+      }
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+// 4. Hero Title Scramble / Decrypt Effect
+const scrambleElem = document.getElementById('heroTitleScramble');
+if (scrambleElem) {
+  function runScramble() {
+    const original = "BUILD THE\nEXTRAORDINARY";
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_#@%&';
+    let iter = 0;
+    clearInterval(scrambleElem._interval);
+    scrambleElem._interval = setInterval(() => {
+      scrambleElem.innerHTML = original
+        .split('')
+        .map((ch, idx) => {
+          if (ch === '\n') return '<br>';
+          if (ch === ' ') return ' ';
+          if (idx < iter) return original[idx];
+          return chars[Math.floor(Math.random() * chars.length)];
+        })
+        .join('');
+      if (iter >= original.length) {
+        clearInterval(scrambleElem._interval);
+        scrambleElem.innerHTML = "BUILD THE<br>EXTRAORDINARY";
+      }
+      iter += 1;
+    }, 30);
+  }
+  scrambleElem.addEventListener('mouseenter', runScramble);
+  scrambleElem.addEventListener('click', runScramble);
+  setTimeout(runScramble, 800);
+}
+
+// 5. Universal Command Palette (⌘K) Controller
+function toggleCmdK() {
+  const modal = document.getElementById('cmdKModal');
+  const input = document.getElementById('cmdKInput');
+  if (!modal) return;
+  const isHidden = modal.classList.contains('hidden');
+  if (isHidden) {
+    modal.classList.remove('hidden');
+    if (input) {
+      input.value = '';
+      setTimeout(() => input.focus(), 50);
+    }
+  } else {
+    modal.classList.add('hidden');
+  }
+}
+
+const cmdKBtn = document.getElementById('cmdKTrigger');
+if (cmdKBtn) cmdKBtn.addEventListener('click', toggleCmdK);
+
+const mobSearchBtn = document.getElementById('mobileSearchBtn');
+if (mobSearchBtn) mobSearchBtn.addEventListener('click', toggleCmdK);
+
+window.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    toggleCmdK();
+  } else if (e.key === 'Escape') {
+    const modal = document.getElementById('cmdKModal');
+    if (modal && !modal.classList.contains('hidden')) {
+      toggleCmdK();
+    }
+  }
+});
+
+// Command palette search filtering
+const cmdInput = document.getElementById('cmdKInput');
+if (cmdInput) {
+  cmdInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    const items = document.querySelectorAll('#cmdKResults .cmd-item');
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      if (!query || text.includes(query)) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+}
+
+// Command palette item click handling
+document.addEventListener('click', (e) => {
+  const item = e.target.closest('.cmd-item');
+  if (item) {
+    const target = item.getAttribute('data-target');
+    if (target) {
+      toggleCmdK();
+      if (typeof window.navigateTo === 'function') {
+        window.navigateTo(target);
+      } else {
+        const urlMap = {
+          home: 'index.html',
+          ventures: 'ventures.html',
+          leadership: 'leadership.html',
+          apply: 'apply.html',
+          terminal: 'terminal.html'
+        };
+        if (urlMap[target]) window.location.href = urlMap[target];
+      }
+    }
+  }
+});
+</script>
+<script>
+(function() {
+  const btn = document.getElementById('mobileMenuBtn');
+  const menu = document.getElementById('mobileMenu');
+  const icon = document.getElementById('menuIcon');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const isHidden = menu.classList.contains('hidden');
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        if (icon) icon.textContent = 'close';
+      } else {
+        menu.classList.add('hidden');
+        if (icon) icon.textContent = 'menu';
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

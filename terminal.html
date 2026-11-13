@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary": "#c6c6cf", "outline-variant": "#444748", "on-tertiary-container": "#656467", "error-container": "#93000a", "on-primary-container": "#636565", "on-secondary-fixed-variant": "#45464e", "tertiary-fixed-dim": "#c8c6c9", "surface-container-lowest": "#0e0e0e", "on-secondary": "#2f3037", "inverse-on-surface": "#313030", "on-background": "#e5e2e1", "tertiary-fixed": "#e4e1e5", "surface-container-highest": "#353534", "surface": "#131313", "surface-container": "#201f1f", "tertiary-container": "#e4e1e5", "surface-variant": "#353534", "outline": "#8e9192", "on-surface-variant": "#c4c7c8", "surface-container-high": "#2a2a2a", "surface-tint": "#c6c6c7", "on-surface": "#e5e2e1", "surface-dim": "#131313", "inverse-surface": "#e5e2e1", "primary-fixed-dim": "#c6c6c7", "tertiary": "#ffffff", "on-tertiary-fixed": "#1b1b1e", "surface-bright": "#3a3939", "on-tertiary": "#303033", "primary": "#ffffff", "on-primary": "#2f3131", "on-tertiary-fixed-variant": "#47464a", "on-error": "#690005", "on-error-container": "#ffdad6", "surface-container-low": "#1c1b1b", "error": "#ffb4ab", "inverse-primary": "#5d5f5f", "primary-container": "#e2e2e2", "on-secondary-fixed": "#1a1b22", "secondary-container": "#45464e", "primary-fixed": "#e2e2e2", "on-primary-fixed-variant": "#454747", "background": "#131313", "on-secondary-container": "#b4b4bd", "secondary-fixed": "#e2e1eb", "secondary-fixed-dim": "#c6c6cf", "on-primary-fixed": "#1a1c1c" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.25rem", "space-xl": "2.5rem", "space-md": "1rem", "margin-mobile": "1.25rem", "space-lg": "1.5rem", "gutter": "1.5rem", "margin": "3rem", "space-sm": "0.5rem", "gutter-mobile": "1rem" }, "fontFamily": { "headline-sm": [ "Space Grotesk" ], "headline-lg-mobile": [ "Space Grotesk" ], "headline-lg": [ "Space Grotesk" ], "body-lg": [ "Geist" ], "display-mobile": [ "Space Grotesk" ], "display": [ "Space Grotesk" ], "label-md": [ "JetBrains Mono" ], "headline-md": [ "Space Grotesk" ], "label-sm": [ "JetBrains Mono" ], "body-md": [ "Geist" ], "body-sm": [ "Geist" ] }, "fontSize": { "headline-sm": [ "1.25rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "headline-lg-mobile": [ "1.75rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "headline-lg": [ "2.5rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.03em", "fontWeight": "600" } ], "body-lg": [ "1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "display-mobile": [ "2.5rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "display": [ "4rem", { "lineHeight": "4.25rem", "letterSpacing": "-0.04em", "fontWeight": "700" } ], "label-md": [ "0.8125rem", { "lineHeight": "1rem", "letterSpacing": "0.06em", "fontWeight": "500" } ], "headline-md": [ "1.75rem", { "lineHeight": "2.125rem", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "label-sm": [ "0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.08em", "fontWeight": "500" } ], "body-md": [ "0.9375rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" } ], "body-sm": [ "0.8125rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" } ] } } } };</script>
+
+<style>
+/* Smooth view switching animation */
+@keyframes viewFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.995);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.view-animate-in {
+  animation: viewFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Ambient Spotlight Effect on Cards */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(450px circle at var(--spotlight-x, -500px) var(--spotlight-y, -500px), rgba(255, 255, 255, 0.08), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* 3D Interactive Card Tilt */
+.tilt-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Specular Shimmer Edge on Floating Dock */
+.specular-border {
+  position: relative;
+}
+.specular-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.2) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Radar pulse animation for live badges */
+@keyframes radarPing {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+.animate-radar {
+  animation: radarPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Glowing text aura */
+.glow-text {
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.35);
+}
+
+/* Sliding pill dock item */
+.nav-pill {
+  position: relative;
+  z-index: 2;
+  transition: color 0.25s ease, background-color 0.25s ease;
+}
+.nav-pill.active {
+  color: #131313 !important;
+  font-weight: 600;
+}
+.nav-slider {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.45);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+}
+</style>
+
+<title>Command Terminal // Syndicate OS v4.2 - EDC</title>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary selection:text-on-primary">
+<header class="fixed top-3 sm:top-5 inset-x-0 z-50 px-3 sm:px-6 pointer-events-none">
+  <div class="max-w-7xl mx-auto pointer-events-auto bg-surface/85 backdrop-blur-2xl border border-white/10 rounded-2xl sm:rounded-full px-4 sm:px-6 py-2.5 sm:py-3 shadow-[0_20px_50px_rgba(0,0,0,0.9)] flex items-center justify-between gap-4 relative specular-border transition-all duration-300">
+    <!-- Left: Monogram and Live Status -->
+    <div class="flex items-center gap-4 sm:gap-6">
+      <a class="flex items-center gap-3 group transition-transform hover:scale-105 active:scale-95" data-path="home" href="index.html">
+        <div class="relative">
+          <img alt="EDC Monogram Logo" class="h-8 w-auto object-contain transition-all group-hover:brightness-125" src="https://lh3.googleusercontent.com/aida/ALJJyrC4vhSzD4_rP3C6NxgjwyIPMESe4c_mwxJRhJicMgF_A1rCXLozZKcVuhWOZFRLL1Ai_zvs57tg5m4SUtbiemXjqadJtMOCp2uPjQnQViCipUznU_EchB1igJLO7x4xXagQlCZJX7QDrQaqFPVKxXLvRrkN_k0z1mPKiRXwNZKVprYY61QeDgA9FYX5pW3Iv9MZQH9ByGCQCavdK3LBfJGH8HbM9rNgOI1RhISXzLEj">
+          <span class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-primary/70 animate-ping"></span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-headline-sm text-sm sm:text-base uppercase tracking-tight text-primary font-bold group-hover:text-white transition-colors">EDC</span>
+          <span class="font-label-sm text-[10px] text-outline tracking-widest uppercase -mt-0.5">Syndicate</span>
+        </div>
+      </a>
+      <div class="hidden xl:flex items-center gap-2 pl-4 border-l border-white/10">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+        </span>
+        <span class="font-label-sm text-[11px] uppercase tracking-widest text-on-surface-variant font-medium">Cohort '25 Cycle Open</span>
+      </div>
+    </div>
+    
+    <!-- Center: Floating Segmented Dock (Desktop) -->
+    <nav class="hidden lg:flex items-center bg-surface-container-lowest/80 border border-white/10 p-1 rounded-full shadow-inner relative" id="desktopNavDock">
+      <div id="navSlider" class="nav-slider"></div>
+      <a class="nav-pill px-4 py-1.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all font-medium select-none" data-path="home" href="index.html">Home</a>
+      <a class="nav-pill px-4 py-1.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all font-medium select-none" data-path="showcase-&-ventures" href="ventures.html">Ventures</a>
+      <a class="nav-pill px-4 py-1.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all font-medium select-none" data-path="leadership-&-team" href="leadership.html">Leadership</a>
+      <a class="nav-pill px-4 py-1.5 rounded-full font-label-md text-xs uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all font-medium select-none" data-path="competitions-&-apply" href="apply.html">Grants &amp; Apply</a>
+      <a class="nav-pill active px-4 py-1.5 rounded-full font-label-md text-xs uppercase tracking-wider text-surface bg-white font-bold shadow-[0_0_20px_rgba(255,255,255,0.45)] transition-all select-none flex items-center gap-1.5" data-path="command-terminal" href="terminal.html">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary/70"></span>
+        <span>Terminal</span>
+      </a>
+    </nav>
+    
+    <!-- Right Actions -->
+    <div class="flex items-center gap-3">
+      <!-- Search / Command Palette (⌘K) Trigger -->
+      <button id="cmdKTrigger" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-outline hover:text-white hover:border-white/20 text-xs font-mono transition-all group hover:bg-white/10" title="Open Command Palette (⌘K)">
+        <span class="material-symbols-outlined text-[15px] group-hover:scale-110 transition-transform">search</span>
+        <span class="hidden xl:inline text-[11px] uppercase tracking-wider">Search</span>
+        <kbd class="px-1.5 py-0.5 rounded bg-white/10 text-[10px] text-primary border border-white/10 font-mono">⌘K</kbd>
+      </button>
+
+      <!-- Apply Now CTA -->
+      <a class="hidden sm:inline-flex items-center gap-2 font-label-md text-xs uppercase px-5 py-2.5 rounded-full bg-primary text-on-primary font-bold hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] hover:scale-105 active:scale-95 transition-all" data-path="competitions-&-apply" href="apply.html">
+        <span>Apply Now</span>
+        <span class="material-symbols-outlined text-[15px] transition-transform group-hover:translate-x-0.5">arrow_forward</span>
+      </a>
+
+      <!-- Terminal Quick Icon -->
+      <div class="flex items-center gap-2.5 pl-2 border-l border-white/10">
+        <a class="p-2 rounded-full border border-white/10 bg-surface-container-low hover:border-primary hover:text-primary hover:bg-white/5 transition-all text-outline relative group" data-path="command-terminal" href="terminal.html" title="Admin Terminal (Ctrl+`)">
+          <span class="material-symbols-outlined text-[17px] block transition-transform group-hover:scale-110">terminal</span>
+          <span class="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-primary"></span>
+        </a>
+        <img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-white/20 shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVI7vU2eDYjf0Y53pIzfJh3ZBi6CFHk6w4hMNjwAY91_g15QgYUtYCG2HlqRuP_PNYNtXFNzyFmKe4X_mjJ6q5lC3N-v7oCHt5ynBPBflZEUDRy5pMWJaKZ8gIqzSsEknvYGTQ1-VjgUkznbbimseE95j3sFbJ9SLejutHcRCiwFPYfOcg2Q6n8ol_z7gR-uSb0GwSl4OYL--TuO4NxFq6rYjwPYkvQVYs0e2ljxST">
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-full border border-white/10 bg-white/5 text-outline hover:text-primary hover:border-white/20 transition-all focus:outline-none" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined text-2xl block" id="menuIcon">menu</span>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile Slide-Down Sheet -->
+  <div id="mobileMenu" class="hidden lg:hidden max-w-7xl mx-auto mt-2 pointer-events-auto bg-surface-container-lowest/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-5 shadow-2xl flex flex-col gap-3 specular-border">
+    <div class="flex items-center justify-between pb-3 border-b border-white/10">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+        <span class="font-label-sm text-xs uppercase tracking-widest text-primary font-mono">Cohort '25 Cycle Open</span>
+      </div>
+      <button id="mobileSearchBtn" class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-outline text-xs">
+        <span class="material-symbols-outlined text-[14px]">search</span>
+        <span>⌘K</span>
+      </button>
+    </div>
+    <div class="flex flex-col gap-1 py-1">
+      <a class="mobile-nav-link font-body-md py-2.5 px-4 rounded-xl text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all flex items-center justify-between" data-path="home" href="index.html">
+        <span>Home</span>
+        <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
+      </a>
+      <a class="mobile-nav-link font-body-md py-2.5 px-4 rounded-xl text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all flex items-center justify-between" data-path="showcase-&-ventures" href="ventures.html">
+        <span>Showcase &amp; Ventures</span>
+        <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
+      </a>
+      <a class="mobile-nav-link font-body-md py-2.5 px-4 rounded-xl text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all flex items-center justify-between" data-path="leadership-&-team" href="leadership.html">
+        <span>Leadership &amp; Team</span>
+        <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
+      </a>
+      <a class="mobile-nav-link font-body-md py-2.5 px-4 rounded-xl text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all flex items-center justify-between" data-path="competitions-&-apply" href="apply.html">
+        <span>Competitions &amp; Grants</span>
+        <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
+      </a>
+      <a class="mobile-nav-link font-body-md py-2.5 px-4 rounded-xl text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all flex items-center justify-between" data-path="command-terminal" href="terminal.html">
+        <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Command Terminal</span>
+        <span class="material-symbols-outlined text-sm text-outline">terminal</span>
+      </a>
+    </div>
+    <div class="pt-2 border-t border-white/10">
+      <a class="w-full inline-flex items-center justify-center font-label-md text-xs uppercase px-5 py-3 rounded-xl bg-primary text-on-primary font-bold hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all" data-path="competitions-&-apply" href="apply.html">
+        Apply For Cohort '25
+      </a>
+    </div>
+  </div>
+</header>
+<main class="w-full pt-28 bg-surface min-h-[calc(100vh-20rem)]">
+<div class="flex flex-col w-full">
+<!-- Top Ambient Glow Line -->
+<div class="w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+<!-- Main Administrative Shell Container -->
+<div class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-8 flex flex-col gap-10">
+<!-- Section 1: System Status & Terminal Header -->
+<section class="flex flex-col gap-6">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Terminal // Governance</span>
+<span class="text-outline text-xs">/</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-medium">EDC INTERNAL GOVERNANCE &amp; APPLICANT REGISTRY</span>
+</div>
+<div class="flex items-baseline gap-3">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Executive Command Terminal</h1>
+<span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded bg-surface-container-highest text-primary font-mono border-0">BUILD 4.19.0-RELEASE</span>
+</div>
+</div>
+<!-- Real-time Status Pills -->
+<div class="flex flex-wrap items-center gap-2">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#ffffff]"></span>
+<span class="font-label-sm text-label-sm text-on-surface">NODE STATUS: ONLINE</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_#c6c6cf]"></span>
+<span class="font-label-sm text-label-sm text-on-surface">COHORT: W25 ACTIVE</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low shadow-sm">
+<span class="material-symbols-outlined text-primary text-[15px]">verified_user</span>
+<span class="font-label-sm text-label-sm text-on-surface">DB SYNC: VERIFIED</span>
+</div>
+</div>
+</div>
+<!-- Quick Action Controls Strip -->
+<div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-surface-container-low/80 backdrop-blur-md border border-surface-container-highest shadow-md"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-[20px]">tune</span><span class="font-label-md text-label-md uppercase tracking-wider text-on-surface">Cohort Ops Desk: Active Evaluation Phase</span></div><div class="flex flex-wrap items-center gap-3"><button class="flex items-center gap-2 px-4 py-2 rounded-full border border-surface-container-highest bg-surface-container text-on-surface hover:bg-surface-container-high transition-all text-label-md font-label-md uppercase tracking-wider shadow-sm" id="exportRosterBtn"><span class="material-symbols-outlined text-[18px]">download</span> Export Roster (CSV)</button><button class="flex items-center gap-2 px-4 py-2 rounded-full border border-surface-container-highest bg-surface-container-high text-primary hover:bg-surface-bright transition-all text-label-md font-label-md uppercase tracking-wider shadow-sm" id="announcementModalBtn"><span class="material-symbols-outlined text-[18px]">campaign</span> New Cohort Announcement</button><button class="flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-on-primary hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all text-label-md font-label-md uppercase tracking-wider font-semibold shadow-md" id="lockToggleBtn"><span class="material-symbols-outlined text-[18px]" id="lockIcon">lock_open</span><span id="lockText">Lock Submissions</span></button></div></div>
+</section>
+<!-- Section 2: Key Metrics KPI Strip with Data Visualizations -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"><!-- Metric 1 --><div class="flex flex-col justify-between p-6 rounded-2xl bg-surface-container-low/90 spotlight-card tilt-card border border-surface-container-highest shadow-lg relative overflow-hidden group hover:bg-surface-container transition-all hover:shadow-[0_0_16px_rgba(255,255,255,0.3)]"><div class="flex items-start justify-between"><div class="flex flex-col gap-1"><span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Total Applications</span><span class="font-headline-lg text-headline-lg text-primary tracking-tight">284</span></div><span class="px-2.5 py-0.5 rounded-full border border-surface-container-highest bg-surface-container-highest text-primary font-label-sm text-label-sm font-mono">+38% vs prev</span></div><div class="mt-6 flex flex-col gap-2"><div class="flex justify-between items-center text-label-sm font-label-sm text-outline"><span>Intake Velocity</span><span class="text-primary font-medium font-mono">9.4 teams/day</span></div><svg class="w-full h-8 text-primary/70" fill="none" preserveAspectRatio="none" viewBox="0 0 120 30"><path d="M0,24 Q15,20 30,22 T60,14 T90,8 T120,4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"></path><path d="M0,24 Q15,20 30,22 T60,14 T90,8 T120,4 L120,30 L0,30 Z" fill="currentColor" opacity="0.08"></path></svg></div></div><!-- Metric 2 --><div class="flex flex-col justify-between p-6 rounded-2xl bg-surface-container-low/90 spotlight-card tilt-card border border-surface-container-highest shadow-lg relative overflow-hidden group hover:bg-surface-container transition-all hover:shadow-[0_0_16px_rgba(255,255,255,0.3)]"><div class="flex items-start justify-between"><div class="flex flex-col gap-1"><span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Pending Review</span><span class="font-headline-lg text-headline-lg text-primary tracking-tight">42</span></div><span class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-error-container bg-error-container text-error font-label-sm text-label-sm"><span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span> Priority Triage</span></div><div class="mt-6 flex flex-col gap-2"><div class="flex justify-between text-label-sm font-label-sm text-outline"><span>Diligence Queue</span><span class="text-primary font-medium font-mono">70% assigned</span></div><div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden"><div class="h-full bg-primary rounded-full" style="width: 70%;"></div></div></div></div><!-- Metric 3 --><div class="flex flex-col justify-between p-6 rounded-2xl bg-surface-container-low/90 spotlight-card tilt-card border border-surface-container-highest shadow-lg relative overflow-hidden group hover:bg-surface-container transition-all hover:shadow-[0_0_16px_rgba(255,255,255,0.3)]"><div class="flex items-start justify-between"><div class="flex flex-col gap-1"><span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Shortlisted Teams</span><div class="flex items-baseline gap-2"><span class="font-headline-lg text-headline-lg text-primary tracking-tight">18</span><span class="font-label-md text-label-md text-on-surface-variant font-mono">/ 284</span></div></div><span class="px-2.5 py-0.5 rounded-full border border-surface-container-highest bg-surface-container-highest text-primary font-label-sm text-label-sm font-mono">6.3% Rate</span></div><div class="mt-6 flex flex-col gap-2"><div class="flex justify-between text-label-sm font-label-sm text-outline"><span>Stage Conversion</span><span class="text-primary font-medium font-mono">12 Pitch Slotted</span></div><div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden"><div class="h-full bg-secondary rounded-full" style="width: 66%;"></div></div></div></div><!-- Metric 4 --><div class="flex flex-col justify-between p-6 rounded-2xl bg-surface-container-low/90 spotlight-card tilt-card border border-surface-container-highest shadow-lg relative overflow-hidden group hover:bg-surface-container transition-all hover:shadow-[0_0_16px_rgba(255,255,255,0.3)]"><div class="flex items-start justify-between"><div class="flex flex-col gap-1"><span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Grant Capital Allocated</span><span class="font-headline-lg text-headline-lg text-primary tracking-tight">$35.0K</span></div><span class="px-2.5 py-0.5 rounded-full border border-surface-container-highest bg-surface-container-highest text-primary font-label-sm text-label-sm font-mono">Pool: $50.0K</span></div><div class="mt-6 flex flex-col gap-2"><div class="flex justify-between text-label-sm font-label-sm text-outline"><span>Pool Clearance</span><span class="text-primary font-medium font-mono">70.0% deployed</span></div><div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden"><div class="h-full bg-primary rounded-full" style="width: 70%;"></div></div></div></div></section>
+<!-- Section 3: Interactive Applicant Review & Pipeline Desk -->
+<section class="flex flex-col gap-5 rounded-2xl bg-surface-container-lowest p-6 shadow-xl border border-surface-container-highest">
+<!-- Desk Title & Filter Tabs -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">view_kanban</span>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Applicant Review &amp; Pipeline Desk</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real-time cohort candidate dossier grading, stage progression, and syndicate votes.</p>
+</div>
+<!-- Search & Control -->
+<div class="flex items-center gap-3"><div class="relative w-64"><span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[18px]">search</span><input class="w-full pl-9 pr-3 py-1.5 rounded-full border border-surface-container-highest bg-surface-container-low text-primary text-body-sm font-body-sm placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary shadow-sm" id="applicantSearchInput" placeholder="Filter founder, venture..." type="text"></div><div class="flex items-center gap-1 bg-surface-container-low border border-surface-container-highest p-1 rounded-full shadow-sm"><button class="p-1.5 rounded-full text-primary bg-surface-container-high" title="Table View"><span class="material-symbols-outlined text-[18px] block">table_rows</span></button><button class="p-1.5 rounded-full text-outline hover:text-primary transition-colors" title="Grid View"><span class="material-symbols-outlined text-[18px] block">grid_view</span></button></div></div>
+</div>
+<!-- Segment Filter Pills -->
+<div class="flex flex-wrap items-center gap-2 overflow-x-auto pb-1" id="filterPillsContainer">
+<button class="filter-tab active-tab px-3.5 py-1.5 rounded-full text-label-sm font-label-sm uppercase tracking-wider bg-primary text-on-primary transition-all" data-filter="all">All Applicants (284)</button>
+<button class="filter-tab px-3.5 py-1.5 rounded-full text-label-sm font-label-sm uppercase tracking-wider bg-surface-container-low text-on-surface-variant hover:text-primary transition-all" data-filter="review">Under Review (42)</button>
+<button class="filter-tab px-3.5 py-1.5 rounded-full text-label-sm font-label-sm uppercase tracking-wider bg-surface-container-low text-on-surface-variant hover:text-primary transition-all" data-filter="shortlisted">Shortlisted (18)</button>
+<button class="filter-tab px-3.5 py-1.5 rounded-full text-label-sm font-label-sm uppercase tracking-wider bg-surface-container-low text-on-surface-variant hover:text-primary transition-all" data-filter="interviewed">Interviewed (12)</button>
+<button class="filter-tab px-3.5 py-1.5 rounded-full text-label-sm font-label-sm uppercase tracking-wider bg-surface-container-low text-on-surface-variant hover:text-primary transition-all" data-filter="accepted">Accepted (8)</button>
+<button class="filter-tab px-3.5 py-1.5 rounded-full text-label-sm font-label-sm uppercase tracking-wider bg-surface-container-low text-on-surface-variant hover:text-primary transition-all" data-filter="rejected">Rejected</button>
+</div>
+<!-- Table Header & Rows Queue -->
+<div class="overflow-x-auto rounded-xl">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-outline font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3 px-4 rounded-l-lg">Venture &amp; Founders</th>
+<th class="py-3 px-4">Vertical</th>
+<th class="py-3 px-4">Rubric Score</th>
+<th class="py-3 px-4">Materials</th>
+<th class="py-3 px-4">Evaluation Stage</th>
+<th class="py-3 px-4 text-right rounded-r-lg">Adjudication Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-body-sm font-body-sm" id="applicantTableBody"><!-- Row 1: Synapse AI --><tr class="applicant-row group bg-surface hover:bg-surface-container-low transition-colors" data-category="review" data-name="Synapse AI Arjun V. Elena R."><td class="py-4 px-4"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-surface-container-high border border-surface-container-highest flex items-center justify-center font-label-md text-label-md text-primary font-bold shadow-sm">SA</div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary group-hover:underline">Synapse AI</span><span class="font-body-sm text-body-sm text-outline">Arjun V. &amp; Elena R.</span></div></div></td><td class="py-4 px-4"><span class="inline-flex items-center px-3 py-1 rounded-full border border-surface-container-highest bg-surface-container-high font-label-sm text-label-sm text-primary uppercase font-mono shadow-sm">AI Infra</span></td><td class="py-4 px-4"><div class="flex items-center gap-2 font-mono"><span class="font-headline-sm text-headline-sm text-primary font-semibold">94</span><span class="text-outline text-xs">/100</span><span class="w-2 h-2 rounded-full bg-primary ml-1 shadow-[0_0_6px_#ffffff]"></span></div></td><td class="py-4 px-4"><button class="view-deck-btn inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-surface-container-highest bg-surface-container-high text-primary hover:bg-surface-container-highest transition-colors font-label-sm text-label-sm uppercase font-mono shadow-sm" data-title="Synapse AI Pitch Deck v3"><span class="material-symbols-outlined text-[16px]">picture_as_pdf</span> PDF View</button></td><td class="py-4 px-4"><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-surface-container-highest bg-surface-container text-on-surface font-label-sm text-label-sm shadow-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_6px_#ffffff]"></span> Tech Diligence</span></td><td class="py-4 px-4 text-right"><div class="flex items-center justify-end gap-2"><button class="action-btn px-4 py-1.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm uppercase hover:shadow-[0_0_12px_rgba(255,255,255,0.4)] transition-all font-semibold shadow-sm" data-action="pass" data-target="Synapse AI">Pass to Final Pitch</button><button class="action-btn px-3 py-1.5 rounded-full border border-surface-container-highest bg-surface-container-high text-outline hover:text-error hover:bg-error-container/20 transition-all font-label-sm text-label-sm uppercase shadow-sm" data-action="decline" data-target="Synapse AI">Decline</button></div></td></tr><!-- Row 2: AeroCarbon --><tr class="applicant-row group bg-surface-container/20 hover:bg-surface-container-low transition-colors" data-category="review" data-name="AeroCarbon Marcus Thorne"><td class="py-4 px-4"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-surface-container-high border border-surface-container-highest flex items-center justify-center font-label-md text-label-md text-primary font-bold shadow-sm">AC</div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary group-hover:underline">AeroCarbon</span><span class="font-body-sm text-body-sm text-outline">Marcus Thorne</span></div></div></td><td class="py-4 px-4"><span class="inline-flex items-center px-3 py-1 rounded-full border border-surface-container-highest bg-surface-container-high font-label-sm text-label-sm text-secondary uppercase font-mono shadow-sm">Climate Deeptech</span></td><td class="py-4 px-4"><div class="flex items-center gap-2 font-mono"><span class="font-headline-sm text-headline-sm text-primary font-semibold">89</span><span class="text-outline text-xs">/100</span><span class="w-2 h-2 rounded-full bg-secondary ml-1 shadow-[0_0_6px_#c6c6cf]"></span></div></td><td class="py-4 px-4"><button class="view-deck-btn inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-surface-container-highest bg-surface-container-high text-primary hover:bg-surface-container-highest transition-colors font-label-sm text-label-sm uppercase font-mono shadow-sm" data-title="AeroCarbon Industrial DirectAir Pitch"><span class="material-symbols-outlined text-[16px]">picture_as_pdf</span> PDF View</button></td><td class="py-4 px-4"><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-surface-container-highest bg-surface-container text-on-surface font-label-sm text-label-sm shadow-sm"><span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#c6c6cf]"></span> Screening</span></td><td class="py-4 px-4 text-right"><div class="flex items-center justify-end gap-2"><button class="action-btn px-4 py-1.5 rounded-full border border-surface-container-highest bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary font-label-sm text-label-sm uppercase transition-all shadow-sm" data-action="interview" data-target="AeroCarbon">Schedule Interview</button><button class="action-btn px-3 py-1.5 rounded-full border border-surface-container-highest bg-surface-container text-outline hover:text-primary transition-all font-label-sm text-label-sm uppercase shadow-sm" data-action="pass" data-target="AeroCarbon">Pass</button></div></td></tr><!-- Row 3: QuantumVibe --><tr class="applicant-row group bg-surface hover:bg-surface-container-low transition-colors" data-category="shortlisted" data-name="QuantumVibe Chloe Lin"><td class="py-4 px-4"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-surface-container-high border border-surface-container-highest flex items-center justify-center font-label-md text-label-md text-primary font-bold shadow-sm">QV</div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary group-hover:underline">QuantumVibe</span><span class="font-body-sm text-body-sm text-outline">Chloe Lin</span></div></div></td><td class="py-4 px-4"><span class="inline-flex items-center px-3 py-1 rounded-full border border-surface-container-highest bg-surface-container-high font-label-sm text-label-sm text-secondary uppercase font-mono shadow-sm">Hardware</span></td><td class="py-4 px-4"><div class="flex items-center gap-2 font-mono"><span class="font-headline-sm text-headline-sm text-primary font-semibold">91</span><span class="text-outline text-xs">/100</span><span class="w-2 h-2 rounded-full bg-primary ml-1 shadow-[0_0_6px_#ffffff]"></span></div></td><td class="py-4 px-4"><button class="view-deck-btn inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-surface-container-highest bg-surface-container-high text-primary hover:bg-surface-container-highest transition-colors font-label-sm text-label-sm uppercase font-mono shadow-sm" data-title="QuantumVibe Cryo-Sensor Deck"><span class="material-symbols-outlined text-[16px]">picture_as_pdf</span> PDF View</button></td><td class="py-4 px-4"><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-surface-container-highest bg-surface-container-high text-primary font-label-sm text-label-sm shadow-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_6px_#ffffff]"></span> Shortlisted</span></td><td class="py-4 px-4 text-right"><div class="flex items-center justify-end gap-2"><button class="action-btn px-4 py-1.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm uppercase hover:shadow-[0_0_12px_rgba(255,255,255,0.4)] transition-all font-semibold shadow-sm" data-action="grant" data-target="QuantumVibe">Allocate Grant</button><button class="action-btn px-3 py-1.5 rounded-full border border-surface-container-highest bg-surface-container-high text-outline hover:text-primary transition-all font-label-sm text-label-sm uppercase shadow-sm" data-action="notes" data-target="QuantumVibe">Notes</button></div></td></tr><!-- Row 4: LatticeFi --><tr class="applicant-row group bg-surface-container/20 hover:bg-surface-container-low transition-colors" data-category="shortlisted" data-name="LatticeFi Tatsuya N."><td class="py-4 px-4"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-surface-container-high border border-surface-container-highest flex items-center justify-center font-label-md text-label-md text-primary font-bold shadow-sm">LF</div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary group-hover:underline">LatticeFi</span><span class="font-body-sm text-body-sm text-outline">Tatsuya N.</span></div></div></td><td class="py-4 px-4"><span class="inline-flex items-center px-3 py-1 rounded-full border border-surface-container-highest bg-surface-container-high font-label-sm text-label-sm text-secondary uppercase font-mono shadow-sm">Fintech</span></td><td class="py-4 px-4"><div class="flex items-center gap-2 font-mono"><span class="font-headline-sm text-headline-sm text-on-surface font-semibold">78</span><span class="text-outline text-xs">/100</span><span class="w-2 h-2 rounded-full bg-outline ml-1"></span></div></td><td class="py-4 px-4"><button class="view-deck-btn inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-surface-container-highest bg-surface-container-high text-primary hover:bg-surface-container-highest transition-colors font-label-sm text-label-sm uppercase font-mono shadow-sm" data-title="LatticeFi Liquidity Protocol Deck"><span class="material-symbols-outlined text-[16px]">picture_as_pdf</span> PDF View</button></td><td class="py-4 px-4"><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-surface-container-highest bg-surface-container text-outline font-label-sm text-label-sm shadow-sm"><span class="w-1.5 h-1.5 rounded-full bg-outline"></span> Waitlisted</span></td><td class="py-4 px-4 text-right"><div class="flex items-center justify-end gap-2"><button class="action-btn px-4 py-1.5 rounded-full border border-surface-container-highest bg-surface-container-highest text-primary hover:bg-primary hover:text-on-primary transition-all font-label-sm text-label-sm uppercase shadow-sm" data-action="review" data-target="LatticeFi">Review</button></div></td></tr></tbody>
+</table>
+</div>
+<!-- Quick Desk Summary Footer -->
+<div class="flex flex-wrap items-center justify-between pt-3 text-label-sm font-label-sm text-outline border-t-0">
+<div class="flex items-center gap-4">
+<span>Showing <strong class="text-primary font-mono" id="renderedCount">4</strong> of 284 candidate records</span>
+<span class="text-surface-variant">•</span>
+<span class="flex items-center gap-1 text-on-surface-variant"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Live Syndicate Grading Active</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1 rounded bg-surface-container-low text-outline hover:text-primary transition-colors text-xs">Prev</button>
+<span class="px-2 py-1 rounded bg-surface-container text-primary font-mono text-xs">Page 1 / 15</span>
+<button class="px-2.5 py-1 rounded bg-surface-container-low text-outline hover:text-primary transition-colors text-xs">Next</button>
+</div>
+</div>
+</section>
+<!-- Section 4: Competition & Cohort Management Dual Widgets -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Widget (7 Cols): Cohort Review Committee Progress -->
+<div class="lg:col-span-7 flex flex-col justify-between p-6 rounded-2xl bg-surface-container-low/90 border border-surface-container-highest shadow-lg"><div class="flex flex-col gap-4"><div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[22px]">group_work</span><div><h3 class="font-headline-sm text-headline-sm text-primary tracking-tight">Review Committee Progress</h3><p class="font-body-sm text-body-sm text-outline">Internal review board deck allocation and completion speed</p></div></div><span class="font-label-sm text-label-sm px-3 py-1 rounded-full border border-surface-container-highest bg-surface-container-highest text-primary font-mono shadow-sm">Target: 48h</span></div><!-- Committee Reviewers List --><div class="flex flex-col gap-4 mt-2"><!-- Reviewer 1 --><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl border border-surface-container-highest bg-surface-container hover:bg-surface-container-high transition-all shadow-sm"><div class="flex items-center gap-3"><img class="w-10 h-10 rounded-full object-cover ring-1 ring-surface-container-highest shadow-sm" data-alt="Black and white portrait headshot of a young male partner in high tech venture syndicate with sleek minimalist lighting and obsidian backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6a8o4kaUtGDXCLi145qyPGCJB7KeMRxSUK49255G_x1n8I3Fk8jGtx_MqNvqjhwUgulJRKi4AEJdbnF1WvdVTKDc4XYwyiYbh1MnQyGK_pO4JfRMOZdklkbqwPL94huUnSwuc2kQhA_E-qcI-ar6TEctHxj31zeorXOK9-p6a62VNO25T5E9EJNiF8hQigu94KyEgCb88lHGRtt5VY7ZIuj60lrnFaScbeaCBU6Pz"><div class="flex flex-col"><span class="font-label-md text-label-md text-primary font-medium">Dr. Soren K. <span class="text-outline font-normal font-mono">(Lead Partner)</span></span><span class="font-body-sm text-body-sm text-outline">Assigned: 14 Decks (Deeptech / Quantum)</span></div></div><div class="flex items-center gap-3 sm:w-44"><div class="flex-1 flex flex-col gap-1"><div class="flex justify-between font-label-sm text-label-sm font-mono text-outline"><span>Graded</span><span class="text-primary font-bold">12 / 14</span></div><div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden"><div class="h-full bg-primary rounded-full" style="width: 85%;"></div></div></div><span class="font-label-sm text-label-sm text-primary font-mono font-medium">85%</span></div></div><!-- Reviewer 2 --><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl border border-surface-container-highest bg-surface-container hover:bg-surface-container-high transition-all shadow-sm"><div class="flex items-center gap-3"><img class="w-10 h-10 rounded-full object-cover ring-1 ring-surface-container-highest shadow-sm" data-alt="Monochrome close up studio headshot portrait of a female investment associate in collegiate venture capital with dramatic side lighting and dark architectural backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhlOTHTKcDvbq9OZg17dSxl-HY61SM0ECxATVNQA-qhJ-ktni3M2oWU9-mTqxI4nG6-Ha0_ys8MeIVwtNXGcJA4qAi3KC9KlzgpE_cp1ezp0MszPvk3WBcExhRNEzuoJtCiN7Xm4JTkFfJp9R_xoDpTXWJpQSZJEaEuJnb6AFEXbhsy8Wns-uE_UkyBfrhtyUCCV9MIBJaw5bUseJsKM-yZrjy95LZvCYivPkcf0iD"><div class="flex flex-col"><span class="font-label-md text-label-md text-primary font-medium">Maya Vance <span class="text-outline font-normal font-mono">(Exec VP Diligence)</span></span><span class="font-body-sm text-body-sm text-outline">Assigned: 18 Decks (AI Infra &amp; SaaS)</span></div></div><div class="flex items-center gap-3 sm:w-44"><div class="flex-1 flex flex-col gap-1"><div class="flex justify-between font-label-sm text-label-sm font-mono text-outline"><span>Graded</span><span class="text-primary font-bold">18 / 18</span></div><div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden"><div class="h-full bg-primary rounded-full" style="width: 100%;"></div></div></div><span class="font-label-sm text-label-sm text-primary font-mono font-medium">100%</span></div></div><!-- Reviewer 3 --><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl border border-surface-container-highest bg-surface-container hover:bg-surface-container-high transition-all shadow-sm"><div class="flex items-center gap-3"><img class="w-10 h-10 rounded-full object-cover ring-1 ring-surface-container-highest shadow-sm" data-alt="Clean architectural black and white portrait of a tech founder and board director with minimal dark attire and sharp studio fill" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL8lhSP28bj0IaEdyx5AWDnBXOAABIA1BVywHyjAF7dfJCTBeBv27fKqV5xf7lbgiI7-etR6d2zG3XnC2esGKI20MTmR3Sb5I7ofrTiMm1Zpf4_BKbcRQMIiRZ1fKvZQDNnUFbJmIGbUfJi7EtrD5h1AvUZKp9Dj9HYWOot-vuAlb2x1BA1mD8xw9ApOX9jq7wMS34ZAj9ZK50W1Mcs1oq7EXTcWnLDW2d3IbXy05f"><div class="flex flex-col"><span class="font-label-md text-label-md text-primary font-medium">Julian Zhao <span class="text-outline font-normal font-mono">(General Partner)</span></span><span class="font-body-sm text-body-sm text-outline">Assigned: 10 Decks (Fintech &amp; Web3)</span></div></div><div class="flex items-center gap-3 sm:w-44"><div class="flex-1 flex flex-col gap-1"><div class="flex justify-between font-label-sm text-label-sm font-mono text-outline"><span>Graded</span><span class="text-primary font-bold">6 / 10</span></div><div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden"><div class="h-full bg-secondary rounded-full" style="width: 60%;"></div></div></div><span class="font-label-sm text-label-sm text-secondary font-mono font-medium">60%</span></div></div></div></div><div class="pt-4 mt-4 flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#ffffff]"></span><span class="font-label-sm text-label-sm text-outline">Overall Cohort Score Consensus: <strong class="text-primary font-mono">82.4%</strong></span></div><button class="font-label-sm text-label-sm text-primary uppercase hover:underline flex items-center gap-1.5 px-3 py-1 rounded-full border border-surface-container-highest hover:bg-surface-container transition-all">Rebalance Review Load <span class="material-symbols-outlined text-[14px]">arrow_forward</span></button></div></div>
+<!-- Right Widget (5 Cols): Grant Disbursement & Milestone Tracker -->
+<div class="lg:col-span-5 flex flex-col justify-between p-6 rounded-2xl bg-surface-container-low/90 border border-surface-container-highest shadow-lg"><div class="flex flex-col gap-4"><div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[22px]">payments</span><div><h3 class="font-headline-sm text-headline-sm text-primary tracking-tight">Grant &amp; Milestone Clearance</h3><p class="font-body-sm text-body-sm text-outline">Direct tranche liberation</p></div></div><span class="font-label-sm text-label-sm px-3 py-1 rounded-full border border-surface-container-highest bg-surface-container-highest text-primary font-mono shadow-sm">Escrow Vault</span></div><!-- Interactive Milestone Toggle Cards --><div class="flex flex-col gap-3 mt-1"><!-- Milestone 1 --><div class="flex items-center justify-between p-3.5 rounded-2xl border border-surface-container-highest bg-surface-container shadow-sm"><div class="flex flex-col"><div class="flex items-center gap-2"><span class="font-label-md text-label-md text-primary font-mono font-medium">Tranche A: $15,000</span><span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full border border-surface-container-highest bg-surface-container-highest text-primary">Cleared</span></div><span class="font-body-sm text-body-sm text-outline mt-0.5">Kickoff Capital &amp; Entity Incorporation</span></div><label class="relative inline-flex items-center cursor-pointer"><input checked="" class="sr-only peer" type="checkbox"><div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface peer-checked:bg-primary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-primary after:rounded-full after:h-5 after:w-5 after:transition-all shadow-inner"></div></label></div><!-- Milestone 2 --><div class="flex items-center justify-between p-3.5 rounded-2xl border border-surface-container-highest bg-surface-container shadow-sm"><div class="flex flex-col"><div class="flex items-center gap-2"><span class="font-label-md text-label-md text-primary font-mono font-medium">Tranche B: $20,000</span><span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full border border-surface-container-highest bg-surface-container-highest text-primary">Cleared</span></div><span class="font-body-sm text-body-sm text-outline mt-0.5">Functional MVP &amp; 3 LOIs Signed</span></div><label class="relative inline-flex items-center cursor-pointer"><input checked="" class="sr-only peer" type="checkbox"><div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface peer-checked:bg-primary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-primary after:rounded-full after:h-5 after:w-5 after:transition-all shadow-inner"></div></label></div><!-- Milestone 3 --><div class="flex items-center justify-between p-3.5 rounded-2xl border border-surface-container-highest bg-surface-container shadow-sm"><div class="flex flex-col"><div class="flex items-center gap-2"><span class="font-label-md text-label-md text-on-surface font-mono font-medium">Tranche C: $15,000</span><span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full border border-surface-container-highest bg-surface-container text-outline">Pending</span></div><span class="font-body-sm text-body-sm text-outline mt-0.5">Demo Day Presentation &amp; Syndicate Allocation</span></div><label class="relative inline-flex items-center cursor-pointer"><input class="sr-only peer" type="checkbox"><div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface peer-checked:bg-primary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-primary after:rounded-full after:h-5 after:w-5 after:transition-all shadow-inner"></div></label></div></div></div><div class="pt-4 mt-3 flex items-center justify-between"><span class="font-label-sm text-label-sm text-outline">Remaining Pool Reserve: <strong class="text-primary font-mono">$15,000</strong></span><button class="font-label-sm text-label-sm text-primary uppercase hover:underline flex items-center gap-1.5 px-3 py-1 rounded-full border border-surface-container-highest hover:bg-surface-container transition-all shadow-sm">Audit Ledger <span class="material-symbols-outlined text-[14px]">receipt_long</span></button></div></div>
+</section>
+
+<!-- Section 5: Interactive Live Syndicate CLI Console -->
+<section class="flex flex-col rounded-2xl bg-black border border-surface-container-highest shadow-2xl overflow-hidden font-mono text-sm mt-4 spotlight-card">
+  <div class="flex items-center justify-between px-4 py-3 bg-surface-container-low border-b border-surface-container-highest">
+    <div class="flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block shadow-[0_0_8px_rgba(239,68,68,0.5)]"></span>
+      <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block shadow-[0_0_8px_rgba(234,179,8,0.5)]"></span>
+      <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block shadow-[0_0_8px_rgba(34,197,94,0.5)]"></span>
+      <span class="ml-2 font-label-sm text-xs text-outline uppercase tracking-wider">syndicate-os // zsh - 80x24</span>
+    </div>
+    <div class="flex items-center gap-3 text-outline text-xs">
+      <span class="hidden sm:inline">TYPE 'help' FOR COMMAND MATRIX</span>
+      <span class="px-2 py-0.5 rounded bg-surface-container-high text-primary text-[11px] font-semibold flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>ONLINE NODE</span>
+    </div>
+  </div>
+  <div id="cliOutput" class="p-4 sm:p-6 text-on-surface-variant flex flex-col gap-2 max-h-72 overflow-y-auto font-mono text-xs leading-relaxed select-text">
+    <div class="text-primary font-bold">EDC Venture Syndicate OS [Version 4.2.0-prod]</div>
+    <div class="text-outline">Connected to Global Node 01 (US-East Silicon Corridor). Diligence security clearance: LEVEL 3.</div>
+    <div class="text-secondary">Type <span class="text-primary font-semibold underline cursor-pointer" onclick="document.getElementById('cliInput').value='help'; executeCliCommand();">help</span> to view operational command matrix.</div>
+  </div>
+  <form id="cliForm" class="flex items-center gap-2 px-4 py-3 bg-surface-container-lowest border-t border-surface-container-highest" onsubmit="event.preventDefault(); executeCliCommand();">
+    <span class="text-primary font-mono text-xs font-bold whitespace-nowrap">operator@edc-syndicate:~$</span>
+    <input id="cliInput" type="text" autocomplete="off" spellcheck="false" class="flex-1 bg-transparent text-primary text-xs font-mono focus:outline-none placeholder:text-outline/40" placeholder="enter command (try 'stats', 'teams', 'review synapse', 'help')...">
+    <button type="submit" class="px-3.5 py-1.5 rounded-full bg-primary text-on-primary text-xs uppercase font-label-sm tracking-wider font-semibold hover:shadow-[0_0_15px_rgba(255,255,255,0.4)] transition-all">Exec</button>
+  </form>
+</section>
+
+
+</div>
+<!-- Interactive Modal for PDF Pitch Deck Viewer -->
+<div class="fixed inset-0 z-50 hidden bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center p-4" id="deckModal">
+<div class="w-full max-w-2xl bg-surface-container-low rounded-2xl shadow-2xl p-6 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[24px]">description</span>
+<h3 class="font-headline-sm text-headline-sm text-primary" id="modalDeckTitle">Venture Pitch Deck</h3>
+</div>
+<button class="p-1 rounded text-outline hover:text-primary" id="closeDeckModal">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="w-full h-80 rounded-xl bg-surface-container-lowest flex flex-col items-center justify-center p-6 text-center gap-3">
+<span class="material-symbols-outlined text-outline text-[48px]">picture_as_pdf</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">Confidential Syndicate Memorandum</span>
+<span class="font-body-sm text-body-sm text-outline">Deck encrypted via EDC cryptographic vault. Diligence read-only.</span>
+</div>
+<div class="flex items-center gap-3 pt-2">
+<button class="px-4 py-2 rounded bg-primary text-on-primary font-label-sm text-label-sm uppercase font-semibold">Open Interactive Viewer</button>
+<button class="px-4 py-2 rounded bg-surface-container text-outline hover:text-primary font-label-sm text-label-sm uppercase font-mono">Verify Signature</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Announcement Modal -->
+<div class="fixed inset-0 z-50 hidden bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center p-4" id="announcementModal">
+<div class="w-full max-w-lg bg-surface-container-low rounded-2xl shadow-2xl p-6 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">campaign</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Broadcast Cohort Announcement</h3>
+</div>
+<button class="p-1 rounded text-outline hover:text-primary" id="closeAnnouncementModal">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-3">
+<label class="font-label-sm text-label-sm uppercase text-outline">Headline</label>
+<input class="w-full px-3 py-2 rounded bg-surface text-primary font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary" type="text" value="EDC W25 Cohort Finals Schedule Released">
+<label class="font-label-sm text-label-sm uppercase text-outline">Recipients</label>
+<select class="w-full px-3 py-2 rounded bg-surface text-primary font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary">
+<option>All Applicants (284)</option>
+<option>Shortlisted Finalists (18)</option>
+<option>Executive Diligence Committee</option>
+</select>
+<label class="font-label-sm text-label-sm uppercase text-outline">Brief Content</label>
+<textarea class="w-full px-3 py-2 rounded bg-surface text-primary font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Enter transmission message..." rows="3"></textarea>
+</div>
+<div class="flex items-center justify-end gap-3 pt-2">
+<button class="px-4 py-2 rounded bg-surface-container text-outline hover:text-primary font-label-sm text-label-sm uppercase" id="cancelAnnouncementBtn">Cancel</button>
+<button class="px-4 py-2 rounded bg-primary text-on-primary font-label-sm text-label-sm uppercase font-semibold" id="sendAnnouncementBtn">Broadcast Now</button>
+</div>
+</div>
+</div>
+<!-- Inline Micro-interaction JS -->
+<script>
+    (function initAdminTerminal() {
+      // 1. Lock Submissions toggle
+      const lockBtn = document.getElementById('lockToggleBtn');
+      const lockIcon = document.getElementById('lockIcon');
+      const lockText = document.getElementById('lockText');
+      let isLocked = false;
+
+      if (lockBtn) {
+        lockBtn.addEventListener('click', () => {
+          isLocked = !isLocked;
+          if (isLocked) {
+            lockIcon.textContent = 'lock';
+            lockText.textContent = 'Submissions Locked';
+            lockBtn.classList.remove('bg-primary', 'text-on-primary');
+            lockBtn.classList.add('bg-error-container', 'text-error');
+          } else {
+            lockIcon.textContent = 'lock_open';
+            lockText.textContent = 'Lock Submissions';
+            lockBtn.classList.remove('bg-error-container', 'text-error');
+            lockBtn.classList.add('bg-primary', 'text-on-primary');
+          }
+        });
+      }
+
+      // 2. Export Roster Notice
+      const exportBtn = document.getElementById('exportRosterBtn');
+      if (exportBtn) {
+        exportBtn.addEventListener('click', () => {
+          const original = exportBtn.innerHTML;
+          exportBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span> Generating CSV...';
+          setTimeout(() => {
+            exportBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span> Exported 284 Rows';
+            setTimeout(() => {
+              exportBtn.innerHTML = original;
+            }, 2000);
+          }, 600);
+        });
+      }
+
+      // 3. Filter tabs functionality
+      const filterTabs = document.querySelectorAll('.filter-tab');
+      const applicantRows = document.querySelectorAll('.applicant-row');
+      const renderedCount = document.getElementById('renderedCount');
+
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          filterTabs.forEach(t => {
+            t.classList.remove('bg-primary', 'text-on-primary');
+            t.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+          });
+          tab.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+          tab.classList.add('bg-primary', 'text-on-primary');
+
+          const filter = tab.getAttribute('data-filter');
+          let count = 0;
+          applicantRows.forEach(row => {
+            const cat = row.getAttribute('data-category');
+            if (filter === 'all' || filter === cat) {
+              row.style.display = '';
+              count++;
+            } else {
+              row.style.display = 'none';
+            }
+          });
+          if (renderedCount) renderedCount.textContent = count;
+        });
+      });
+
+      // 4. Search Filter
+      const searchInput = document.getElementById('applicantSearchInput');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const val = e.target.value.toLowerCase().trim();
+          let count = 0;
+          applicantRows.forEach(row => {
+            const name = (row.getAttribute('data-name') || '').toLowerCase();
+            if (name.includes(val)) {
+              row.style.display = '';
+              count++;
+            } else {
+              row.style.display = 'none';
+            }
+          });
+          if (renderedCount) renderedCount.textContent = count;
+        });
+      }
+
+      // 5. PDF Deck Modal Viewer
+      const deckModal = document.getElementById('deckModal');
+      const modalDeckTitle = document.getElementById('modalDeckTitle');
+      const closeDeckModal = document.getElementById('closeDeckModal');
+      const viewDeckBtns = document.querySelectorAll('.view-deck-btn');
+
+      viewDeckBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const title = btn.getAttribute('data-title') || 'Pitch Deck';
+          if (modalDeckTitle) modalDeckTitle.textContent = title;
+          if (deckModal) deckModal.classList.remove('hidden');
+        });
+      });
+
+      if (closeDeckModal && deckModal) {
+        closeDeckModal.addEventListener('click', () => {
+          deckModal.classList.add('hidden');
+        });
+      }
+
+      // 6. Announcement Modal
+      const announceBtn = document.getElementById('announcementModalBtn');
+      const announceModal = document.getElementById('announcementModal');
+      const closeAnnounceModal = document.getElementById('closeAnnouncementModal');
+      const cancelAnnounceModal = document.getElementById('cancelAnnouncementBtn');
+      const sendAnnounceBtn = document.getElementById('sendAnnouncementBtn');
+
+      if (announceBtn && announceModal) {
+        announceBtn.addEventListener('click', () => {
+          announceModal.classList.remove('hidden');
+        });
+      }
+      [closeAnnounceModal, cancelAnnounceModal].forEach(el => {
+        if (el && announceModal) {
+          el.addEventListener('click', () => announceModal.classList.add('hidden'));
+        }
+      });
+      if (sendAnnounceBtn && announceModal) {
+        sendAnnounceBtn.addEventListener('click', () => {
+          sendAnnounceBtn.textContent = 'Transmitting...';
+          setTimeout(() => {
+            sendAnnounceBtn.textContent = 'Dispatched!';
+            setTimeout(() => {
+              announceModal.classList.add('hidden');
+              sendAnnounceBtn.textContent = 'Broadcast Now';
+            }, 800);
+          }, 600);
+        });
+      }
+
+      // 7. Interactive candidate row buttons
+      const actionBtns = document.querySelectorAll('.action-btn');
+      actionBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const act = btn.getAttribute('data-action');
+          const target = btn.getAttribute('data-target');
+          if (act === 'pass') {
+            btn.innerHTML = 'Slotted <span class="material-symbols-outlined text-[14px]">check</span>';
+            btn.classList.add('opacity-80');
+          } else if (act === 'grant') {
+            btn.innerHTML = 'Disbursed <span class="material-symbols-outlined text-[14px]">done_all</span>';
+          } else if (act === 'decline') {
+            btn.innerHTML = 'Archived';
+          }
+        });
+      });
+    })();
+  </script>
+</div>
+</main>
+<footer class="w-full bg-surface-container-lowest border-t border-surface-container-highest py-16">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-14 border-b border-surface-container-highest">
+      <div class="md:col-span-4 flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <img alt="EDC Monogram Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrC4vhSzD4_rP3C6NxgjwyIPMESe4c_mwxJRhJicMgF_A1rCXLozZKcVuhWOZFRLL1Ai_zvs57tg5m4SUtbiemXjqadJtMOCp2uPjQnQViCipUznU_EchB1igJLO7x4xXagQlCZJX7QDrQaqFPVKxXLvRrkN_k0z1mPKiRXwNZKVprYY61QeDgA9FYX5pW3Iv9MZQH9ByGCQCavdK3LBfJGH8HbM9rNgOI1RhISXzLEj">
+          <span class="font-headline-sm text-headline-sm uppercase text-primary">EDC</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">
+          Forging collegiate venture founders, high-conviction syndicates, and disruptive institutional capital ecosystems.
+        </p>
+        <div class="pt-2">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface-container-high border border-surface-container-highest font-label-sm text-label-sm uppercase tracking-wider text-outline">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Affiliated Innovation Lab &amp; Registry
+          </span>
+        </div>
+      </div>
+      <div class="md:col-span-2 flex flex-col gap-3">
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Protocol</span>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="index.html">Overview</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="showcase-&-ventures" href="ventures.html">Venture Roster</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="leadership-&-team" href="leadership.html">Core Council</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="competitions-&-apply" href="apply.html">Venture Grants</a>
+      </div>
+      <div class="md:col-span-2 flex flex-col gap-3">
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Syndicate</span>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="command-terminal" href="terminal.html">Admin Console</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="showcase-&-ventures" href="ventures.html">Pitch Ledger</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="leadership-&-team" href="leadership.html">LP Syndicate</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="leadership-&-team" href="leadership.html">Advisory Desk</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="competitions-&-apply" href="apply.html">Incubator Terms</a>
+      </div>
+      <div class="md:col-span-4 flex flex-col gap-4">
+        <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Dispatch Terminal</span>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Receive closed cohort briefs, allocation releases, and institutional venture updates.</p>
+        <form id="newsletterForm" class="flex items-center gap-2 pt-1" onsubmit="event.preventDefault(); const btn = this.querySelector('button'); btn.textContent='Subscribed!'; btn.classList.add('bg-white/20'); setTimeout(()=>{btn.textContent='Join'; btn.classList.remove('bg-white/20')}, 2000);">
+          <div class="relative flex-1">
+            <input class="w-full bg-surface-container-low border border-surface-container-highest px-4 py-2 rounded-full text-on-surface placeholder:text-outline focus:outline-none focus:border-primary font-body-sm text-body-sm transition-colors" placeholder="founder@university.edu" type="email" required>
+          </div>
+          <button class="font-label-sm text-label-sm uppercase px-5 py-2 bg-primary text-on-primary rounded-full hover:shadow-[0_0_16px_rgba(255,255,255,0.3)] transition-all font-semibold" type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span class="font-label-sm text-label-sm text-outline">© 2025 EDC Venture Network. Engineered with precision.</span>
+      <div class="flex items-center gap-6">
+        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-1" data-path="command-terminal" href="terminal.html">
+          <span class="material-symbols-outlined text-[16px]">terminal</span>Terminal
+        </a>
+        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-1" href="https://github.com" target="_blank" rel="noopener">
+          <span class="material-symbols-outlined text-[16px]">code</span>Repository
+        </a>
+        <a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-1" href="terminal.html" data-path="command-terminal">
+          <span class="material-symbols-outlined text-[16px]">send</span>Channel
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Universal Syndicate Command Palette (⌘K) -->
+<div id="cmdKModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-xl flex items-start justify-center pt-20 sm:pt-28 px-4 transition-all" onclick="if(event.target===this) toggleCmdK();">
+  <div class="w-full max-w-2xl bg-surface-container-low border border-white/20 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col specular-border animate-radar">
+    <div class="flex items-center gap-3 px-5 py-4 border-b border-white/10 bg-surface-container-lowest">
+      <span class="material-symbols-outlined text-outline text-xl">search</span>
+      <input id="cmdKInput" type="text" autocomplete="off" spellcheck="false" class="flex-1 bg-transparent text-primary text-sm font-body-md focus:outline-none placeholder:text-outline/50" placeholder="Search ventures, teams, commands (e.g., 'synapse', 'apply', 'stats', 'terminal')...">
+      <kbd class="px-2 py-0.5 rounded bg-white/10 text-outline text-[11px] font-mono border border-white/10 cursor-pointer hover:text-white" onclick="toggleCmdK();">ESC</kbd>
+    </div>
+    <div id="cmdKResults" class="p-3 max-h-96 overflow-y-auto flex flex-col gap-1.5 text-xs font-mono">
+      <div class="px-2 py-1 text-[11px] uppercase tracking-wider text-outline font-semibold">⚡ Quick Navigation</div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="home">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">home</span><span>Home // Aura Stage</span></div>
+        <span class="text-outline font-label-sm text-[10px]">Jump to #home</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="ventures">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">rocket_launch</span><span>Showcase &amp; Active Ventures [38]</span></div>
+        <span class="text-outline font-label-sm text-[10px]">Jump to #ventures</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="leadership">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">groups</span><span>Leadership Council &amp; Advisory Board</span></div>
+        <span class="text-outline font-label-sm text-[10px]">Jump to #leadership</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="apply">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">military_tech</span><span>Genesis Pitch Bowl &amp; FastTrack Grant</span></div>
+        <span class="text-outline font-label-sm text-[10px]">Jump to #apply</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="terminal">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">terminal</span><span>Executive Admin Command Terminal</span></div>
+        <span class="text-outline font-label-sm text-[10px]">Jump to #terminal</span>
+      </div>
+
+      <div class="px-2 pt-3 pb-1 text-[11px] uppercase tracking-wider text-outline font-semibold border-t border-white/5 mt-1">🚀 Portfolio Ventures</div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="ventures" data-query="synapse">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">neurology</span><span>Synapse Neural Engine (AI &amp; DeepTech)</span></div>
+        <span class="text-primary font-semibold">$3.2M Seed</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="ventures" data-query="ledgerzero">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">account_balance</span><span>LedgerZero Institutional Settlement</span></div>
+        <span class="text-primary font-semibold">$850K Seed</span>
+      </div>
+      <div class="cmd-item p-2.5 rounded-xl hover:bg-white/10 cursor-pointer flex items-center justify-between text-on-surface hover:text-white transition-colors" data-target="ventures" data-query="kurobio">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[16px] text-primary">biotech</span><span>KuroBio Synthetic Biofuels</span></div>
+        <span class="text-primary font-semibold">US Pat #11,902</span>
+      </div>
+    </div>
+    <div class="px-5 py-3 bg-surface-container-lowest border-t border-white/10 flex items-center justify-between text-[11px] text-outline font-mono">
+      <div class="flex items-center gap-4">
+        <span><kbd class="px-1.5 py-0.5 rounded bg-white/5 border border-white/10">↑↓</kbd> navigate</span>
+        <span><kbd class="px-1.5 py-0.5 rounded bg-white/5 border border-white/10">↵</kbd> execute</span>
+      </div>
+      <span class="text-on-surface-variant">EDC Syndicate OS // v4.2</span>
+    </div>
+  </div>
+</div>
+
+<script>
+function executeCliCommand() {
+  const input = document.getElementById('cliInput');
+  const output = document.getElementById('cliOutput');
+  if (!input || !output) return;
+  const cmd = input.value.trim();
+  if (!cmd) return;
+  input.value = '';
+
+  const userLine = document.createElement('div');
+  userLine.className = 'text-primary flex items-center gap-2 mt-1';
+  userLine.innerHTML = `<span class="text-outline font-bold">operator@edc-syndicate:~$</span> <span>${escapeHtml(cmd)}</span>`;
+  output.appendChild(userLine);
+
+  const lower = cmd.toLowerCase().trim();
+  const resp = document.createElement('div');
+  resp.className = 'text-on-surface-variant font-mono pl-4 border-l border-white/10 my-1 whitespace-pre-wrap';
+
+  if (lower === 'help') {
+    resp.innerHTML = `
+<span class="text-primary font-bold">EDC SYNDICATE OS v4.2 - COMMAND MATRIX</span>
+  <span class="text-primary font-semibold">help</span>             Show this command reference
+  <span class="text-primary font-semibold">stats</span>            Display live fund metrics, AUM, and cohort velocity
+  <span class="text-primary font-semibold">status</span>           Check system status, compute cluster & escrow
+  <span class="text-primary font-semibold">teams</span>            List candidate ventures currently in diligence
+  <span class="text-primary font-semibold">review &lt;name&gt;</span>     Inspect company dossier (e.g., 'review synapse')
+  <span class="text-primary font-semibold">approve &lt;name&gt;</span>    Advance candidate team to Pitch Day slot
+  <span class="text-primary font-semibold">disburse &lt;amt&gt;</span>    Simulate tranche clearance from escrow vault
+  <span class="text-primary font-semibold">lock / unlock</span>    Toggle candidate submission intake gate
+  <span class="text-primary font-semibold">clear</span>            Clear terminal output buffer
+`;
+  } else if (lower === 'stats') {
+    resp.innerHTML = `
+<span class="text-primary font-semibold">[SYNDICATE FUND TELEMETRY]</span>
+  Total Capital Syndicated:  <span class="text-primary font-bold">$44.8M USD</span> (38 Active Portfolio Cos)
+  Current Applications:      <span class="text-primary font-bold">284 Teams</span> (+38% vs prev cycle)
+  Shortlist Conversion:      <span class="text-primary font-bold">18 Shortlisted / 12 Pitch Slotted</span> (6.3% Rate)
+  Seed Conversion Yield:     <span class="text-primary font-bold">78.4%</span> Tier-1 Seed close in 6mo
+  GPU Compute Node:          <span class="text-primary font-bold">64x NVIDIA H100 80GB</span> (88% Active Allocation)
+`;
+  } else if (lower === 'status') {
+    resp.innerHTML = `
+<span class="text-primary font-semibold">[SYSTEM HEALTH & INTEGRITY]</span>
+  Core Node:         Global Node 01 [ONLINE // PING: 4ms]
+  Genesis Pitch:     ACTIVE [Priority Close in 14d 08h]
+  FastTrack Intake:  ROLLING [184/200 Submissions Logged]
+  Escrow Vault:      $35.0K Deployed / $15.0K Pool Reserve
+  Governance Cadre:  4/4 Executive Chairs Synchronized
+`;
+  } else if (lower === 'teams' || lower === 'candidates') {
+    resp.innerHTML = `
+<span class="text-primary font-semibold">[ACTIVE DILIGENCE QUEUE]</span>
+  1. Synapse Neural Engine   [AI Infra]        Score: 94/100   Status: Review
+  2. AeroCarbon              [Materials]       Score: 91/100   Status: Review
+  3. QuantumVibe             [Quantum Algo]    Score: 89/100   Status: Shortlisted
+  4. LatticeFi               [Fintech Zero-K]  Score: 87/100   Status: Slotted
+  5. KuroBio Biofuels        [Synthetic Bio]   Score: 92/100   Status: Slotted
+`;
+  } else if (lower.includes('synapse')) {
+    resp.innerHTML = `
+<span class="text-primary font-semibold">[DOSSIER: SYNAPSE NEURAL ENGINE]</span>
+  Founders:       Arjun V. (MIT '25) & Elena R. (Stanford CS)
+  Vertical:       Distributed Reasoning Cluster / Sub-Graph Edge LLM
+  Traction:       100K MAU (+34% MoM Organic), -84.2% Latency
+  Lead Syndicate: Neo (Follow: Lux Capital)
+  Round:          $3.2M Seed @ $16M Post-Valuation Cap
+  Verdict:        <span class="text-primary font-bold bg-white/10 px-1 rounded">APPROVED FOR GENESIS PITCH DAY</span>
+`;
+  } else if (lower.includes('aerocarbon')) {
+    resp.innerHTML = `
+<span class="text-primary font-semibold">[DOSSIER: AEROCARBON]</span>
+  Founders:       Marcus Thorne (Cornell MechE)
+  Vertical:       Nanotube Carbon Structural Composites
+  Traction:       2 Aerospace Pilot Testing Agreements Signed
+  Valuation:      $1.2M Pre-Seed SAFE
+  Verdict:        <span class="text-primary font-bold bg-white/10 px-1 rounded">DILIGENCE STAGE 2</span>
+`;
+  } else if (lower.startsWith('approve')) {
+    const target = cmd.slice(7).trim() || 'candidate';
+    resp.innerHTML = `<span class="text-primary font-bold">✓ SUCCESS:</span> Venture '${escapeHtml(target)}' advanced to Pitch Day roster. Notification dispatched to founder email.`;
+  } else if (lower.startsWith('disburse')) {
+    const amt = cmd.slice(8).trim() || '$15,000';
+    resp.innerHTML = `<span class="text-primary font-bold">✓ ESCROW CLEARED:</span> Milestone disbursement of ${escapeHtml(amt)} authorized by syndicate multisig keys.`;
+  } else if (lower === 'lock') {
+    const lockBtn = document.getElementById('lockToggleBtn');
+    if (lockBtn && !lockBtn.classList.contains('bg-error-container')) lockBtn.click();
+    resp.innerHTML = `<span class="text-error font-bold">! LOCKED:</span> Application intake gate closed. New submissions paused.`;
+  } else if (lower === 'unlock') {
+    const lockBtn = document.getElementById('lockToggleBtn');
+    if (lockBtn && lockBtn.classList.contains('bg-error-container')) lockBtn.click();
+    resp.innerHTML = `<span class="text-primary font-bold">✓ UNLOCKED:</span> Application intake gate open. Accepting cohort submissions.`;
+  } else if (lower === 'clear') {
+    output.innerHTML = '';
+    return;
+  } else {
+    resp.innerHTML = `<span class="text-error">command not recognized: '${escapeHtml(cmd)}'.</span> Type <span class="text-primary underline cursor-pointer" onclick="document.getElementById('cliInput').value='help'; executeCliCommand();">help</span> for available commands.`;
+  }
+
+  output.appendChild(resp);
+  output.scrollTop = output.scrollHeight;
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+</script>
+
+<script>
+// 1. Spotlight Mouse Tracker on .spotlight-card
+document.addEventListener('mousemove', (e) => {
+  const cards = document.querySelectorAll('.spotlight-card');
+  cards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    if (
+      e.clientX >= rect.left - 40 &&
+      e.clientX <= rect.right + 40 &&
+      e.clientY >= rect.top - 40 &&
+      e.clientY <= rect.bottom + 40
+    ) {
+      card.style.setProperty('--spotlight-x', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--spotlight-y', `${e.clientY - rect.top}px`);
+    }
+  });
+});
+
+// 2. 3D Tilt Effect on .tilt-card
+function initTiltEffect() {
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    if (card._tiltInitialized) return;
+    card._tiltInitialized = true;
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(1000px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-2px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px)';
+    });
+  });
+}
+initTiltEffect();
+
+// 3. Dynamic Number Counter Animation
+function animateCounters(container = document) {
+  const counters = container.querySelectorAll('[data-counter]');
+  counters.forEach(counter => {
+    const target = parseFloat(counter.getAttribute('data-counter'));
+    const prefix = counter.getAttribute('data-counter-prefix') || '';
+    const suffix = counter.getAttribute('data-counter-suffix') || '';
+    const decimals = parseInt(counter.getAttribute('data-counter-decimals') || '0', 10);
+    const duration = 1200;
+    const startTime = performance.now();
+
+    function update(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = (target * ease).toFixed(decimals);
+      counter.textContent = prefix + current + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        counter.textContent = prefix + target.toFixed(decimals) + suffix;
+      }
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+// 4. Hero Title Scramble / Decrypt Effect
+const scrambleElem = document.getElementById('heroTitleScramble');
+if (scrambleElem) {
+  function runScramble() {
+    const original = "BUILD THE\nEXTRAORDINARY";
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_#@%&';
+    let iter = 0;
+    clearInterval(scrambleElem._interval);
+    scrambleElem._interval = setInterval(() => {
+      scrambleElem.innerHTML = original
+        .split('')
+        .map((ch, idx) => {
+          if (ch === '\n') return '<br>';
+          if (ch === ' ') return ' ';
+          if (idx < iter) return original[idx];
+          return chars[Math.floor(Math.random() * chars.length)];
+        })
+        .join('');
+      if (iter >= original.length) {
+        clearInterval(scrambleElem._interval);
+        scrambleElem.innerHTML = "BUILD THE<br>EXTRAORDINARY";
+      }
+      iter += 1;
+    }, 30);
+  }
+  scrambleElem.addEventListener('mouseenter', runScramble);
+  scrambleElem.addEventListener('click', runScramble);
+  setTimeout(runScramble, 800);
+}
+
+// 5. Universal Command Palette (⌘K) Controller
+function toggleCmdK() {
+  const modal = document.getElementById('cmdKModal');
+  const input = document.getElementById('cmdKInput');
+  if (!modal) return;
+  const isHidden = modal.classList.contains('hidden');
+  if (isHidden) {
+    modal.classList.remove('hidden');
+    if (input) {
+      input.value = '';
+      setTimeout(() => input.focus(), 50);
+    }
+  } else {
+    modal.classList.add('hidden');
+  }
+}
+
+const cmdKBtn = document.getElementById('cmdKTrigger');
+if (cmdKBtn) cmdKBtn.addEventListener('click', toggleCmdK);
+
+const mobSearchBtn = document.getElementById('mobileSearchBtn');
+if (mobSearchBtn) mobSearchBtn.addEventListener('click', toggleCmdK);
+
+window.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    toggleCmdK();
+  } else if (e.key === 'Escape') {
+    const modal = document.getElementById('cmdKModal');
+    if (modal && !modal.classList.contains('hidden')) {
+      toggleCmdK();
+    }
+  }
+});
+
+// Command palette search filtering
+const cmdInput = document.getElementById('cmdKInput');
+if (cmdInput) {
+  cmdInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    const items = document.querySelectorAll('#cmdKResults .cmd-item');
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      if (!query || text.includes(query)) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+}
+
+// Command palette item click handling
+document.addEventListener('click', (e) => {
+  const item = e.target.closest('.cmd-item');
+  if (item) {
+    const target = item.getAttribute('data-target');
+    if (target) {
+      toggleCmdK();
+      if (typeof window.navigateTo === 'function') {
+        window.navigateTo(target);
+      } else {
+        const urlMap = {
+          home: 'index.html',
+          ventures: 'ventures.html',
+          leadership: 'leadership.html',
+          apply: 'apply.html',
+          terminal: 'terminal.html'
+        };
+        if (urlMap[target]) window.location.href = urlMap[target];
+      }
+    }
+  }
+});
+</script>
+<script>
+(function() {
+  const btn = document.getElementById('mobileMenuBtn');
+  const menu = document.getElementById('mobileMenu');
+  const icon = document.getElementById('menuIcon');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const isHidden = menu.classList.contains('hidden');
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        if (icon) icon.textContent = 'close';
+      } else {
+        menu.classList.add('hidden');
+        if (icon) icon.textContent = 'menu';
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
